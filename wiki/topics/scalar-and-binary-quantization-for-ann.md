@@ -3,14 +3,14 @@ id: scalar-and-binary-quantization-for-ann
 type: topic
 status: active
 created: 2026-05-10
-updated: 2026-05-10
+updated: 2026-05-19
 tags:
   - ann
   - scalar-quantization
   - binary-quantization
   - hnsw
   - vector-search
-source_count: 10
+source_count: 11
 sources:
   - raw/sources/papers/faiss-library-2025.pdf
   - raw/sources/papers/scann-2020.pdf
@@ -22,6 +22,7 @@ sources:
   - raw/sources/papers/aqr-hnsw-2026.pdf
   - raw/sources/papers/quantization-enhanced-hnsw-lavq-2025.pdf
   - raw/sources/papers/information-theoretic-binarization-vector-search-2026.pdf
+  - raw/inbox/flash-graph-indexing-2025.pdf
 related:
   - vector-quantization
   - approximate-nearest-neighbor-search
@@ -32,6 +33,7 @@ related:
   - low-precision-quantization-knn
   - norm-explicit-quantization
   - symphonyqg
+  - flash-graph-indexing
   - aqr-hnsw
   - hnsw-lavq
 confidence: medium
@@ -55,6 +57,8 @@ This topic tracks scalar, binary, and low-precision quantization for ANN systems
 
 **Graph plus quantization:** [SymphonyQG](../entities/symphonyqg.md) shows a stronger integration path: quantized codes must be placed next to graph vertices, graph degree should align with FastScan batch size, and explicit reranking can reintroduce random-memory costs.
 
+**Construction-time compact coding:** [Flash Graph Indexing](../entities/flash-graph-indexing.md) uses PCA/PQ/SQ-inspired compact codes during HNSW-style construction. Its lesson is that a code useful for query-time search is not automatically useful for graph construction because Candidate Acquisition and Neighbor Selection impose different comparison and layout requirements.
+
 **Scalar-quantized HNSW branch:** [AQR-HNSW](../entities/aqr-hnsw.md) and [HNSW-LAVQ](../entities/hnsw-lavq.md) are recent low-confidence sources on percentile/density-aware scalar quantization for HNSW. They are useful design probes but should not be treated as established baselines yet.
 
 **Binary/extreme compression branch:** [Information-Theoretic Binarization for Vector Search](../entities/information-theoretic-binarization-vector-search.md) is a speculative source on binary representation as an architecture-level change rather than only a compression setting.
@@ -66,6 +70,7 @@ This topic tracks scalar, binary, and low-precision quantization for ANN systems
 - **Norm-explicit:** store or quantize vector norm separately when the downstream score is inner product.
 - **RaBitQ-style:** randomized/data-oblivious quantization with explicit estimator guarantees and bitwise/SIMD-friendly distance estimation.
 - **Graph-integrated quantization:** quantization affects not only stored vectors but also graph traversal, candidate ordering, reranking, and memory-access locality.
+- **Construction-only quantization:** compact codes can guide graph construction while raw vectors remain available for final reranking.
 
 ## Research Implications
 
@@ -81,6 +86,7 @@ Scalar quantization should be treated as a full execution path, not merely a sto
 
 - Should scalar-quantized HNSW store raw vectors for final reranking, or rely on stronger quantized distances?
 - For graph ANN, is quantization most valuable for traversal decisions, final reranking, or memory footprint?
+- For rebuild-heavy vector databases, should quantization be tuned separately for construction speed and query speed?
 - When does explicit norm storage outperform ordinary scalar quantization for inner-product embeddings?
 - Can binary quantization become a primary retrieval representation, or is it mostly a first-stage candidate generator?
 
@@ -89,3 +95,4 @@ Scalar quantization should be treated as a full execution path, not merely a sto
 - [Vector Quantization](vector-quantization.md)
 - [Approximate Nearest Neighbor Search](approximate-nearest-neighbor-search.md)
 - [SIMD and Vectorization for ANN Systems](simd-and-vectorization-for-ann-systems.md)
+- [Flash Graph Indexing](../entities/flash-graph-indexing.md)

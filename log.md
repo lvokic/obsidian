@@ -275,3 +275,17 @@ Created entity pages for the new methods/papers and a new topic page: `wiki/topi
 Working synthesis: ANN quantization should now be treated as both a compression method and an execution path. PQ/ADC needs in-register lookup and layout-aware SIMD. Scalar quantization needs careful range/norm handling and can become a traversal-time distance estimator, not just a storage-saving format. Graph-plus-quantization methods need layout, graph degree, and reranking policy co-designed with the SIMD batch kernel.
 
 Unresolved questions: the mature sources are PQ Fast Scan, Quicker ADC, RaBitQ extension, Low-Precision Quantization, Norm-Explicit Quantization, and SymphonyQG. AQR-HNSW, HNSW-LAVQ, and Information-Theoretic Binarization remain low-confidence exploratory sources until independently validated.
+
+## [2026-05-19 07:59] ingest | Flash graph indexing and Panorama refinement
+
+Ingested two inbox PDFs without moving or renaming the immutable raw files: `raw/inbox/flash-graph-indexing-2025.pdf` and `raw/inbox/panorama-2025.pdf`.
+
+Created source notes: `wiki/source-notes/flash-graph-indexing-2025.md` and `wiki/source-notes/panorama-2025.md`.
+
+Created entity pages: `wiki/entities/flash-graph-indexing.md` and `wiki/entities/panorama.md`.
+
+Updated synthesis and navigation pages: `wiki/topics/approximate-nearest-neighbor-search.md`, `wiki/topics/simd-and-vectorization-for-ann-systems.md`, `wiki/topics/scalar-and-binary-quantization-for-ann.md`, `wiki/entities/hnsw.md`, `CACHE.md`, and `index.md`.
+
+Working synthesis: Flash adds a graph-construction acceleration branch for HNSW-style indexes, while Panorama adds an exact-refinement acceleration branch for candidate verification. Both are CPU execution-layer papers, but they optimize different lifecycle stages: build-time graph formation versus query-time final scoring.
+
+Unresolved questions: verify final publication metadata for both inbox PDFs before formal citation; decide whether to move these PDFs from `raw/inbox/` to organized `raw/sources/papers/` only if raw-file mutation is explicitly requested.

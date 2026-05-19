@@ -3,13 +3,13 @@ id: approximate-nearest-neighbor-search
 type: topic
 status: active
 created: 2026-04-08
-updated: 2026-05-10
+updated: 2026-05-19
 tags:
   - ann
   - retrieval
   - vector-search
   - systems
-source_count: 58
+source_count: 60
 sources:
   - raw/sources/papers/graph-based-anns-survey-2021.pdf
   - raw/sources/papers/nn-descent-2011.pdf
@@ -69,6 +69,8 @@ sources:
   - raw/sources/papers/simd-posting-list-decoding-2011.pdf
   - raw/sources/papers/simd-compression-intersection-2014.pdf
   - raw/sources/papers/stream-vbyte-2017.pdf
+  - raw/inbox/flash-graph-indexing-2025.pdf
+  - raw/inbox/panorama-2025.pdf
 related:
   - product-quantization
   - pq-fast-scan
@@ -82,6 +84,8 @@ related:
   - aqr-hnsw
   - hnsw-lavq
   - information-theoretic-binarization-vector-search
+  - flash-graph-indexing
+  - panorama
   - hnsw
   - nsg
   - diskann
@@ -144,6 +148,7 @@ ANN search in this vault spans three layers: compression methods, graph/index me
 - **Evaluation infrastructure:** ANN-Benchmarks for in-memory Pareto evaluation, Graph-Based ANNS Survey 2021 for graph-component attribution, and SVFusion/SPFresh-style streaming metrics for update-heavy systems.
 - **Non-graph baselines:** FLANN and FALCONN keep the benchmark layer connected to tree/auto-tuning and LSH/angular-distance methods.
 - **Execution-layer optimization:** SIMD/vectorization sources track CPU execution details behind distance kernels, PQ/ADC FastScan, compressed ID/list scans, cache-aware batching, and filtered/irregular traversal.
+- **Construction/refinement acceleration:** Flash targets HNSW-style graph construction with compact SIMD-friendly build-time codes; Panorama targets exact final refinement with learned orthogonal transforms and partial-distance bounds.
 
 ## Current View
 
@@ -166,6 +171,10 @@ ANN search in this vault spans three layers: compression methods, graph/index me
 **PQ/ADC execution branch:** [PQ Fast Scan](../entities/pq-fast-scan.md) and [Quicker ADC](../entities/quicker-adc.md) show that PQ lookup-table scoring has its own hardware bottleneck. Cache-resident tables are not enough if ADC still performs many irregular table reads; in-register SIMD lookup can change the search-time Pareto frontier.
 
 **Graph plus quantization branch:** [SymphonyQG](../entities/symphonyqg.md) shows how quantization and graph traversal can be co-designed by colocating neighbor codes, using FastScan batches, eliminating explicit reranking, and aligning graph degree with SIMD batch size. [AQR-HNSW](../entities/aqr-hnsw.md) and [HNSW-LAVQ](../entities/hnsw-lavq.md) are lower-confidence recent scalar-quantized HNSW proposals.
+
+**Build-time compact coding:** [Flash Graph Indexing](../entities/flash-graph-indexing.md) separates graph construction from query-time search. Its main lesson is that HNSW build acceleration needs compact codes, neighbor-code placement, and SIMD distance-table layout that preserve construction comparisons, not merely smaller vectors.
+
+**Exact refinement acceleration:** [Panorama](../entities/panorama.md) focuses on the verification stage after candidate generation. It uses learned orthogonal transforms and Cauchy-Schwarz distance bounds to avoid full-dimensional exact scoring for candidates that cannot enter the current top-k.
 
 **Classical non-graph baselines:** [FLANN](../entities/flann.md) remains the canonical randomized KD-tree / k-means-tree auto-tuning library baseline. [FALCONN](../entities/falconn.md) is the practical cross-polytope LSH baseline for angular/cosine distance.
 
@@ -195,6 +204,7 @@ DiskANN/SPANN show how to survive SSD latency with coarse-grained access. Starli
 - What benchmark should be the default for streaming ANN now that update freshness, recall drift, and tail latency matter?
 - At matched recall, when does scalar-quantized HNSW beat PQ/ADC or graph-plus-FastScan designs?
 - Which quantized ANN claims require raw-vector reranking, and which methods can avoid raw vectors entirely?
+- When should an ANN system optimize graph construction, as in Flash, rather than only query-time traversal or final refinement, as in Panorama?
 
 ## Related Pages
 
@@ -202,6 +212,7 @@ DiskANN/SPANN show how to survive SSD latency with coarse-grained access. Starli
 - [Product Quantization](../entities/product-quantization.md) · [RaBitQ](../entities/rabitq.md) · [TurboQuant](../entities/turboquant.md)
 - [PQ Fast Scan](../entities/pq-fast-scan.md) · [Quicker ADC](../entities/quicker-adc.md) · [Scalar and Binary Quantization for ANN](scalar-and-binary-quantization-for-ann.md)
 - [Low-Precision Quantization for KNN](../entities/low-precision-quantization-knn.md) · [Norm-Explicit Quantization](../entities/norm-explicit-quantization.md) · [SymphonyQG](../entities/symphonyqg.md)
+- [Flash Graph Indexing](../entities/flash-graph-indexing.md) · [Panorama](../entities/panorama.md)
 - [HNSW](../entities/hnsw.md) · [NSG](../entities/nsg.md) · [DiskANN](../entities/diskann.md)
 - [NN-Descent](../entities/nn-descent.md) · [GNNS](../entities/gnns.md) · [EFANNA](../entities/efanna.md) · [FANNG](../entities/fanng.md) · [DPG](../entities/diversified-proximity-graph.md) · [NGT/ONNG](../entities/ngt-onng.md)
 - [Proximity Graph Theory for ANN](proximity-graph-theory-for-ann.md) · [Navigable Small World Graph](../entities/navigable-small-world-graph.md) · [Monotonic Relative Neighborhood Graph](../entities/monotonic-relative-neighborhood-graph.md)

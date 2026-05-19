@@ -44,6 +44,8 @@ This file is the primary catalog for the vault's durable wiki content.
 - [Norm-Explicit Quantization](wiki/entities/norm-explicit-quantization.md) - MIPS quantization paradigm that explicitly quantizes vector norms separately from directions.
 - [Quantization to Speedup ANN](wiki/entities/quantization-to-speedup-ann.md) - IVF-HNSW acceleration paper using adaptive nprobe and per-centroid graph search.
 - [SymphonyQG](wiki/entities/symphonyqg.md) - Graph-plus-quantization method combining RaBitQ, FastScan, implicit reranking, and graph refinement.
+- [Flash Graph Indexing](wiki/entities/flash-graph-indexing.md) - CPU HNSW-style graph construction accelerator using compact build-time codes and SIMD-friendly neighbor layout.
+- [Panorama](wiki/entities/panorama.md) - Learned-transform exact refinement accelerator using partial-distance bounds for ANN candidate verification.
 - [AQR-HNSW](wiki/entities/aqr-hnsw.md) - Low-confidence preprint on density-aware scalar quantization and progressive reranking for HNSW.
 - [HNSW-LAVQ](wiki/entities/hnsw-lavq.md) - Low-confidence OpenReview paper on percentile-clipped scalar quantization and AVX2 HNSW kernels.
 - [Information-Theoretic Binarization for Vector Search](wiki/entities/information-theoretic-binarization-vector-search.md) - Low-confidence preprint on binary quantization as a vector-search architecture.
@@ -112,6 +114,8 @@ This file is the primary catalog for the vault's durable wiki content.
 - [Norm-Explicit Quantization](wiki/source-notes/norm-explicit-quantization-mips-2020.md) - Source note on norm/direction decomposition for MIPS quantization.
 - [Quantization to Speedup Approximate Nearest Neighbor Search](wiki/source-notes/quantization-to-speedup-ann-2024.md) - Source note on IVF-HNSW adaptive termination and per-centroid graph search.
 - [SymphonyQG](wiki/source-notes/symphonyqg-2024.md) - Source note on graph-plus-RaBitQ/FastScan co-design for ANN search.
+- [Accelerating Graph Indexing for ANNS on Modern CPUs](wiki/source-notes/flash-graph-indexing-2025.md) - Source note on Flash, a compact-code and SIMD layout method for speeding HNSW-style graph construction.
+- [Panorama: Fast-Track Nearest Neighbors](wiki/source-notes/panorama-2025.md) - Source note on learned orthogonal transforms and partial-distance bounds for exact ANN refinement.
 - [AQR-HNSW](wiki/source-notes/aqr-hnsw-2026.md) - Low-confidence source note on density-aware quantized HNSW and progressive reranking.
 - [Quantization-Enhanced HNSW / LAVQ](wiki/source-notes/quantization-enhanced-hnsw-lavq-2025.md) - Low-confidence source note on percentile-clipped scalar quantization for HNSW.
 - [Information-Theoretic Binarization for Vector Search](wiki/source-notes/information-theoretic-binarization-vector-search-2026.md) - Low-confidence source note on binary vector-search architecture.
