@@ -289,3 +289,37 @@ Updated synthesis and navigation pages: `wiki/topics/approximate-nearest-neighbo
 Working synthesis: Flash adds a graph-construction acceleration branch for HNSW-style indexes, while Panorama adds an exact-refinement acceleration branch for candidate verification. Both are CPU execution-layer papers, but they optimize different lifecycle stages: build-time graph formation versus query-time final scoring.
 
 Unresolved questions: verify final publication metadata for both inbox PDFs before formal citation; decide whether to move these PDFs from `raw/inbox/` to organized `raw/sources/papers/` only if raw-file mutation is explicitly requested.
+
+## [2026-05-26 21:05] query | ANNS section writing exemplars
+
+Created `wiki/analyses/anns-section-writing-exemplars/` as a section-by-section writing-quality audit of the ANNS systems literature in the vault.
+
+Added a summary matrix and focused notes for abstract, introduction, background/preliminaries, motivation/characterization, system overview/architecture, core design/algorithms, implementation, evaluation, related work, and discussion/conclusion.
+
+Working synthesis: the best writing models are not the most famous papers globally. Starling is the strongest introduction/design/discussion model, SPFresh is the strongest abstract/implementation/evaluation model, VBASE is the strongest conceptual/background/related-work model, and GustANN is the strongest hardware-characterization model.
+
+Updated `index.md` so the new analysis folder is discoverable.
+
+Unresolved questions: if this analysis is used for an actual paper draft, the next pass should turn each exemplar into a concrete section template with target paragraph roles and anti-pattern checks.
+
+## [2026-05-27 12:40] query | ANNS section exemplar agent map
+
+Created `wiki/analyses/anns-section-writing-exemplars/agent-writing-map/` as a future-agent writing guide derived from the section exemplar audit.
+
+Added `AGENT_MAP.md` plus ten section-card files covering abstract, introduction, background/preliminaries, motivation/characterization, system overview/architecture, core design/algorithms, implementation, evaluation, related work, and discussion/conclusion.
+
+Each card points to the corresponding paper section, source note, section role, argument skeleton, reusable writing move, and traps to avoid. The guide intentionally avoids copying full paper prose and instead distills writing structure.
+
+Updated `wiki/analyses/anns-section-writing-exemplars/README.md` and `index.md` to surface the agent map.
+
+Unresolved questions: for a concrete target paper, the next step is to turn the relevant cards into paragraph-level outlines using the user's own system claims, figures, and evaluation data.
+
+## [2026-05-27 12:48] query | Agent map style-first reading protocol
+
+Updated `wiki/analyses/anns-section-writing-exemplars/agent-writing-map/AGENT_MAP.md` so future agents are instructed to read original paper sections before reading the distilled cards.
+
+Added an "Original Section Targets" table mapping each target paper section to the raw PDF section to study first, then the corresponding card file.
+
+Added a writing-technique checklist covering opening moves, narrowing, contrast, evidence placement, contribution staging, and scope control.
+
+Working synthesis: the section cards should guide and compress learning, but the agent must first study the original section to absorb writing rhythm, argument pacing, and reviewer-facing rhetorical technique.
