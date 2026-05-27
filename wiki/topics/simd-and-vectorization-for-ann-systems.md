@@ -3,7 +3,7 @@ id: simd-and-vectorization-for-ann-systems
 type: topic
 status: active
 created: 2026-05-10
-updated: 2026-05-19
+updated: 2026-05-27
 tags:
   - ann
   - systems
@@ -54,6 +54,8 @@ confidence: medium
 ## Summary
 
 This topic tracks CPU SIMD and vectorized execution ideas that matter for ANN systems. It now spans both ANN-specific SIMD/PQ scan papers and database/search-engine execution papers. The recurring mechanisms are cache-resident batch processing, in-register lookup, SIMD distance/filter primitives, compressed-list decoding, construction-time compact codes, exact refinement pruning, and the limits of vectorization under irregular control flow.
+
+For future agents writing a dedicated section or chapter on this topic, start from [SIMD, Vectorization, and Batch Execution for ANNS Implementation](../analyses/simd-vectorization-anns-implementation-map/AGENT_MAP.md). That analysis separates CPU SIMD, vectorized execution, query batching, GPU SIMT, and graph-specific layout co-design, then evaluates which papers should anchor the chapter.
 
 ## Current View
 
@@ -113,3 +115,4 @@ For ANN systems, SIMD/vectorization should be framed as an execution-layer conce
 - [Scalar and Binary Quantization for ANN](scalar-and-binary-quantization-for-ann.md)
 - [Flash Graph Indexing](../entities/flash-graph-indexing.md)
 - [Panorama](../entities/panorama.md)
+- [SIMD, Vectorization, and Batch Execution for ANNS Implementation](../analyses/simd-vectorization-anns-implementation-map/AGENT_MAP.md)

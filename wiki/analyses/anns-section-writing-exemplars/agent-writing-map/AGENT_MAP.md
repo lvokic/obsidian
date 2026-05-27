@@ -92,6 +92,8 @@ Track scope control: where the paper admits workload assumptions, hardware assum
 
 For a new ANNS systems paper, assemble section style from different papers rather than imitating one paper end to end.
 
+For a technical chapter on SIMD, vectorization, and batch execution, use [SIMD, Vectorization, and Batch Execution for ANNS Implementation](../../simd-vectorization-anns-implementation-map/AGENT_MAP.md). The general section cards here are not enough for that topic because vectorization requires implementation-stage paper evaluation and mechanism-level reading.
+
 Use Starling for the introduction and core design when the work is about disk/index layout, I/O locality, or segment-level search.
 
 Use SPFresh for abstract, implementation, and evaluation when the work has update paths, background work, storage invariants, or online-vs-background interaction.

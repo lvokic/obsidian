@@ -323,3 +323,15 @@ Added an "Original Section Targets" table mapping each target paper section to t
 Added a writing-technique checklist covering opening moves, narrowing, contrast, evidence placement, contribution staging, and scope control.
 
 Working synthesis: the section cards should guide and compress learning, but the agent must first study the original section to absorb writing rhythm, argument pacing, and reviewer-facing rhetorical technique.
+
+## [2026-05-27 19:09] query | SIMD vectorization and batch ANNS implementation map
+
+Created `wiki/analyses/simd-vectorization-anns-implementation-map/` as a specialized future-agent entry point for writing ANNS implementation material on SIMD, vectorized execution, query batching, graph layout, compressed-code scanning, and reranking.
+
+Added `AGENT_MAP.md`, `paper-evaluation.md`, and `chapter-blueprint.md`.
+
+Working synthesis: the central papers are PQ Fast Scan, Quicker ADC, Milvus, SymphonyQG, and Flash Graph Indexing. FastLanes, SIMD Investments, Compiled/Vectorized Queries, and Rethinking SIMD provide execution-model support. Posting-list SIMD papers are useful only for ID/filter/list paths. GPU papers such as FAISS GPU and RUMMY should be used as batch/scheduling analogies, not CPU SIMD evidence.
+
+Updated `wiki/topics/simd-and-vectorization-for-ann-systems.md`, `wiki/analyses/anns-section-writing-exemplars/agent-writing-map/AGENT_MAP.md`, and `index.md` so future agents can find the specialized map.
+
+Unresolved questions: for a concrete target chapter, the next step is to map the user's own ANNS pipeline stages to these mechanisms and decide which figures are needed.
