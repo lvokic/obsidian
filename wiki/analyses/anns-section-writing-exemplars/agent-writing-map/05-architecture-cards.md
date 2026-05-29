@@ -3,19 +3,37 @@ id: anns-section-agent-map-architecture
 type: analysis
 status: active
 created: 2026-05-27
-updated: 2026-05-27
+updated: 2026-05-29
 tags: [anns, paper-writing, architecture, system-overview, agent-map]
-source_count: 3
+source_count: 5
 sources:
   - raw/sources/papers/milvus-2021.pdf
+  - raw/inbox/chameleon-ralm-vector-search-vldb-best-scalable-data-science-2025.pdf
   - raw/sources/papers/spfresh-2023.pdf
   - raw/sources/papers/fusionanns-2025.pdf
+  - raw/sources/papers/starling-2024.pdf
 related:
   - anns-section-agent-writing-map
 confidence: medium
 ---
 
 # System Overview / Architecture Cards
+
+## Current Top 5 Card Index
+
+This index is authoritative for the current architecture ranking. The detailed cards below are retained as expanded style notes; if they conflict with this index or [Architecture Ranking](../system-overview-architecture.md), follow the ranking.
+
+| Rank | Paper | Use when | Writing move to copy | Do not copy |
+|---|---|---|---|---|
+| 1 | Milvus | Full vector database or broad end-to-end system architecture. | Anchor modules in user-facing requirements before showing internals. | Do not copy the breadth for a narrow index paper. |
+| 2 | Chameleon | Heterogeneous or disaggregated retrieval-serving architecture. | Show how request flow, compute placement, and memory placement interact. | Do not use if hardware placement is not central to the contribution. |
+| 3 | SPFresh | Systems with foreground serving and background maintenance. | Make every component exist because of freshness, latency, or correctness. | Do not copy the split without a real asynchronous maintenance path. |
+| 4 | FusionANNS | Multi-tier CPU/GPU/SSD search systems. | Explain architecture as data placement plus computation placement. | Do not draw tiers without reasoning about tier-crossing costs. |
+| 5 | Starling | Segment-level disk index systems. | Keep the architecture constrained to the unit where the design operates. | Do not inflate a segment-level mechanism into a full database architecture. |
+
+## Legacy Detailed Cards
+
+The detailed cards below predate the Top 5 refresh. They are still useful for studying writing moves, but they are not a complete or current ranking.
 
 ## Milvus - Section 2 System Design
 

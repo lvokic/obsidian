@@ -3,11 +3,14 @@ id: anns-section-agent-map-abstract
 type: analysis
 status: active
 created: 2026-05-27
-updated: 2026-05-27
+updated: 2026-05-29
 tags: [anns, paper-writing, abstract, agent-map]
-source_count: 3
+source_count: 6
 sources:
   - raw/sources/papers/spfresh-2023.pdf
+  - raw/inbox/warp-multi-vector-retrieval-sigir-best-paper-2025.pdf
+  - raw/sources/papers/odinann-2026.pdf
+  - raw/inbox/chameleon-ralm-vector-search-vldb-best-scalable-data-science-2025.pdf
   - raw/sources/papers/starling-2024.pdf
   - raw/sources/papers/vbase-2023.pdf
 related:
@@ -16,6 +19,22 @@ confidence: medium
 ---
 
 # Abstract Cards
+
+## Current Top 5 Card Index
+
+This index is authoritative for the current abstract ranking. The detailed cards below are retained as expanded style notes; if they conflict with this index or [Abstract Ranking](../abstract.md), follow the ranking.
+
+| Rank | Paper | Use when | Writing move to copy | Do not copy |
+|---|---|---|---|---|
+| 1 | SPFresh | Update-aware, storage-aware, online ANNS systems. | Name the concrete operational failure before naming the system. | Do not borrow the freshness framing without real online update support. |
+| 2 | WARP | Multi-vector retrieval engines and compressed scoring systems. | Compress the bottleneck, mechanism, and headline latency into one tight abstract arc. | Do not use for plain single-vector ANN unless the execution bottleneck is similar. |
+| 3 | OdinANN | Dynamic graph indexes and direct-update ANNS. | Contrast direct insertion against buffered or rebuild-heavy update paths. | Do not use for static indexes. |
+| 4 | Chameleon | Disaggregated or heterogeneous serving architecture for RALM/vector search. | Tie system heterogeneity to service-level latency and throughput claims. | Do not use for a pure index or kernel paper without serving architecture. |
+| 5 | Starling | Disk-resident graph indexes and segment-level vector databases. | Narrow the deployment setting early so the contribution has a defensible scope. | Do not use the segment argument unless the system is actually segment or disk oriented. |
+
+## Legacy Detailed Cards
+
+The detailed cards below predate the Top 5 refresh. They are still useful for studying writing moves, but they are not a complete or current ranking.
 
 ## SPFresh - Abstract
 

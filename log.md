@@ -387,3 +387,9 @@ Updated the main section winner matrix, each individual section ranking file, `c
 Working synthesis: the Top 5 expansion makes the rankings more honest rather than more generous. The first three entries remain the best templates for most use cases; the fourth and fifth entries are often conditional models that should be copied only when the target paper shares their narrow setting, such as RALM serving, dynamic graph updates, vector-DB interoperability, multi-vector retrieval, or disk-layout architecture.
 
 Unresolved questions: the older numbered card files under `agent-writing-map/` still mainly reflect the earlier compressed card set. Future agents should treat the ranking files and `AGENT_MAP.md` as authoritative when the cards disagree.
+## [2026-05-29 15:23] query | Refresh ANNS agent writing cards for Top 5 rankings
+
+- Updated the ANNS section-writing card files under `wiki/analyses/anns-section-writing-exemplars/agent-writing-map/` so each numbered cards file now begins with a current Top 5 card index.
+- Preserved the older detailed cards as legacy style-learning notes instead of deleting them, because they still capture useful writing moves but are no longer authoritative rankings.
+- Updated `AGENT_MAP.md` to tell future agents that ranking files and the new Top 5 card indexes override any stale detailed card.
+- Unresolved: the optimization/execution-layer section still points to the separate SIMD/batch map rather than a numbered card file, which is intentional because that topic needs mechanism-level implementation guidance.

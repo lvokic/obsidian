@@ -3,12 +3,15 @@ id: anns-section-agent-map-related-work
 type: analysis
 status: active
 created: 2026-05-27
-updated: 2026-05-27
+updated: 2026-05-29
 tags: [anns, paper-writing, related-work, agent-map]
-source_count: 3
+source_count: 6
 sources:
   - raw/sources/papers/vbase-2023.pdf
+  - raw/inbox/chameleon-ralm-vector-search-vldb-best-scalable-data-science-2025.pdf
+  - raw/sources/papers/odinann-2026.pdf
   - raw/sources/papers/gustann-2025.pdf
+  - raw/inbox/warp-multi-vector-retrieval-sigir-best-paper-2025.pdf
   - raw/sources/papers/fusionanns-2025.pdf
 related:
   - anns-section-agent-writing-map
@@ -16,6 +19,22 @@ confidence: medium
 ---
 
 # Related Work Cards
+
+## Current Top 5 Card Index
+
+This index is authoritative for the current related-work ranking. The detailed cards below are retained as expanded style notes; if they conflict with this index or [Related Work Ranking](../related-work.md), follow the ranking.
+
+| Rank | Paper | Use when | Writing move to copy | Do not copy |
+|---|---|---|---|---|
+| 1 | VBASE | Query-interface, vector database, and semantic abstraction papers. | Position against interfaces and semantics, not just speed. | Do not use if the paper does not change query execution semantics. |
+| 2 | Chameleon | RALM/vector serving architecture papers. | Classify related work by serving bottleneck and hardware placement. | Do not reduce the contrast to "prior systems are slower." |
+| 3 | OdinANN | Dynamic graph ANNS papers. | Separate static graph search, batch rebuild, and direct update work. | Do not blur update models. |
+| 4 | GustANN | GPU/SSD or hardware-assisted ANNS systems. | Distinguish work by data residency and compute placement. | Do not use vague scalability language without naming the resource bottleneck. |
+| 5 | WARP | Multi-vector retrieval and compressed execution. | Place retrieval-engine execution beside ANN indexing without conflating them. | Do not cite multi-vector work as if it solved ordinary vector search. |
+
+## Legacy Detailed Cards
+
+The detailed cards below predate the Top 5 refresh. They are still useful for studying writing moves, but they are not a complete or current ranking.
 
 ## VBASE - Section 6 Related Works
 

@@ -67,7 +67,7 @@ Track scope control: where the paper admits workload assumptions, hardware assum
 
 ## Current Ranking And Card Index
 
-The current ranking files are authoritative. The older numbered card files remain useful as style-learning notes, but they may not include every paper added during the 2026-05-29 refresh. If a card conflicts with a ranking file, follow the ranking file.
+The current ranking files are authoritative. Each numbered card file now begins with a "Current Top 5 Card Index" that mirrors the 2026-05-29 ranking refresh. The older detailed cards inside those files remain useful as style-learning notes, but they are secondary. If a detailed card conflicts with the current Top 5 index or ranking file, follow the ranking file.
 
 | Target section to write | Current ranking | Style card | Primary model | Secondary models |
 |---|---|---|---|---|

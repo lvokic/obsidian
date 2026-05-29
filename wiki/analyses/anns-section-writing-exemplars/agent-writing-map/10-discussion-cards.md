@@ -3,12 +3,15 @@ id: anns-section-agent-map-discussion
 type: analysis
 status: active
 created: 2026-05-27
-updated: 2026-05-27
+updated: 2026-05-29
 tags: [anns, paper-writing, discussion, conclusion, agent-map]
-source_count: 3
+source_count: 6
 sources:
   - raw/sources/papers/starling-2024.pdf
   - raw/sources/papers/gustann-2025.pdf
+  - raw/inbox/chameleon-ralm-vector-search-vldb-best-scalable-data-science-2025.pdf
+  - raw/sources/papers/odinann-2026.pdf
+  - raw/inbox/warp-multi-vector-retrieval-sigir-best-paper-2025.pdf
   - raw/sources/papers/rummy-2024.pdf
 related:
   - anns-section-agent-writing-map
@@ -16,6 +19,22 @@ confidence: medium
 ---
 
 # Discussion / Conclusion Cards
+
+## Current Top 5 Card Index
+
+This index is authoritative for the current discussion/conclusion ranking. The detailed cards below are retained as expanded style notes; if they conflict with this index or [Discussion Ranking](../discussion-conclusion.md), follow the ranking.
+
+| Rank | Paper | Use when | Writing move to copy | Do not copy |
+|---|---|---|---|---|
+| 1 | Starling | Disk-resident indexes with clear assumptions and likely reviewer objections. | Use discussion to answer objections that do not fit in evaluation. | Do not turn discussion into another related-work section. |
+| 2 | GustANN | Hardware-assisted systems with throughput/capacity tradeoffs. | State scalability limits and latency tradeoffs explicitly. | Do not hide limitations until the final paragraph. |
+| 3 | Chameleon | Serving systems with heterogeneous/disaggregated architecture. | Discuss deployment scope and service assumptions directly. | Do not overgeneralize beyond the measured service setting. |
+| 4 | OdinANN | Dynamic graph indexes and update-heavy search. | Close by restating the update model and where direct insertion helps. | Do not imply universal dynamic support if the workload is narrower. |
+| 5 | WARP | Multi-vector retrieval engines and execution optimizations. | Separate algorithmic retrieval quality from execution-system speedups. | Do not claim ANN-system generality from a retrieval-engine result. |
+
+## Legacy Detailed Cards
+
+The detailed cards below predate the Top 5 refresh. They are still useful for studying writing moves, but they are not a complete or current ranking.
 
 ## Starling - Sections 7-8 Discussion and Conclusion
 

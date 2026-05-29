@@ -3,12 +3,15 @@ id: anns-section-agent-map-design
 type: analysis
 status: active
 created: 2026-05-27
-updated: 2026-05-27
+updated: 2026-05-29
 tags: [anns, paper-writing, design, algorithms, agent-map]
-source_count: 3
+source_count: 6
 sources:
   - raw/sources/papers/starling-2024.pdf
+  - raw/inbox/warp-multi-vector-retrieval-sigir-best-paper-2025.pdf
   - raw/sources/papers/spfresh-2023.pdf
+  - raw/sources/papers/odinann-2026.pdf
+  - raw/inbox/integrating-vector-databases-across-embedding-models-sigmod-hm-2026.pdf
   - raw/sources/papers/vbase-2023.pdf
 related:
   - anns-section-agent-writing-map
@@ -16,6 +19,22 @@ confidence: medium
 ---
 
 # Core Design / Algorithms Cards
+
+## Current Top 5 Card Index
+
+This index is authoritative for the current method/core-design ranking. The detailed cards below are retained as expanded style notes; if they conflict with this index or [Method Ranking](../core-design-algorithms.md), follow the ranking.
+
+| Rank | Paper | Use when | Writing move to copy | Do not copy |
+|---|---|---|---|---|
+| 1 | Starling | Layout-plus-search designs for disk-resident ANNS. | Preserve a one-to-one mapping from diagnosed problem factors to mechanisms. | Do not add mechanisms without making their target bottleneck explicit. |
+| 2 | WARP | Compressed scoring, implicit decompression, and multi-vector execution. | Explain the execution trick at the same granularity as the bottleneck it removes. | Do not use if the method is not primarily an execution-layer redesign. |
+| 3 | SPFresh | Incremental maintenance, local repair, and mutable index protocols. | Present update cases as protocol invariants rather than ad hoc engineering. | Do not copy the multi-operation structure without simple invariants. |
+| 4 | OdinANN | Direct-update graph ANNS. | Make the algorithm answer a specific dynamic-index failure mode. | Do not use for static graph construction. |
+| 5 | Integrating Vector Databases | Data-management abstractions across embedding models. | Organize design around a reusable abstraction rather than an isolated implementation. | Do not use if the contribution is only faster search. |
+
+## Legacy Detailed Cards
+
+The detailed cards below predate the Top 5 refresh. They are still useful for studying writing moves, but they are not a complete or current ranking.
 
 ## Starling - Sections 3-5 Design Philosophy, Data Layout, Search Strategy
 

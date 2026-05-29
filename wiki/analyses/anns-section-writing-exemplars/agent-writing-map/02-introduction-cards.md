@@ -3,11 +3,14 @@ id: anns-section-agent-map-introduction
 type: analysis
 status: active
 created: 2026-05-27
-updated: 2026-05-27
+updated: 2026-05-29
 tags: [anns, paper-writing, introduction, agent-map]
-source_count: 3
+source_count: 6
 sources:
   - raw/sources/papers/starling-2024.pdf
+  - raw/inbox/integrating-vector-databases-across-embedding-models-sigmod-hm-2026.pdf
+  - raw/inbox/chameleon-ralm-vector-search-vldb-best-scalable-data-science-2025.pdf
+  - raw/sources/papers/odinann-2026.pdf
   - raw/sources/papers/vbase-2023.pdf
   - raw/sources/papers/spfresh-2023.pdf
 related:
@@ -16,6 +19,22 @@ confidence: medium
 ---
 
 # Introduction Cards
+
+## Current Top 5 Card Index
+
+This index is authoritative for the current introduction ranking. The detailed cards below are retained as expanded style notes; if they conflict with this index or [Introduction Ranking](../introduction.md), follow the ranking.
+
+| Rank | Paper | Use when | Writing move to copy | Do not copy |
+|---|---|---|---|---|
+| 1 | Starling | Disk-resident, segment-level, or locality-oriented ANNS systems. | Build an inevitability chain from data growth to the exact system unit your paper targets. | Do not use the segment setup for a whole-cluster or memory-only system. |
+| 2 | Integrating Vector Databases | Vector database interoperability and embedding-model evolution. | Start from a real data-management tension rather than raw index speed. | Do not use it as evidence for a faster ANN algorithm. |
+| 3 | Chameleon | RALM retrieval services and heterogeneous serving stacks. | Introduce retrieval as an end-to-end service bottleneck, then narrow to the architecture. | Do not borrow service language if your design is only a local index. |
+| 4 | OdinANN | Dynamic graph indexes under insert/delete pressure. | Make update dynamics the main reason existing graph indexes break down. | Do not overclaim if your update model is batch rebuild. |
+| 5 | VBASE | Query-interface or database-integrated vector search papers. | Turn the introduction around a precise interface mismatch. | Do not copy the DBMS framing without a real query-semantics contribution. |
+
+## Legacy Detailed Cards
+
+The detailed cards below predate the Top 5 refresh. They are still useful for studying writing moves, but they are not a complete or current ranking.
 
 ## Starling - Section 1 Introduction
 

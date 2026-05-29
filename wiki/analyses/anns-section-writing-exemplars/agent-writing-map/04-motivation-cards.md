@@ -3,11 +3,14 @@ id: anns-section-agent-map-motivation
 type: analysis
 status: active
 created: 2026-05-27
-updated: 2026-05-27
+updated: 2026-05-29
 tags: [anns, paper-writing, motivation, characterization, agent-map]
-source_count: 3
+source_count: 6
 sources:
   - raw/sources/papers/gustann-2025.pdf
+  - raw/inbox/chameleon-ralm-vector-search-vldb-best-scalable-data-science-2025.pdf
+  - raw/inbox/warp-multi-vector-retrieval-sigir-best-paper-2025.pdf
+  - raw/sources/papers/odinann-2026.pdf
   - raw/sources/papers/starling-2024.pdf
   - raw/sources/papers/rummy-2024.pdf
 related:
@@ -16,6 +19,22 @@ confidence: medium
 ---
 
 # Motivation / Characterization Cards
+
+## Current Top 5 Card Index
+
+This index is authoritative for the current motivation/characterization ranking. The detailed cards below are retained as expanded style notes; if they conflict with this index or [Motivation Ranking](../motivation-characterization.md), follow the ranking.
+
+| Rank | Paper | Use when | Writing move to copy | Do not copy |
+|---|---|---|---|---|
+| 1 | GustANN | Hardware-assisted ANNS with GPU/SSD or throughput bottlenecks. | Separate opportunity from challenge before introducing the design. | Do not claim "GPU is faster" without showing the transfer or memory bottleneck. |
+| 2 | Chameleon | RALM/vector retrieval serving systems. | Characterize service pressure across request rate, retrieval cost, and hardware placement. | Do not use if the paper lacks an end-to-end serving workload. |
+| 3 | WARP | Multi-vector retrieval and compressed execution. | Turn scoring cost into a measurable execution-layer bottleneck. | Do not use multi-vector motivation for ordinary top-k vector search. |
+| 4 | OdinANN | Dynamic ANNS under insert/delete workloads. | Make direct updates necessary by showing why buffering/rebuild is structurally weak. | Do not use for append-only or offline construction papers. |
+| 5 | Starling | Disk graph search and I/O locality papers. | Reduce the motivation to two measurable factors: locality waste and path length. | Do not borrow disk-block logic for memory-resident designs. |
+
+## Legacy Detailed Cards
+
+The detailed cards below predate the Top 5 refresh. They are still useful for studying writing moves, but they are not a complete or current ranking.
 
 ## GustANN - Section 3 Motivation
 
