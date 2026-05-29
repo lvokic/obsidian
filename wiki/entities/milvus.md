@@ -3,7 +3,7 @@ id: milvus
 type: entity
 status: active
 created: 2026-04-10
-updated: 2026-04-10
+updated: 2026-05-29
 tags:
   - ann
   - systems
@@ -15,6 +15,7 @@ sources:
   - raw/sources/papers/milvus-2021.pdf
 related:
   - faiss
+  - vector-database-integration
   - approximate-nearest-neighbor-search
 confidence: high
 ---
@@ -64,3 +65,4 @@ Milvus is a production-grade, open-source vector DBMS designed for large-scale, 
 - Milvus is the **canonical production vector database reference** for related work.
 - Milvus shows what a complete system looks like when built on FAISS+HNSW.
 - Milvus cache-aware batching is a useful CPU-side precedent for batch-oriented vector search.
+- [Vector Database Integration](vector-database-integration.md) is the closest current vault neighbor for cross-embedding-model interoperability, which Milvus itself does not address.

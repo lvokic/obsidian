@@ -3,7 +3,7 @@ id: vbase
 type: entity
 status: active
 created: 2026-05-08
-updated: 2026-05-08
+updated: 2026-05-29
 tags:
   - ann
   - vector-search
@@ -14,6 +14,7 @@ sources:
   - raw/sources/papers/vbase-2023.pdf
 related:
   - milvus
+  - vector-database-integration
   - spann
   - rnsg
   - approximate-nearest-neighbor-search
@@ -39,6 +40,8 @@ VBASE is a query-semantics reference rather than a memory-tier design. It is use
 
 [RNSG](rnsg.md) is now the closest graph-theoretic neighbor in the vault for filtered vector search: VBASE focuses on vector-relational query processing through relaxed monotonicity, while RNSG focuses on range-filtered graph-index structure.
 
+[Vector Database Integration](vector-database-integration.md) is the closest interoperability neighbor: VBASE assumes vectors are already in a usable search space, while vector database integration asks how to search across databases produced by different embedding models.
+
 ## Key Evidence
 
 For complex queries beyond plain TopK, VBASE reports 100x-1000x lower latency than baseline vector systems under similar accuracy. For a join query, it reports about 7900x over PostgreSQL brute-force scan with recall 0.9992.
@@ -47,6 +50,7 @@ For complex queries beyond plain TopK, VBASE reports 100x-1000x lower latency th
 
 - [VBASE Source Note](../source-notes/vbase-2023.md)
 - [Milvus](milvus.md)
+- [Vector Database Integration](vector-database-integration.md)
 - [SPANN](spann.md)
 - [RNSG](rnsg.md)
 - [Approximate Nearest Neighbor Search](../topics/approximate-nearest-neighbor-search.md)

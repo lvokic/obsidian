@@ -15,12 +15,12 @@ Shortest read path for agents working on any ANNS system paper.
 
 - In-memory graph ANN: [HNSW](wiki/entities/hnsw.md), [NSG](wiki/entities/nsg.md), [NN-Descent](wiki/entities/nn-descent.md), [FANNG](wiki/entities/fanng.md), [NGT/ONNG](wiki/entities/ngt-onng.md).
 - Quantization/library baseline: [FAISS](wiki/entities/faiss.md), [ScaNN](wiki/entities/scann.md), [Product Quantization](wiki/entities/product-quantization.md), [RaBitQ](wiki/entities/rabitq.md).
-- CPU execution/build/refinement: [SIMD and Vectorization](wiki/topics/simd-and-vectorization-for-ann-systems.md), [Flash Graph Indexing](wiki/entities/flash-graph-indexing.md), [Panorama](wiki/entities/panorama.md).
-- Non-graph baselines: [FLANN](wiki/entities/flann.md), [FALCONN](wiki/entities/falconn.md).
+- CPU execution/build/refinement: [SIMD and Vectorization](wiki/topics/simd-and-vectorization-for-ann-systems.md), [Flash Graph Indexing](wiki/entities/flash-graph-indexing.md), [Panorama](wiki/entities/panorama.md), [WARP Multi-Vector Retrieval](wiki/entities/warp-multi-vector-retrieval.md).
+- Non-graph baselines: [FLANN](wiki/entities/flann.md), [Multi-Probe LSH](wiki/entities/multi-probe-lsh.md), [FALCONN](wiki/entities/falconn.md).
 - SSD/second-tier: [Second-tier Memory](wiki/topics/second-tier-memory-for-vector-search.md), [DiskANN](wiki/entities/diskann.md), [SPANN](wiki/entities/spann.md), [Starling](wiki/entities/starling.md), [SPFresh](wiki/entities/spfresh.md), [OdinANN](wiki/entities/odinann.md).
-- GPU/heterogeneous: [BANG](wiki/entities/bang.md), [RUMMY](wiki/entities/rummy.md), [GustANN](wiki/entities/gustann.md), [FusionANNS](wiki/entities/fusionanns.md), [SVFusion](wiki/entities/svfusion.md).
-- CXL/RDMA/NDP: [Disaggregated Memory Vector Search](wiki/topics/disaggregated-memory-vector-search.md), [CXL-ANNS](wiki/entities/cxl-anns.md), [d-HNSW](wiki/entities/d-hnsw.md), [SmartANNS](wiki/entities/smartanns.md).
-- Vector DB semantics: [Milvus](wiki/entities/milvus.md), [VBASE](wiki/entities/vbase.md), [RNSG](wiki/entities/rnsg.md).
+- GPU/heterogeneous: [BANG](wiki/entities/bang.md), [RUMMY](wiki/entities/rummy.md), [GustANN](wiki/entities/gustann.md), [FusionANNS](wiki/entities/fusionanns.md), [SVFusion](wiki/entities/svfusion.md), [Chameleon RALM](wiki/entities/chameleon-ralm.md).
+- CXL/RDMA/NDP: [Disaggregated Memory Vector Search](wiki/topics/disaggregated-memory-vector-search.md), [CXL-ANNS](wiki/entities/cxl-anns.md), [d-HNSW](wiki/entities/d-hnsw.md), [SmartANNS](wiki/entities/smartanns.md), [Chameleon RALM](wiki/entities/chameleon-ralm.md).
+- Vector DB semantics: [Milvus](wiki/entities/milvus.md), [VBASE](wiki/entities/vbase.md), [Vector Database Integration](wiki/entities/vector-database-integration.md), [RNSG](wiki/entities/rnsg.md).
 
 ## Claim Boundaries
 

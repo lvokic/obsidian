@@ -35,6 +35,7 @@ This file is the primary catalog for the vault's durable wiki content.
 - [Milvus](wiki/entities/milvus.md) - Purpose-built production vector DBMS (SIGMOD 2021, Zilliz); reference for full-system context.
 - [ANN-Benchmarks](wiki/entities/ann-benchmarks.md) - Standard in-memory ANN benchmarking framework; Pareto frontier evaluation protocol.
 - [FLANN](wiki/entities/flann.md) - Classical auto-tuning ANN library built around randomized KD forests and priority search k-means trees.
+- [Multi-Probe LSH](wiki/entities/multi-probe-lsh.md) - Classical LSH method that reduces hash-table count by probing multiple likely buckets per table.
 - [FALCONN](wiki/entities/falconn.md) - Practical cross-polytope LSH library for angular/cosine-distance nearest neighbor search.
 - [Product Quantization](wiki/entities/product-quantization.md) - Classical retrieval-oriented vector quantization method built around subspace codebooks.
 - [PQ Fast Scan](wiki/entities/pq-fast-scan.md) - SIMD in-register lookup method for accelerating ADC over product-quantized ANN codes.
@@ -46,6 +47,9 @@ This file is the primary catalog for the vault's durable wiki content.
 - [SymphonyQG](wiki/entities/symphonyqg.md) - Graph-plus-quantization method combining RaBitQ, FastScan, implicit reranking, and graph refinement.
 - [Flash Graph Indexing](wiki/entities/flash-graph-indexing.md) - CPU HNSW-style graph construction accelerator using compact build-time codes and SIMD-friendly neighbor layout.
 - [Panorama](wiki/entities/panorama.md) - Learned-transform exact refinement accelerator using partial-distance bounds for ANN candidate verification.
+- [Chameleon RALM](wiki/entities/chameleon-ralm.md) - Disaggregated GPU/FPGA accelerator system for RALM serving with IVF-PQ vector search on FPGA memory nodes.
+- [WARP Multi-Vector Retrieval](wiki/entities/warp-multi-vector-retrieval.md) - XTR/ColBERT-style retrieval engine using WARPSELECT, implicit decompression, and two-stage score reduction.
+- [Vector Database Integration](wiki/entities/vector-database-integration.md) - Cross-embedding-model vector database integration using local isometries and reference vectors.
 - [AQR-HNSW](wiki/entities/aqr-hnsw.md) - Low-confidence preprint on density-aware scalar quantization and progressive reranking for HNSW.
 - [HNSW-LAVQ](wiki/entities/hnsw-lavq.md) - Low-confidence OpenReview paper on percentile-clipped scalar quantization and AVX2 HNSW kernels.
 - [Information-Theoretic Binarization for Vector Search](wiki/entities/information-theoretic-binarization-vector-search.md) - Low-confidence preprint on binary quantization as a vector-search architecture.
@@ -104,6 +108,7 @@ This file is the primary catalog for the vault's durable wiki content.
 - [ANN-Benchmarks: A Benchmarking Tool for Approximate Nearest Neighbor Algorithms](wiki/source-notes/ann-benchmarks-2018.md) - Aumüller et al. 2018; standard speed-recall benchmarking framework.
 - [Scalable Nearest Neighbor Algorithms for High Dimensional Data](wiki/source-notes/flann-2014.md) - Muja and Lowe TPAMI 2014; FLANN randomized KD forest, priority search k-means tree, and automatic configuration.
 - [Practical and Optimal LSH for Angular Distance](wiki/source-notes/falconn-lsh-angular-2015.md) - Andoni et al. 2015; FALCONN/cross-polytope LSH for angular-distance ANN.
+- [Multi-Probe LSH: Efficient Indexing for High-Dimensional Similarity Search](wiki/source-notes/multi-probe-lsh-2007.md) - Lv et al. VLDB 2007; multiprobe bucket sequences for reducing LSH hash-table count.
 - [Demystifying CXL Memory with Genuine CXL-Ready Systems and Devices](wiki/source-notes/cxl-memory-characterization-2023.md) - Sun et al. Micro 2023; true CXL latency/bandwidth characterization.
 - [QJL: 1-Bit Quantized JL Transform for KV Cache Quantization with Zero Overhead](wiki/source-notes/qjl-2024.md) - Source note on QJL as a low-overhead KV-cache quantization method.
 - [Product Quantization for Nearest Neighbor Search](wiki/source-notes/product-quantization-for-nearest-neighbor-search-2011.md) - Foundational source note on PQ, ADC, and IVFADC for ANN search.
@@ -117,6 +122,9 @@ This file is the primary catalog for the vault's durable wiki content.
 - [SymphonyQG](wiki/source-notes/symphonyqg-2024.md) - Source note on graph-plus-RaBitQ/FastScan co-design for ANN search.
 - [Accelerating Graph Indexing for ANNS on Modern CPUs](wiki/source-notes/flash-graph-indexing-2025.md) - Source note on Flash, a compact-code and SIMD layout method for speeding HNSW-style graph construction.
 - [Panorama: Fast-Track Nearest Neighbors](wiki/source-notes/panorama-2025.md) - Source note on learned orthogonal transforms and partial-distance bounds for exact ANN refinement.
+- [Chameleon: a Heterogeneous and Disaggregated Accelerator System for Retrieval-Augmented Language Models](wiki/source-notes/chameleon-ralm-vector-search-2024.md) - Jiang et al. PVLDB 2024; GPU/FPGA RALM serving with disaggregated IVF-PQ search.
+- [WARP: An Efficient Engine for Multi-Vector Retrieval](wiki/source-notes/warp-multi-vector-retrieval-2025.md) - Scheerer et al. SIGIR 2025; compressed XTR/ColBERT-style multi-vector retrieval engine.
+- [Integrating Vector Databases Across Embedding Models](wiki/source-notes/integrating-vector-databases-embedding-models-2026.md) - Yang, Cao, and Ren SIGMOD/PODS 2026; local-isometry vector database integration across embedding models.
 - [AQR-HNSW](wiki/source-notes/aqr-hnsw-2026.md) - Low-confidence source note on density-aware quantized HNSW and progressive reranking.
 - [Quantization-Enhanced HNSW / LAVQ](wiki/source-notes/quantization-enhanced-hnsw-lavq-2025.md) - Low-confidence source note on percentile-clipped scalar quantization for HNSW.
 - [Information-Theoretic Binarization for Vector Search](wiki/source-notes/information-theoretic-binarization-vector-search-2026.md) - Low-confidence source note on binary vector-search architecture.

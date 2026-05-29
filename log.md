@@ -349,3 +349,17 @@ Updated `wiki/topics/approximate-nearest-neighbor-search.md`, `wiki/topics/secon
 Working synthesis: OdinANN extends the SSD-resident graph-ANN branch from static DiskANN-style serving to online direct inserts. Its main trade-off is SSD space/write amplification for lower peak DRAM and more stable search latency than buffered-insert merge designs. It is the graph-based counterpart to SPFresh's cluster-based fresh-update story.
 
 Unresolved questions: whether OdinANN-style direct insert can combine with segment/block layouts such as Starling, how to benchmark SSD write amplification/endurance for dynamic graph ANN, and what update-mix benchmark should become the default for fresh ANN systems.
+
+## [2026-05-29 06:35] ingest | Award-adjacent vector and ANNS papers
+
+Ingested four remaining screened inbox PDFs without moving or renaming the immutable raw files: `raw/inbox/chameleon-ralm-vector-search-vldb-best-scalable-data-science-2025.pdf`, `raw/inbox/integrating-vector-databases-across-embedding-models-sigmod-hm-2026.pdf`, `raw/inbox/multi-probe-lsh-vldb-test-of-time-2017.pdf`, and `raw/inbox/warp-multi-vector-retrieval-sigir-best-paper-2025.pdf`.
+
+Created source notes: `wiki/source-notes/chameleon-ralm-vector-search-2024.md`, `wiki/source-notes/integrating-vector-databases-embedding-models-2026.md`, `wiki/source-notes/multi-probe-lsh-2007.md`, and `wiki/source-notes/warp-multi-vector-retrieval-2025.md`.
+
+Created entity pages: `wiki/entities/chameleon-ralm.md`, `wiki/entities/vector-database-integration.md`, `wiki/entities/multi-probe-lsh.md`, and `wiki/entities/warp-multi-vector-retrieval.md`.
+
+Updated synthesis and navigation pages: `wiki/topics/approximate-nearest-neighbor-search.md`, `wiki/topics/disaggregated-memory-vector-search.md`, `wiki/topics/simd-and-vectorization-for-ann-systems.md`, `wiki/topics/vector-quantization.md`, `wiki/entities/milvus.md`, `wiki/entities/vbase.md`, `CACHE.md`, and `index.md`.
+
+Working synthesis: the screened award-adjacent batch adds four distinct branches rather than one homogeneous ANN family. Chameleon adds RAG-serving disaggregated IVF-PQ acceleration, WARP adds multi-vector retrieval execution and score reduction, Multi-Probe LSH reinforces classical non-graph ANN baselines, and vector database integration adds cross-embedding-model interoperability.
+
+Unresolved questions: verify formal award metadata before citing award status; decide later whether these PDFs should move from `raw/inbox/` to organized `raw/sources/papers/` only if raw-file mutation is explicitly requested.

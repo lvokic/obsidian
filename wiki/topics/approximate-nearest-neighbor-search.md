@@ -9,7 +9,7 @@ tags:
   - retrieval
   - vector-search
   - systems
-source_count: 61
+source_count: 65
 sources:
   - raw/sources/papers/graph-based-anns-survey-2021.pdf
   - raw/sources/papers/nn-descent-2011.pdf
@@ -72,6 +72,10 @@ sources:
   - raw/sources/papers/odinann-2026.pdf
   - raw/inbox/flash-graph-indexing-2025.pdf
   - raw/inbox/panorama-2025.pdf
+  - raw/inbox/chameleon-ralm-vector-search-vldb-best-scalable-data-science-2025.pdf
+  - raw/inbox/integrating-vector-databases-across-embedding-models-sigmod-hm-2026.pdf
+  - raw/inbox/multi-probe-lsh-vldb-test-of-time-2017.pdf
+  - raw/inbox/warp-multi-vector-retrieval-sigir-best-paper-2025.pdf
 related:
   - product-quantization
   - pq-fast-scan
@@ -87,6 +91,10 @@ related:
   - information-theoretic-binarization-vector-search
   - flash-graph-indexing
   - panorama
+  - chameleon-ralm
+  - vector-database-integration
+  - multi-probe-lsh
+  - warp-multi-vector-retrieval
   - hnsw
   - nsg
   - diskann
@@ -151,6 +159,8 @@ ANN search in this vault spans three layers: compression methods, graph/index me
 - **Non-graph baselines:** FLANN and FALCONN keep the benchmark layer connected to tree/auto-tuning and LSH/angular-distance methods.
 - **Execution-layer optimization:** SIMD/vectorization sources track CPU execution details behind distance kernels, PQ/ADC FastScan, compressed ID/list scans, cache-aware batching, and filtered/irregular traversal.
 - **Construction/refinement acceleration:** Flash targets HNSW-style graph construction with compact SIMD-friendly build-time codes; Panorama targets exact final refinement with learned orthogonal transforms and partial-distance bounds.
+- **RAG and multi-vector retrieval serving:** Chameleon disaggregates IVF-PQ vector search from LLM inference, while WARP optimizes XTR/ColBERT-style multi-vector retrieval with compressed residuals and score reduction.
+- **Vector DB interoperability:** Vector Database Integration adds the cross-embedding-model problem: top-k search over vectors produced by different embedding models.
 
 ## Current View
 
@@ -178,7 +188,9 @@ ANN search in this vault spans three layers: compression methods, graph/index me
 
 **Exact refinement acceleration:** [Panorama](../entities/panorama.md) focuses on the verification stage after candidate generation. It uses learned orthogonal transforms and Cauchy-Schwarz distance bounds to avoid full-dimensional exact scoring for candidates that cannot enter the current top-k.
 
-**Classical non-graph baselines:** [FLANN](../entities/flann.md) remains the canonical randomized KD-tree / k-means-tree auto-tuning library baseline. [FALCONN](../entities/falconn.md) is the practical cross-polytope LSH baseline for angular/cosine distance.
+**Classical non-graph baselines:** [FLANN](../entities/flann.md) remains the canonical randomized KD-tree / k-means-tree auto-tuning library baseline. [Multi-Probe LSH](../entities/multi-probe-lsh.md) is the classical LSH space-time tradeoff source that probes multiple likely buckets per table. [FALCONN](../entities/falconn.md) is the practical cross-polytope LSH baseline for angular/cosine distance.
+
+**RAG and multi-vector retrieval engines:** [Chameleon RALM](../entities/chameleon-ralm.md) uses disaggregated FPGA memory nodes for IVF-PQ search while GPUs run LLM inference and IVF-list selection. [WARP Multi-Vector Retrieval](../entities/warp-multi-vector-retrieval.md) accelerates XTR/ColBERT-style late interaction with WARPSELECT, implicit decompression, and two-stage score reduction.
 
 **SSD/second-tier tier:** [DiskANN](../entities/diskann.md), [SPANN](../entities/spann.md), [Starling](../entities/starling.md), [SPFresh](../entities/spfresh.md), and [OdinANN](../entities/odinann.md) show how ANN systems adapt to storage tiers with high latency, coarse access granularity, segment constraints, and fresh-update pressure. OdinANN adds a graph-specific direct-insert path that trades SSD overprovisioning and write amplification for lower merge interference and lower peak DRAM than buffered inserts. SPANN remains the key DRAM+SSD comparison point.
 
@@ -186,7 +198,7 @@ ANN search in this vault spans three layers: compression methods, graph/index me
 
 **SSD+GPU tier:** [GustANN](../entities/gustann.md) and [FusionANNS](../entities/fusionanns.md) show a newer heterogeneous branch. GustANN keeps graph traversal GPU-centric while using CPU-assisted selective SSD transfer; FusionANNS combines CPU/GPU filtering with selective raw-vector reranking and SSD I/O deduplication. Both papers turn the accurate/raw-vector stage into an explicitly scheduled data-movement problem.
 
-**Near-data and database semantics:** [SmartANNS](../entities/smartanns.md) moves graph search into SmartSSDs and uses the host as a global coordinator. [VBASE](../entities/vbase.md) is not a storage-tier paper, but it clarifies how vector indexes should integrate with relational operators through relaxed monotonicity.
+**Near-data, database semantics, and interoperability:** [SmartANNS](../entities/smartanns.md) moves graph search into SmartSSDs and uses the host as a global coordinator. [VBASE](../entities/vbase.md) is not a storage-tier paper, but it clarifies how vector indexes should integrate with relational operators through relaxed monotonicity. [Vector Database Integration](../entities/vector-database-integration.md) adds the cross-embedding-model setting where vectors from different models must be aligned before a shared top-k search can be meaningful.
 
 **CXL/disaggregated tier:** [CXL-ANNS](../entities/cxl-anns.md) explores hardware/software co-design for CXL ANN. [d-HNSW](../entities/d-hnsw.md) targets RDMA-disaggregated HNSW.
 
@@ -195,6 +207,8 @@ ANN search in this vault spans three layers: compression methods, graph/index me
 ## Key System Progression
 
 DiskANN/SPANN show how to survive SSD latency with coarse-grained access. Starling refines SSD graph search at the data-segment layout level. SPFresh extends the SSD/cluster branch to fresh updates, while OdinANN extends the SSD/graph branch to direct inserts with approximate concurrency control. RUMMY/BANG show how to use a GPU when the full dataset or graph cannot fit in HBM. SVFusion adds a newer streaming branch where GPU/CPU/disk placement and update consistency are part of the ANN protocol. GustANN/FusionANNS show how GPU collaboration can improve SSD-backed search when PCIe movement is carefully controlled. SmartANNS shows the near-data-processing branch. CXL-ANNS shows what custom CXL endpoint compute can do, while d-HNSW shows how graph traversal changes under RDMA-style memory disaggregation.
+
+Chameleon adds a RAG-serving variant of this progression: IVF-list selection and LLM inference remain GPU-friendly, while large PQ-code scan work moves into FPGA-attached memory nodes. WARP adds the multi-vector retrieval serving branch, where the bottleneck is compressed token retrieval plus score aggregation rather than a single-vector graph or IVF lookup alone.
 
 ## Open Questions
 
@@ -208,6 +222,8 @@ DiskANN/SPANN show how to survive SSD latency with coarse-grained access. Starli
 - At matched recall, when does scalar-quantized HNSW beat PQ/ADC or graph-plus-FastScan designs?
 - Which quantized ANN claims require raw-vector reranking, and which methods can avoid raw vectors entirely?
 - When should an ANN system optimize graph construction, as in Flash, rather than only query-time traversal or final refinement, as in Panorama?
+- How should vector databases handle embedding-model migration and federation when vectors cannot simply be unioned across models?
+- When should RAG serving use a disaggregated vector-search accelerator instead of scaling GPUs or CPUs in a monolithic serving node?
 
 ## Related Pages
 
@@ -215,9 +231,10 @@ DiskANN/SPANN show how to survive SSD latency with coarse-grained access. Starli
 - [Product Quantization](../entities/product-quantization.md) · [RaBitQ](../entities/rabitq.md) · [TurboQuant](../entities/turboquant.md)
 - [PQ Fast Scan](../entities/pq-fast-scan.md) · [Quicker ADC](../entities/quicker-adc.md) · [Scalar and Binary Quantization for ANN](scalar-and-binary-quantization-for-ann.md)
 - [Low-Precision Quantization for KNN](../entities/low-precision-quantization-knn.md) · [Norm-Explicit Quantization](../entities/norm-explicit-quantization.md) · [SymphonyQG](../entities/symphonyqg.md)
-- [Flash Graph Indexing](../entities/flash-graph-indexing.md) · [Panorama](../entities/panorama.md)
+- [Flash Graph Indexing](../entities/flash-graph-indexing.md) · [Panorama](../entities/panorama.md) · [Chameleon RALM](../entities/chameleon-ralm.md) · [WARP Multi-Vector Retrieval](../entities/warp-multi-vector-retrieval.md)
 - [HNSW](../entities/hnsw.md) · [NSG](../entities/nsg.md) · [DiskANN](../entities/diskann.md)
 - [NN-Descent](../entities/nn-descent.md) · [GNNS](../entities/gnns.md) · [EFANNA](../entities/efanna.md) · [FANNG](../entities/fanng.md) · [DPG](../entities/diversified-proximity-graph.md) · [NGT/ONNG](../entities/ngt-onng.md)
+- [FLANN](../entities/flann.md) · [Multi-Probe LSH](../entities/multi-probe-lsh.md) · [FALCONN](../entities/falconn.md) · [Vector Database Integration](../entities/vector-database-integration.md)
 - [Proximity Graph Theory for ANN](proximity-graph-theory-for-ann.md) · [Navigable Small World Graph](../entities/navigable-small-world-graph.md) · [Monotonic Relative Neighborhood Graph](../entities/monotonic-relative-neighborhood-graph.md)
 - [Satellite System Graph](../entities/satellite-system-graph.md) · [Relative NN-Descent](../entities/relative-nn-descent.md) · [RNSG](../entities/rnsg.md)
 - [ANN Benchmarking Methodology](ann-benchmarking-methodology.md) · [FLANN](../entities/flann.md) · [FALCONN](../entities/falconn.md)
