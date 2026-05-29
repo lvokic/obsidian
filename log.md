@@ -350,16 +350,16 @@ Working synthesis: OdinANN extends the SSD-resident graph-ANN branch from static
 
 Unresolved questions: whether OdinANN-style direct insert can combine with segment/block layouts such as Starling, how to benchmark SSD write amplification/endurance for dynamic graph ANN, and what update-mix benchmark should become the default for fresh ANN systems.
 
-## [2026-05-29 06:35] ingest | Award-adjacent vector and ANNS papers
+## [2026-05-29 13:46] query | Complete ANNS section exemplar refresh
 
-Ingested four remaining screened inbox PDFs without moving or renaming the immutable raw files: `raw/inbox/chameleon-ralm-vector-search-vldb-best-scalable-data-science-2025.pdf`, `raw/inbox/integrating-vector-databases-across-embedding-models-sigmod-hm-2026.pdf`, `raw/inbox/multi-probe-lsh-vldb-test-of-time-2017.pdf`, and `raw/inbox/warp-multi-vector-retrieval-sigir-best-paper-2025.pdf`.
+Refreshed `wiki/analyses/anns-section-writing-exemplars/` after scanning all 65 current source-note pages in the vault.
 
-Created source notes: `wiki/source-notes/chameleon-ralm-vector-search-2024.md`, `wiki/source-notes/integrating-vector-databases-embedding-models-2026.md`, `wiki/source-notes/multi-probe-lsh-2007.md`, and `wiki/source-notes/warp-multi-vector-retrieval-2025.md`.
+Added `coverage-audit.md` to record which papers were direct candidates, supporting ANNS context, adjacent execution/hardware/database context, or excluded as non-ANNS.
 
-Created entity pages: `wiki/entities/chameleon-ralm.md`, `wiki/entities/vector-database-integration.md`, `wiki/entities/multi-probe-lsh.md`, and `wiki/entities/warp-multi-vector-retrieval.md`.
+Added `optimization-execution-layer.md` as a missing section category for SIMD/vectorization, cache-aware batching, graph construction optimization, and execution-layer implementation writing.
 
-Updated synthesis and navigation pages: `wiki/topics/approximate-nearest-neighbor-search.md`, `wiki/topics/disaggregated-memory-vector-search.md`, `wiki/topics/simd-and-vectorization-for-ann-systems.md`, `wiki/topics/vector-quantization.md`, `wiki/entities/milvus.md`, `wiki/entities/vbase.md`, `CACHE.md`, and `index.md`.
+Updated the section winner matrix and revised the Top 3 files for abstract, introduction, background/preliminaries, motivation/characterization, method/core design, implementation, evaluation, related work, and discussion/conclusion.
 
-Working synthesis: the screened award-adjacent batch adds four distinct branches rather than one homogeneous ANN family. Chameleon adds RAG-serving disaggregated IVF-PQ acceleration, WARP adds multi-vector retrieval execution and score reduction, Multi-Probe LSH reinforces classical non-graph ANN baselines, and vector database integration adds cross-embedding-model interoperability.
+Working synthesis: SPFresh remains the best abstract/evaluation model; Starling remains the best introduction/method/discussion model; OdinANN is now a top-tier model for dynamic graph-update abstract, introduction, motivation, implementation, evaluation, related work, and discussion; PQ Fast Scan, Milvus, and Flash anchor the new optimization/execution-layer category.
 
-Unresolved questions: verify formal award metadata before citing award status; decide later whether these PDFs should move from `raw/inbox/` to organized `raw/sources/papers/` only if raw-file mutation is explicitly requested.
+Updated `index.md` so the expanded coverage audit and optimization category are discoverable.

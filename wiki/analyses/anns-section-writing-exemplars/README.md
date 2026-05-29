@@ -3,45 +3,29 @@ id: anns-section-writing-exemplars
 type: analysis
 status: active
 created: 2026-05-26
-updated: 2026-05-26
+updated: 2026-05-29
 tags: [anns, paper-writing, systems, section-exemplars]
-source_count: 20
+source_count: 65
 sources:
-  - raw/sources/papers/diskann-2019.pdf
-  - raw/sources/papers/spann-2021.pdf
-  - raw/sources/papers/milvus-2021.pdf
-  - raw/sources/papers/vbase-2023.pdf
-  - raw/sources/papers/spfresh-2023.pdf
-  - raw/sources/papers/starling-2024.pdf
-  - raw/sources/papers/rummy-2024.pdf
-  - raw/sources/papers/bang-2024.pdf
-  - raw/sources/papers/smartanns-2024.pdf
-  - raw/sources/papers/cxl-anns-2024.pdf
-  - raw/sources/papers/performance-index-size-dilemma-2024.pdf
-  - raw/sources/papers/d-hnsw-2025.pdf
-  - raw/sources/papers/ansmet-2025.pdf
-  - raw/sources/papers/gustann-2025.pdf
-  - raw/sources/papers/fusionanns-2025.pdf
-  - raw/sources/papers/svfusion-2026.pdf
-  - raw/sources/papers/faiss-gpu-2017.pdf
-  - raw/sources/papers/scann-2020.pdf
-  - raw/inbox/flash-graph-indexing-2025.pdf
-  - raw/inbox/panorama-2025.pdf
+  - wiki/source-notes/
 related:
   - approximate-nearest-neighbor-search
   - anns-research-figure-design-guide
+  - simd-vectorization-anns-implementation-map
 confidence: medium
 ---
 
 # ANNS Section Writing Exemplars
 
-This folder ranks the best section-level writing examples among the current ANNS system papers in the vault. The lens is deliberately harsh: a good section is not the one with the most impressive system, but the one that would make a systems reviewer understand the problem, mechanism, evidence, and scope with the least friction.
+This folder ranks the best section-level writing examples among the current ANNS-related papers in the vault. The lens is deliberately harsh: a good section is not the one with the most impressive system, but the one that would make a systems reviewer understand the problem, mechanism, evidence, and scope with the least friction.
 
 ## Scope
 
-Included as primary candidates: [DiskANN](../../source-notes/diskann-2019.md), [SPANN](../../source-notes/spann-2021.md), [Milvus](../../source-notes/milvus-2021.md), [VBASE](../../source-notes/vbase-2023.md), [SPFresh](../../source-notes/spfresh-2023.md), [Starling](../../source-notes/starling-2024.md), [RUMMY](../../source-notes/rummy-2024.md), [BANG](../../source-notes/bang-2024.md), [SmartANNS](../../source-notes/smartanns-2024.md), [GustANN](../../source-notes/gustann-2025.md), [FusionANNS](../../source-notes/fusionanns-2025.md), and related memory-tier systems including [CXL-ANNS](../../source-notes/cxl-anns-2024.md), [d-HNSW](../../source-notes/d-hnsw-2025.md), [ANSMET](../../source-notes/ansmet-2025.md), and [SVFusion](../../source-notes/svfusion-2026.md).
+Coverage audit: [ANNS Section Coverage Audit](coverage-audit.md). I scanned all 65 current source-note pages and separated direct ANNS exemplars from supporting quantization, graph-theory, SIMD, benchmark, and hardware-context papers.
 
-Lower-weight references: [FAISS GPU](../../source-notes/faiss-gpu-2017.md), [ScaNN](../../source-notes/scann-2020.md), [Flash](../../source-notes/flash-graph-indexing-2025.md), and [Panorama](../../source-notes/panorama-2025.md). These are important, but they are not always the best models for a modern end-to-end ANNS systems paper.
+Primary section-template candidates are now [SPFresh](../../source-notes/spfresh-2023.md), [Starling](../../source-notes/starling-2024.md), [OdinANN](../../source-notes/odinann-2026.md), [VBASE](../../source-notes/vbase-2023.md), [Milvus](../../source-notes/milvus-2021.md), [GustANN](../../source-notes/gustann-2025.md), [FusionANNS](../../source-notes/fusionanns-2025.md), [PQ Fast Scan](../../source-notes/pq-fast-scan-2015.md), and [Flash Graph Indexing](../../source-notes/flash-graph-indexing-2025.md).
+
+Important supporting references include [DiskANN](../../source-notes/diskann-2019.md), [SPANN](../../source-notes/spann-2021.md), [RUMMY](../../source-notes/rummy-2024.md), [SmartANNS](../../source-notes/smartanns-2024.md), [CXL-ANNS](../../source-notes/cxl-anns-2024.md), [d-HNSW](../../source-notes/d-hnsw-2025.md), [ANSMET](../../source-notes/ansmet-2025.md), [SVFusion](../../source-notes/svfusion-2026.md), [ANN-Benchmarks](../../source-notes/ann-benchmarks-2018.md), and [Graph-Based ANNS Survey](../../source-notes/graph-based-anns-survey-2021.md). These are useful, but not always the best prose templates.
 
 ## Selection Criteria
 
@@ -53,16 +37,17 @@ I penalized sections that overclaim, hide assumptions, blur algorithmic novelty 
 
 | Section | Best | Second | Third | Brutal reviewer note |
 |---|---|---|---|---|
-| [Abstract](abstract.md) | SPFresh | Starling | VBASE | SPFresh is the cleanest abstract because it compresses problem, failure mode, mechanism, and result without sounding inflated. |
-| [Introduction](introduction.md) | Starling | VBASE | SPFresh | Starling has the best reviewer-friendly problem cascade; VBASE has the strongest conceptual hook. |
-| [Background / Preliminaries](background-preliminaries.md) | VBASE | Starling | SmartANNS | Most ANNS papers over-survey here; these three actually set up the later design. |
-| [Motivation / Characterization](motivation-characterization.md) | GustANN | Starling | RUMMY | GustANN is the clearest example of turning hardware facts into a systems problem. |
+| [Abstract](abstract.md) | SPFresh | OdinANN | Starling | OdinANN enters the top tier after full coverage because its abstract states a clean buffered-insert failure and direct-insert fix. |
+| [Introduction](introduction.md) | Starling | OdinANN | VBASE | Starling remains the best system-problem cascade; OdinANN is the clearest new update-stability intro. |
+| [Background / Preliminaries](background-preliminaries.md) | VBASE | Starling | OdinANN | OdinANN replaces SmartANNS because its background directly teaches on-disk graph operations and update failure modes. |
+| [Motivation / Characterization](motivation-characterization.md) | GustANN | OdinANN | Starling | GustANN still wins hardware characterization; OdinANN is now the best dynamic-workload characterization. |
 | [System Overview / Architecture](system-overview-architecture.md) | Milvus | SPFresh | FusionANNS | Milvus is still the cleanest full-system architecture model; newer papers are narrower. |
-| [Core Design / Algorithms](core-design-algorithms.md) | Starling | SPFresh | VBASE | Starling and SPFresh have the strongest design-to-bottleneck alignment. |
-| [Implementation](implementation.md) | SPFresh | Milvus | GustANN | SPFresh wins because implementation details are not decorative; they explain correctness and update behavior. |
-| [Evaluation](evaluation.md) | SPFresh | Starling | GustANN | SPFresh has the best dynamic-evaluation discipline; Starling has the cleanest disk/index ablations. |
-| [Related Work](related-work.md) | VBASE | GustANN | FusionANNS | VBASE positions the interface problem best; GustANN/FusionANNS position hardware tiers clearly. |
-| [Discussion / Conclusion](discussion-conclusion.md) | Starling | GustANN | RUMMY | These are the rare papers that explicitly state assumptions, limits, and transferability. |
+| [Method / Core Design](core-design-algorithms.md) | Starling | SPFresh | OdinANN | VBASE is still the best formal abstraction, but OdinANN is the better ANNS method template after full coverage. |
+| [Optimization / Execution Layer](optimization-execution-layer.md) | PQ Fast Scan | Milvus | Flash | This category was missing before; it is essential for SIMD/vectorization, batching, and construction optimization. |
+| [Implementation](implementation.md) | SPFresh | OdinANN | GustANN | OdinANN now outranks Milvus for implementation prose because it ties layout, concurrency, and recovery to the update claim. |
+| [Evaluation](evaluation.md) | SPFresh | OdinANN | Starling | OdinANN adds the best dynamic graph-update evaluation; GustANN remains the best hardware-throughput honorable mention. |
+| [Related Work](related-work.md) | VBASE | OdinANN | GustANN | OdinANN has unusually clean positioning across hybrid storage, compression, and update-capable ANNS. |
+| [Discussion / Conclusion](discussion-conclusion.md) | Starling | GustANN | OdinANN | OdinANN is now the third-best discussion model because it owns consistency, GC-free updates, insert latency, and memory usage. |
 
 ## Brutal Exclusions
 
@@ -77,6 +62,10 @@ CXL-ANNS, d-HNSW, and ANSMET are useful for second-tier memory context, but they
 SVFusion is interesting but not a top exemplar yet. It has too many interacting claims and should be treated cautiously until the publication status and evaluation maturity are clearer.
 
 Flash and Panorama are strong execution-layer papers, but they are narrower than the system papers ranked here. Use them for SIMD/refinement ideas, not for overall ANNS systems paper structure.
+
+ScaNN, PQ, RaBitQ, PQ Fast Scan, Quicker ADC, Flash, and SymphonyQG are important for method or optimization sections. They are not automatically good full-paper section templates because they are often narrower than systems papers.
+
+ANN-Benchmarks and Graph-Based ANNS Survey are excellent for evaluation methodology and background taxonomy. They are not top templates for system introductions because they survey the field rather than introduce a new system.
 
 ## How To Use This Folder
 

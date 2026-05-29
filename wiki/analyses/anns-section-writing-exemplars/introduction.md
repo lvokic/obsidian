@@ -3,13 +3,13 @@ id: anns-section-exemplars-introduction
 type: analysis
 status: active
 created: 2026-05-26
-updated: 2026-05-26
+updated: 2026-05-29
 tags: [anns, paper-writing, introduction]
 source_count: 3
 sources:
   - raw/sources/papers/starling-2024.pdf
+  - raw/sources/papers/odinann-2026.pdf
   - raw/sources/papers/vbase-2023.pdf
-  - raw/sources/papers/spfresh-2023.pdf
 related:
   - anns-section-writing-exemplars
 confidence: medium
@@ -22,8 +22,8 @@ confidence: medium
 | Rank | Paper | Score | Why it works | Weakness |
 |---|---:|---:|---|---|
 | 1 | [Starling](../../source-notes/starling-2024.md) | 9.6 | Best overall problem cascade: vector DB segment search, memory pressure, DiskANN/SPANN limits, I/O locality, then Starling. | The segment-level framing may be less obvious to non-vector-DB reviewers. |
-| 2 | [VBASE](../../source-notes/vbase-2023.md) | 9.3 | Best conceptual introduction. It turns "vector search in databases" into a precise interface mismatch: TopK is not enough for complex relational predicates. | The paper's core problem is broader than ANNS, so copying it directly can pull an ANNS paper off-scope. |
-| 3 | [SPFresh](../../source-notes/spfresh-2023.md) | 9.1 | Best update/freshness introduction. It uses realistic update scenarios and explains why rebuild-oriented disk indexes are unacceptable. | It is less useful if the new paper is not about mutability. |
+| 2 | [OdinANN](../../source-notes/odinann-2026.md) | 9.4 | Best new dynamic-graph introduction. It shows why buffered insert destabilizes search, then turns direct insert into a precise systems problem. | It is not a template for static ANNS papers. |
+| 3 | [VBASE](../../source-notes/vbase-2023.md) | 9.3 | Best conceptual introduction. It turns "vector search in databases" into a precise interface mismatch: TopK is not enough for complex relational predicates. | The paper's core problem is broader than ANNS, so copying it directly can pull an ANNS paper off-scope. |
 
 ## What To Steal
 

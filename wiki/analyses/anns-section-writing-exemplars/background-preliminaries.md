@@ -3,13 +3,13 @@ id: anns-section-exemplars-background-preliminaries
 type: analysis
 status: active
 created: 2026-05-26
-updated: 2026-05-26
+updated: 2026-05-29
 tags: [anns, paper-writing, background, preliminaries]
 source_count: 3
 sources:
   - raw/sources/papers/vbase-2023.pdf
   - raw/sources/papers/starling-2024.pdf
-  - raw/sources/papers/smartanns-2024.pdf
+  - raw/sources/papers/odinann-2026.pdf
 related:
   - anns-section-writing-exemplars
 confidence: medium
@@ -23,7 +23,7 @@ confidence: medium
 |---|---:|---:|---|---|
 | 1 | [VBASE](../../source-notes/vbase-2023.md) | 9.4 | The background is not a generic survey. It defines the query semantics and prepares the relaxed-monotonicity contribution. | It is most useful for papers with a query-processing or database-interface angle. |
 | 2 | [Starling](../../source-notes/starling-2024.md) | 9.0 | It gives just enough high-dimensional vector similarity search and segment-level context to make the later disk graph design legible. | It does not try to teach the full ANN ecosystem, which is correct but narrow. |
-| 3 | [SmartANNS](../../source-notes/smartanns-2024.md) | 8.4 | It connects ANNS background with SmartSSD/NDP hardware constraints, which is useful for hardware-software co-design papers. | The hardware background can feel like two mini-surveys unless tightly tied to later design. |
+| 3 | [OdinANN](../../source-notes/odinann-2026.md) | 8.8 | It teaches on-disk graph layout, search, buffered insert, and direct-insert challenges in exactly the order needed for the method. | It is update-specific and less reusable for non-dynamic systems. |
 
 ## What To Steal
 

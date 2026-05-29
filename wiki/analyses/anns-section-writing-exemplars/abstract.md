@@ -3,13 +3,13 @@ id: anns-section-exemplars-abstract
 type: analysis
 status: active
 created: 2026-05-26
-updated: 2026-05-26
+updated: 2026-05-29
 tags: [anns, paper-writing, abstract]
 source_count: 3
 sources:
   - raw/sources/papers/spfresh-2023.pdf
+  - raw/sources/papers/odinann-2026.pdf
   - raw/sources/papers/starling-2024.pdf
-  - raw/sources/papers/vbase-2023.pdf
 related:
   - anns-section-writing-exemplars
 confidence: medium
@@ -22,8 +22,8 @@ confidence: medium
 | Rank | Paper | Score | Why it works | Weakness |
 |---|---:|---:|---|---|
 | 1 | [SPFresh](../../source-notes/spfresh-2023.md) | 9.5 | It states the operational pain point, explains why existing disk indexes fail under freshness pressure, names the key method, and gives concrete headline results. | It is highly tuned to update-heavy vector search, so it is less reusable for pure static-search papers. |
-| 2 | [Starling](../../source-notes/starling-2024.md) | 9.0 | It frames segment-level disk HVSS as a missing layer in vector databases and immediately connects the design to I/O efficiency. | It assumes the reader already accepts segment-level search as important. |
-| 3 | [VBASE](../../source-notes/vbase-2023.md) | 8.7 | It has the strongest conceptual hook: conventional TopK vector indexes do not compose cleanly with relational predicates, so the interface is the problem. | It is a vector database/query-processing paper more than a pure ANNS systems paper. |
+| 2 | [OdinANN](../../source-notes/odinann-2026.md) | 9.2 | It gives a sharp direct-insert versus buffered-insert contrast, states the stability problem, and closes with stable billion-scale search/update evidence. | It is focused on inserts, not general update semantics. |
+| 3 | [Starling](../../source-notes/starling-2024.md) | 9.0 | It frames segment-level disk HVSS as a missing layer in vector databases and immediately connects the design to I/O efficiency. | It assumes the reader already accepts segment-level search as important. |
 
 ## What To Steal
 

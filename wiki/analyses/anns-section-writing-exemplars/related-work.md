@@ -3,13 +3,13 @@ id: anns-section-exemplars-related-work
 type: analysis
 status: active
 created: 2026-05-26
-updated: 2026-05-26
+updated: 2026-05-29
 tags: [anns, paper-writing, related-work]
 source_count: 3
 sources:
   - raw/sources/papers/vbase-2023.pdf
+  - raw/sources/papers/odinann-2026.pdf
   - raw/sources/papers/gustann-2025.pdf
-  - raw/sources/papers/fusionanns-2025.pdf
 related:
   - anns-section-writing-exemplars
 confidence: medium
@@ -22,8 +22,8 @@ confidence: medium
 | Rank | Paper | Score | Why it works | Weakness |
 |---|---:|---:|---|---|
 | 1 | [VBASE](../../source-notes/vbase-2023.md) | 9.0 | Best positioning for an interface/DB paper. It separates similarity query processing, vector indices, and vector database integration instead of lumping everything under ANN. | It is not the best template for a pure SSD/GPU index paper. |
-| 2 | [GustANN](../../source-notes/gustann-2025.md) | 8.7 | Concise and adversarially useful. It distinguishes SSD-resident ANNS from GPU ANNS and explains why GustANN's GPU-plus-SSD stance is different. | It is short; if the new paper needs broad historical context, this is not enough. |
-| 3 | [FusionANNS](../../source-notes/fusionanns-2025.md) | 8.6 | Clean categories: in-memory ANNS, SSD-based ANNS, and GPU-related systems, with the paper's multi-tier choice positioned against each. | The positioning is a bit too contribution-serving and less reflective than VBASE. |
+| 2 | [OdinANN](../../source-notes/odinann-2026.md) | 8.9 | Cleanly separates billion-scale indexes, hybrid storage, near-data processing, vector compression, update-capable indexes, and reserved-space update designs. | It is short and scoped around direct insert. |
+| 3 | [GustANN](../../source-notes/gustann-2025.md) | 8.7 | Concise and adversarially useful. It distinguishes SSD-resident ANNS from GPU ANNS and explains why GustANN's GPU-plus-SSD stance is different. | It is short; if the new paper needs broad historical context, this is not enough. |
 
 ## What To Steal
 

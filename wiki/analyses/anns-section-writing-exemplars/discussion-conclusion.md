@@ -3,13 +3,13 @@ id: anns-section-exemplars-discussion-conclusion
 type: analysis
 status: active
 created: 2026-05-26
-updated: 2026-05-26
+updated: 2026-05-29
 tags: [anns, paper-writing, discussion, conclusion]
 source_count: 3
 sources:
   - raw/sources/papers/starling-2024.pdf
   - raw/sources/papers/gustann-2025.pdf
-  - raw/sources/papers/rummy-2024.pdf
+  - raw/sources/papers/odinann-2026.pdf
 related:
   - anns-section-writing-exemplars
 confidence: medium
@@ -23,7 +23,7 @@ confidence: medium
 |---|---:|---:|---|---|
 | 1 | [Starling](../../source-notes/starling-2024.md) | 9.3 | Best discussion. It explains memory-based related work, comparison with SPANN, in-memory graph role, central SSD assumption, update handling, and range-search relevance. | It is long; weaker authors would turn this into a second related-work section. |
 | 2 | [GustANN](../../source-notes/gustann-2025.md) | 9.1 | Best honest limitation statement. It discusses scalability, generalization, GPU memory pressure, quantization orthogonality, and the latency-throughput tradeoff. | It should foreground the latency tradeoff earlier in the paper. |
-| 3 | [RUMMY](../../source-notes/rummy-2024.md) | 8.8 | Strong scope control. It explicitly says RUMMY is a system, not a new index, and explains how reordered pipelining transfers to other domains. | The conclusion is conventional; the discussion carries the value. |
+| 3 | [OdinANN](../../source-notes/odinann-2026.md) | 8.9 | Strong practical discussion of consistency, GC-free behavior, insert latency, memory usage, and delete handling. | The discussion is concise and update-specific. |
 
 ## What To Steal
 
