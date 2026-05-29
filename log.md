@@ -363,3 +363,27 @@ Updated the section winner matrix and revised the Top 3 files for abstract, intr
 Working synthesis: SPFresh remains the best abstract/evaluation model; Starling remains the best introduction/method/discussion model; OdinANN is now a top-tier model for dynamic graph-update abstract, introduction, motivation, implementation, evaluation, related work, and discussion; PQ Fast Scan, Milvus, and Flash anchor the new optimization/execution-layer category.
 
 Updated `index.md` so the expanded coverage audit and optimization category are discoverable.
+
+## [2026-05-29 14:57] query | Complete ANNS section exemplar refresh after knowledge-base update
+
+Refreshed `wiki/analyses/anns-section-writing-exemplars/` after re-scanning all 69 current source-note pages in the vault.
+
+Updated `coverage-audit.md` from 65 to 69 source notes and added the newly covered direct/supporting papers: Chameleon, WARP, Integrating Vector Databases Across Embedding Models, and Multi-Probe LSH.
+
+Revised the section Top 3 rankings under a stricter SIGMOD/VLDB systems-review lens. Chameleon now affects introduction, background, motivation, architecture, optimization, implementation, related work, and discussion. WARP now affects abstract, motivation, method, optimization, and evaluation. Integrating Vector Databases now affects introduction and background. Multi-Probe LSH is recorded as an important classical supporting source, but not a modern writing template.
+
+Updated `README.md`, the individual section ranking files, `agent-writing-map/AGENT_MAP.md`, and `index.md`.
+
+Working synthesis: the best papers are not the same for every section. Starling remains the strongest disk/index introduction and core design model, SPFresh remains the strongest update/evaluation model, Chameleon is now the strongest heterogeneous service-architecture model, WARP is now the strongest retrieval execution-layer model, and Integrating Vector Databases is the strongest conceptual vector-DB framing model. Multi-Probe LSH remains technically foundational but stylistically dated.
+
+Unresolved questions: if the next task is drafting a concrete paper section, the agent should read the original paper sections named in `agent-writing-map/AGENT_MAP.md` before using the distilled cards.
+
+## [2026-05-29 15:09] query | Expand ANNS section exemplar rankings to Top 5
+
+Expanded `wiki/analyses/anns-section-writing-exemplars/` from Top 3 to Top 5 rankings for every major paper section: abstract, introduction, background/preliminaries, motivation/characterization, system overview/architecture, method/core design, optimization/execution layer, implementation, evaluation, related work, and discussion/conclusion.
+
+Updated the main section winner matrix, each individual section ranking file, `coverage-audit.md`, and `agent-writing-map/AGENT_MAP.md`.
+
+Working synthesis: the Top 5 expansion makes the rankings more honest rather than more generous. The first three entries remain the best templates for most use cases; the fourth and fifth entries are often conditional models that should be copied only when the target paper shares their narrow setting, such as RALM serving, dynamic graph updates, vector-DB interoperability, multi-vector retrieval, or disk-layout architecture.
+
+Unresolved questions: the older numbered card files under `agent-writing-map/` still mainly reflect the earlier compressed card set. Future agents should treat the ranking files and `AGENT_MAP.md` as authoritative when the cards disagree.

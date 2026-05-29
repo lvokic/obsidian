@@ -5,7 +5,7 @@ status: active
 created: 2026-05-27
 updated: 2026-05-29
 tags: [anns, paper-writing, agent-map, systems]
-source_count: 65
+source_count: 69
 sources:
   - wiki/source-notes/
 related:
@@ -37,17 +37,17 @@ The cards are not a substitute for reading the original sections. They are compr
 
 | Target section to write | Read the original section first | Raw source | Then read |
 |---|---|---|---|
-| Abstract | SPFresh front-matter Abstract; OdinANN front-matter Abstract | `raw/sources/papers/spfresh-2023.pdf`; `raw/sources/papers/odinann-2026.pdf` | [Abstract Ranking](../abstract.md) |
-| Introduction | Starling Section 1; OdinANN Section 1 | `raw/sources/papers/starling-2024.pdf`; `raw/sources/papers/odinann-2026.pdf` | [Introduction Ranking](../introduction.md) |
-| Background / Preliminaries | VBASE Sections 2-3; OdinANN Section 2 | `raw/sources/papers/vbase-2023.pdf`; `raw/sources/papers/odinann-2026.pdf` | [Background Ranking](../background-preliminaries.md) |
-| Motivation / Characterization | GustANN Section 3; OdinANN Section 2 | `raw/sources/papers/gustann-2025.pdf`; `raw/sources/papers/odinann-2026.pdf` | [Motivation Ranking](../motivation-characterization.md) |
-| System Overview / Architecture | Milvus Section 2; SPFresh Section 4.1 | `raw/sources/papers/milvus-2021.pdf`; `raw/sources/papers/spfresh-2023.pdf` | [Architecture Ranking](../system-overview-architecture.md) |
-| Method / Core Design | Starling Sections 3-5; SPFresh Sections 3-4; OdinANN Section 3 | `raw/sources/papers/starling-2024.pdf`; `raw/sources/papers/spfresh-2023.pdf`; `raw/sources/papers/odinann-2026.pdf` | [Method Ranking](../core-design-algorithms.md) |
-| Optimization / Execution Layer | PQ Fast Scan Sections 1-3; Milvus Section 3.2; Flash design sections | `raw/sources/papers/pq-fast-scan-2015.pdf`; `raw/sources/papers/milvus-2021.pdf`; `raw/inbox/flash-graph-indexing-2025.pdf` | [Optimization Ranking](../optimization-execution-layer.md) |
-| Implementation | SPFresh Section 4; OdinANN Section 3; GustANN Section 4 | `raw/sources/papers/spfresh-2023.pdf`; `raw/sources/papers/odinann-2026.pdf`; `raw/sources/papers/gustann-2025.pdf` | [Implementation Ranking](../implementation.md) |
-| Evaluation | SPFresh Section 5; OdinANN Section 4; Starling Section 6 | `raw/sources/papers/spfresh-2023.pdf`; `raw/sources/papers/odinann-2026.pdf`; `raw/sources/papers/starling-2024.pdf` | [Evaluation Ranking](../evaluation.md) |
-| Related Work | VBASE Section 6; OdinANN Section 5; GustANN Section 6 | `raw/sources/papers/vbase-2023.pdf`; `raw/sources/papers/odinann-2026.pdf`; `raw/sources/papers/gustann-2025.pdf` | [Related Work Ranking](../related-work.md) |
-| Discussion / Conclusion | Starling Sections 7-8; GustANN Section 4.5; OdinANN Section 3.5 | `raw/sources/papers/starling-2024.pdf`; `raw/sources/papers/gustann-2025.pdf`; `raw/sources/papers/odinann-2026.pdf` | [Discussion Ranking](../discussion-conclusion.md) |
+| Abstract | SPFresh Abstract; WARP Abstract; OdinANN Abstract; Chameleon Abstract; Starling Abstract | `raw/sources/papers/spfresh-2023.pdf`; `raw/inbox/warp-multi-vector-retrieval-sigir-best-paper-2025.pdf`; `raw/sources/papers/odinann-2026.pdf`; `raw/inbox/chameleon-ralm-vector-search-vldb-best-scalable-data-science-2025.pdf`; `raw/sources/papers/starling-2024.pdf` | [Abstract Ranking](../abstract.md) |
+| Introduction | Starling Section 1; Integrating Vector Databases Section 1; Chameleon Section 1; OdinANN Section 1; VBASE Section 1 | `raw/sources/papers/starling-2024.pdf`; `raw/inbox/integrating-vector-databases-across-embedding-models-sigmod-hm-2026.pdf`; `raw/inbox/chameleon-ralm-vector-search-vldb-best-scalable-data-science-2025.pdf`; `raw/sources/papers/odinann-2026.pdf`; `raw/sources/papers/vbase-2023.pdf` | [Introduction Ranking](../introduction.md) |
+| Background / Preliminaries | VBASE Sections 2-3; Chameleon Section 2; Integrating Vector Databases Sections 3-4; Starling preliminaries; OdinANN Section 2 | `raw/sources/papers/vbase-2023.pdf`; `raw/inbox/chameleon-ralm-vector-search-vldb-best-scalable-data-science-2025.pdf`; `raw/inbox/integrating-vector-databases-across-embedding-models-sigmod-hm-2026.pdf`; `raw/sources/papers/starling-2024.pdf`; `raw/sources/papers/odinann-2026.pdf` | [Background Ranking](../background-preliminaries.md) |
+| Motivation / Characterization | GustANN characterization; Chameleon Section 2; WARP Section 3; OdinANN motivation; Starling I/O characterization | `raw/sources/papers/gustann-2025.pdf`; `raw/inbox/chameleon-ralm-vector-search-vldb-best-scalable-data-science-2025.pdf`; `raw/inbox/warp-multi-vector-retrieval-sigir-best-paper-2025.pdf`; `raw/sources/papers/odinann-2026.pdf`; `raw/sources/papers/starling-2024.pdf` | [Motivation Ranking](../motivation-characterization.md) |
+| System Overview / Architecture | Milvus Section 2; Chameleon Section 3; SPFresh Section 4.1; FusionANNS design; Starling architecture | `raw/sources/papers/milvus-2021.pdf`; `raw/inbox/chameleon-ralm-vector-search-vldb-best-scalable-data-science-2025.pdf`; `raw/sources/papers/spfresh-2023.pdf`; `raw/sources/papers/fusionanns-2025.pdf`; `raw/sources/papers/starling-2024.pdf` | [Architecture Ranking](../system-overview-architecture.md) |
+| Method / Core Design | Starling Sections 3-5; WARP Section 4; SPFresh Sections 3-4; OdinANN Section 3; Integrating Vector Databases Sections 4-6 | `raw/sources/papers/starling-2024.pdf`; `raw/inbox/warp-multi-vector-retrieval-sigir-best-paper-2025.pdf`; `raw/sources/papers/spfresh-2023.pdf`; `raw/sources/papers/odinann-2026.pdf`; `raw/inbox/integrating-vector-databases-across-embedding-models-sigmod-hm-2026.pdf` | [Method Ranking](../core-design-algorithms.md) |
+| Optimization / Execution Layer | PQ Fast Scan Sections 1-3; WARP Section 4; Chameleon Section 4; Milvus Section 3.2; Flash design sections | `raw/sources/papers/pq-fast-scan-2015.pdf`; `raw/inbox/warp-multi-vector-retrieval-sigir-best-paper-2025.pdf`; `raw/inbox/chameleon-ralm-vector-search-vldb-best-scalable-data-science-2025.pdf`; `raw/sources/papers/milvus-2021.pdf`; `raw/inbox/flash-graph-indexing-2025.pdf` | [Optimization Ranking](../optimization-execution-layer.md) |
+| Implementation | SPFresh Section 4; Chameleon Section 6.1; OdinANN Section 3; GustANN implementation; Milvus implementation details | `raw/sources/papers/spfresh-2023.pdf`; `raw/inbox/chameleon-ralm-vector-search-vldb-best-scalable-data-science-2025.pdf`; `raw/sources/papers/odinann-2026.pdf`; `raw/sources/papers/gustann-2025.pdf`; `raw/sources/papers/milvus-2021.pdf` | [Implementation Ranking](../implementation.md) |
+| Evaluation | SPFresh Section 5; OdinANN Section 4; WARP Section 5; Starling evaluation; Chameleon Section 6 | `raw/sources/papers/spfresh-2023.pdf`; `raw/sources/papers/odinann-2026.pdf`; `raw/inbox/warp-multi-vector-retrieval-sigir-best-paper-2025.pdf`; `raw/sources/papers/starling-2024.pdf`; `raw/inbox/chameleon-ralm-vector-search-vldb-best-scalable-data-science-2025.pdf` | [Evaluation Ranking](../evaluation.md) |
+| Related Work | VBASE related work; Chameleon Section 7; OdinANN Section 5; GustANN related work; WARP Section 2 | `raw/sources/papers/vbase-2023.pdf`; `raw/inbox/chameleon-ralm-vector-search-vldb-best-scalable-data-science-2025.pdf`; `raw/sources/papers/odinann-2026.pdf`; `raw/sources/papers/gustann-2025.pdf`; `raw/inbox/warp-multi-vector-retrieval-sigir-best-paper-2025.pdf` | [Related Work Ranking](../related-work.md) |
+| Discussion / Conclusion | Starling Sections 7-8; GustANN discussion; Chameleon Section 8; OdinANN discussion; WARP Section 6 | `raw/sources/papers/starling-2024.pdf`; `raw/sources/papers/gustann-2025.pdf`; `raw/inbox/chameleon-ralm-vector-search-vldb-best-scalable-data-science-2025.pdf`; `raw/sources/papers/odinann-2026.pdf`; `raw/inbox/warp-multi-vector-retrieval-sigir-best-paper-2025.pdf` | [Discussion Ranking](../discussion-conclusion.md) |
 
 ## What To Observe In The Original Paper
 
@@ -67,21 +67,21 @@ Track scope control: where the paper admits workload assumptions, hardware assum
 
 ## Current Ranking And Card Index
 
-The current ranking files are authoritative. The older numbered card files remain useful as style-learning notes, but they may not include every paper added during the 2026-05-29 refresh.
+The current ranking files are authoritative. The older numbered card files remain useful as style-learning notes, but they may not include every paper added during the 2026-05-29 refresh. If a card conflicts with a ranking file, follow the ranking file.
 
 | Target section to write | Current ranking | Style card | Primary model | Secondary models |
 |---|---|---|---|---|
-| Abstract | [Abstract Ranking](../abstract.md) | [01 Abstract Cards](01-abstract-cards.md) | SPFresh | OdinANN, Starling |
-| Introduction | [Introduction Ranking](../introduction.md) | [02 Introduction Cards](02-introduction-cards.md) | Starling | OdinANN, VBASE |
-| Background / Preliminaries | [Background Ranking](../background-preliminaries.md) | [03 Background Cards](03-background-cards.md) | VBASE | Starling, OdinANN |
-| Motivation / Characterization | [Motivation Ranking](../motivation-characterization.md) | [04 Motivation Cards](04-motivation-cards.md) | GustANN | OdinANN, Starling |
-| System Overview / Architecture | [Architecture Ranking](../system-overview-architecture.md) | [05 Architecture Cards](05-architecture-cards.md) | Milvus | SPFresh, FusionANNS |
-| Method / Core Design | [Method Ranking](../core-design-algorithms.md) | [06 Design Cards](06-design-cards.md) | Starling | SPFresh, OdinANN |
-| Optimization / Execution Layer | [Optimization Ranking](../optimization-execution-layer.md) | [SIMD/Batch Map](../../simd-vectorization-anns-implementation-map/AGENT_MAP.md) | PQ Fast Scan | Milvus, Flash |
-| Implementation | [Implementation Ranking](../implementation.md) | [07 Implementation Cards](07-implementation-cards.md) | SPFresh | OdinANN, GustANN |
-| Evaluation | [Evaluation Ranking](../evaluation.md) | [08 Evaluation Cards](08-evaluation-cards.md) | SPFresh | OdinANN, Starling |
-| Related Work | [Related Work Ranking](../related-work.md) | [09 Related Work Cards](09-related-work-cards.md) | VBASE | OdinANN, GustANN |
-| Discussion / Conclusion | [Discussion Ranking](../discussion-conclusion.md) | [10 Discussion Cards](10-discussion-cards.md) | Starling | GustANN, OdinANN |
+| Abstract | [Abstract Ranking](../abstract.md) | [01 Abstract Cards](01-abstract-cards.md) | SPFresh | WARP, OdinANN, Chameleon, Starling |
+| Introduction | [Introduction Ranking](../introduction.md) | [02 Introduction Cards](02-introduction-cards.md) | Starling | Integrating Vector DBs, Chameleon, OdinANN, VBASE |
+| Background / Preliminaries | [Background Ranking](../background-preliminaries.md) | [03 Background Cards](03-background-cards.md) | VBASE | Chameleon, Integrating Vector DBs, Starling, OdinANN |
+| Motivation / Characterization | [Motivation Ranking](../motivation-characterization.md) | [04 Motivation Cards](04-motivation-cards.md) | GustANN | Chameleon, WARP, OdinANN, Starling |
+| System Overview / Architecture | [Architecture Ranking](../system-overview-architecture.md) | [05 Architecture Cards](05-architecture-cards.md) | Milvus | Chameleon, SPFresh, FusionANNS, Starling |
+| Method / Core Design | [Method Ranking](../core-design-algorithms.md) | [06 Design Cards](06-design-cards.md) | Starling | WARP, SPFresh, OdinANN, Integrating Vector DBs |
+| Optimization / Execution Layer | [Optimization Ranking](../optimization-execution-layer.md) | [SIMD/Batch Map](../../simd-vectorization-anns-implementation-map/AGENT_MAP.md) | PQ Fast Scan | WARP, Chameleon, Milvus, Flash |
+| Implementation | [Implementation Ranking](../implementation.md) | [07 Implementation Cards](07-implementation-cards.md) | SPFresh | Chameleon, OdinANN, GustANN, Milvus |
+| Evaluation | [Evaluation Ranking](../evaluation.md) | [08 Evaluation Cards](08-evaluation-cards.md) | SPFresh | OdinANN, WARP, Starling, Chameleon |
+| Related Work | [Related Work Ranking](../related-work.md) | [09 Related Work Cards](09-related-work-cards.md) | VBASE | Chameleon, OdinANN, GustANN, WARP |
+| Discussion / Conclusion | [Discussion Ranking](../discussion-conclusion.md) | [10 Discussion Cards](10-discussion-cards.md) | Starling | GustANN, Chameleon, OdinANN, WARP |
 
 ## Practical Assembly Recipe
 
@@ -94,6 +94,12 @@ Use Starling for the introduction and core design when the work is about disk/in
 Use SPFresh for abstract, implementation, and evaluation when the work has update paths, background work, storage invariants, or online-vs-background interaction.
 
 Use OdinANN when the work is about dynamic graph indexes, direct insert, stable search under update load, concurrency control, or SSD-resident graph records.
+
+Use Chameleon when the work is about serving architecture, accelerator heterogeneity, disaggregated vector search, RALM retrieval, or PQ scan pushed near memory.
+
+Use WARP when the work is about retrieval-engine execution, compressed scoring, implicit decompression, score reduction, CPU kernels, or multi-vector search.
+
+Use Integrating Vector Databases only when the paper has a real vector-database interoperability or data-management abstraction. Do not use it as evidence for faster ANN indexing.
 
 Use VBASE when the paper has a clean semantic abstraction, query interface, or database integration claim.
 
