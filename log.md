@@ -335,3 +335,17 @@ Working synthesis: the central papers are PQ Fast Scan, Quicker ADC, Milvus, Sym
 Updated `wiki/topics/simd-and-vectorization-for-ann-systems.md`, `wiki/analyses/anns-section-writing-exemplars/agent-writing-map/AGENT_MAP.md`, and `index.md` so future agents can find the specialized map.
 
 Unresolved questions: for a concrete target chapter, the next step is to map the user's own ANNS pipeline stages to these mechanisms and decide which figures are needed.
+
+## [2026-05-29 05:20] ingest | OdinANN direct-insert SSD graph ANN
+
+Ingested Hao Guo and Youyou Lu's FAST 2026 paper `OdinANN: Direct Insert for Consistently Stable Performance in Billion-Scale Graph-Based Vector Search` from <https://www.usenix.org/system/files/fast26-guo.pdf>.
+
+Stored the PDF at `raw/sources/papers/odinann-2026.pdf`.
+
+Created `wiki/source-notes/odinann-2026.md` and `wiki/entities/odinann.md`.
+
+Updated `wiki/topics/approximate-nearest-neighbor-search.md`, `wiki/topics/second-tier-memory-for-vector-search.md`, `wiki/topics/ann-benchmarking-methodology.md`, `wiki/entities/diskann.md`, `wiki/entities/spfresh.md`, `CACHE.md`, and `index.md`.
+
+Working synthesis: OdinANN extends the SSD-resident graph-ANN branch from static DiskANN-style serving to online direct inserts. Its main trade-off is SSD space/write amplification for lower peak DRAM and more stable search latency than buffered-insert merge designs. It is the graph-based counterpart to SPFresh's cluster-based fresh-update story.
+
+Unresolved questions: whether OdinANN-style direct insert can combine with segment/block layouts such as Starling, how to benchmark SSD write amplification/endurance for dynamic graph ANN, and what update-mix benchmark should become the default for fresh ANN systems.

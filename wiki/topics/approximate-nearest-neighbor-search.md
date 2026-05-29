@@ -3,13 +3,13 @@ id: approximate-nearest-neighbor-search
 type: topic
 status: active
 created: 2026-04-08
-updated: 2026-05-19
+updated: 2026-05-29
 tags:
   - ann
   - retrieval
   - vector-search
   - systems
-source_count: 60
+source_count: 61
 sources:
   - raw/sources/papers/graph-based-anns-survey-2021.pdf
   - raw/sources/papers/nn-descent-2011.pdf
@@ -69,6 +69,7 @@ sources:
   - raw/sources/papers/simd-posting-list-decoding-2011.pdf
   - raw/sources/papers/simd-compression-intersection-2014.pdf
   - raw/sources/papers/stream-vbyte-2017.pdf
+  - raw/sources/papers/odinann-2026.pdf
   - raw/inbox/flash-graph-indexing-2025.pdf
   - raw/inbox/panorama-2025.pdf
 related:
@@ -124,6 +125,7 @@ related:
   - starling
   - bang
   - spfresh
+  - odinann
   - svfusion
   - patience-in-proximity
   - ansmet
@@ -142,9 +144,9 @@ ANN search in this vault spans three layers: compression methods, graph/index me
 - **Compression-driven:** PQ, RaBitQ, TurboQuant, ScaNN, and FAISS SQ8/PQ.
 - **Scalar/binary quantization:** low-precision KNN, norm-explicit MIPS, scalar-quantized HNSW, and binary/extreme-compression variants.
 - **Graph-index methods:** HNSW, NSG, Vamana/DiskANN, now grounded by a proximity-graph-theory branch covering NN-Descent/KGraph, GNNS, NSW, EFANNA, FANNG, DPG, NGT/ONNG, MRNG, SSG, RNN-Descent, and RNSG.
-- **Systems/memory-tier:** DiskANN, SPANN, Starling, and SPFresh for SSD/DRAM+SSD; RUMMY and BANG for GPU/host-memory execution; GustANN and FusionANNS for SSD+GPU collaboration; SmartANNS for SmartSSD/NDP; and CXL-ANNS/d-HNSW for disaggregated memory.
+- **Systems/memory-tier:** DiskANN, SPANN, Starling, SPFresh, and OdinANN for SSD/DRAM+SSD; RUMMY and BANG for GPU/host-memory execution; GustANN and FusionANNS for SSD+GPU collaboration; SmartANNS for SmartSSD/NDP; and CXL-ANNS/d-HNSW for disaggregated memory.
 - **Production systems:** FAISS as a library baseline and Milvus as a vector DBMS reference.
-- **Query semantics and freshness:** VBASE for vector-relational query processing and SPFresh for incremental updates.
+- **Query semantics and freshness:** VBASE for vector-relational query processing, SPFresh for incremental cluster-index updates, and OdinANN for direct inserts into an SSD-resident graph index.
 - **Evaluation infrastructure:** ANN-Benchmarks for in-memory Pareto evaluation, Graph-Based ANNS Survey 2021 for graph-component attribution, and SVFusion/SPFresh-style streaming metrics for update-heavy systems.
 - **Non-graph baselines:** FLANN and FALCONN keep the benchmark layer connected to tree/auto-tuning and LSH/angular-distance methods.
 - **Execution-layer optimization:** SIMD/vectorization sources track CPU execution details behind distance kernels, PQ/ADC FastScan, compressed ID/list scans, cache-aware batching, and filtered/irregular traversal.
@@ -178,7 +180,7 @@ ANN search in this vault spans three layers: compression methods, graph/index me
 
 **Classical non-graph baselines:** [FLANN](../entities/flann.md) remains the canonical randomized KD-tree / k-means-tree auto-tuning library baseline. [FALCONN](../entities/falconn.md) is the practical cross-polytope LSH baseline for angular/cosine distance.
 
-**SSD/second-tier tier:** [DiskANN](../entities/diskann.md), [SPANN](../entities/spann.md), [Starling](../entities/starling.md), and [SPFresh](../entities/spfresh.md) show how ANN systems adapt to storage tiers with high latency, coarse access granularity, segment constraints, and fresh-update pressure. SPANN remains the key DRAM+SSD comparison point.
+**SSD/second-tier tier:** [DiskANN](../entities/diskann.md), [SPANN](../entities/spann.md), [Starling](../entities/starling.md), [SPFresh](../entities/spfresh.md), and [OdinANN](../entities/odinann.md) show how ANN systems adapt to storage tiers with high latency, coarse access granularity, segment constraints, and fresh-update pressure. OdinANN adds a graph-specific direct-insert path that trades SSD overprovisioning and write amplification for lower merge interference and lower peak DRAM than buffered inserts. SPANN remains the key DRAM+SSD comparison point.
 
 **GPU/host-memory tier:** [RUMMY](../entities/rummy.md), [BANG](../entities/bang.md), and [SVFusion](../entities/svfusion.md) address datasets beyond GPU memory by coordinating host memory, GPU HBM, and PCIe transfer. RUMMY does this for IVF query processing; BANG does it for graph ANNS with compressed vectors on GPU; SVFusion adds streaming updates and CPU-GPU-disk consistency.
 
@@ -192,7 +194,7 @@ ANN search in this vault spans three layers: compression methods, graph/index me
 
 ## Key System Progression
 
-DiskANN/SPANN show how to survive SSD latency with coarse-grained access. Starling refines SSD graph search at the data-segment layout level, while SPFresh extends the SSD/cluster branch to fresh updates. RUMMY/BANG show how to use a GPU when the full dataset or graph cannot fit in HBM. SVFusion adds a newer streaming branch where GPU/CPU/disk placement and update consistency are part of the ANN protocol. GustANN/FusionANNS show how GPU collaboration can improve SSD-backed search when PCIe movement is carefully controlled. SmartANNS shows the near-data-processing branch. CXL-ANNS shows what custom CXL endpoint compute can do, while d-HNSW shows how graph traversal changes under RDMA-style memory disaggregation.
+DiskANN/SPANN show how to survive SSD latency with coarse-grained access. Starling refines SSD graph search at the data-segment layout level. SPFresh extends the SSD/cluster branch to fresh updates, while OdinANN extends the SSD/graph branch to direct inserts with approximate concurrency control. RUMMY/BANG show how to use a GPU when the full dataset or graph cannot fit in HBM. SVFusion adds a newer streaming branch where GPU/CPU/disk placement and update consistency are part of the ANN protocol. GustANN/FusionANNS show how GPU collaboration can improve SSD-backed search when PCIe movement is carefully controlled. SmartANNS shows the near-data-processing branch. CXL-ANNS shows what custom CXL endpoint compute can do, while d-HNSW shows how graph traversal changes under RDMA-style memory disaggregation.
 
 ## Open Questions
 
@@ -202,6 +204,7 @@ DiskANN/SPANN show how to survive SSD latency with coarse-grained access. Starli
 - Which baselines are mandatory for a paper claim: pure TopK only, filtered queries, fresh updates, or batch throughput?
 - When should graph pruning be justified through MRNG/SSG/RNG theory rather than only empirical recall-latency curves?
 - What benchmark should be the default for streaming ANN now that update freshness, recall drift, and tail latency matter?
+- For dynamic SSD graph indexes, when is direct insert preferable to buffered insert plus merge, given SSD space/write amplification, peak DRAM, and latency-stability constraints?
 - At matched recall, when does scalar-quantized HNSW beat PQ/ADC or graph-plus-FastScan designs?
 - Which quantized ANN claims require raw-vector reranking, and which methods can avoid raw vectors entirely?
 - When should an ANN system optimize graph construction, as in Flash, rather than only query-time traversal or final refinement, as in Panorama?
@@ -220,7 +223,7 @@ DiskANN/SPANN show how to survive SSD latency with coarse-grained access. Starli
 - [ANN Benchmarking Methodology](ann-benchmarking-methodology.md) · [FLANN](../entities/flann.md) · [FALCONN](../entities/falconn.md)
 - [SIMD and Vectorization for ANN Systems](simd-and-vectorization-for-ann-systems.md) · [FastLanes](../entities/fastlanes.md) · [SIMD Investments](../entities/simd-investments.md)
 - [RUMMY](../entities/rummy.md) · [BANG](../entities/bang.md) · [SVFusion](../entities/svfusion.md) · [GustANN](../entities/gustann.md) · [FusionANNS](../entities/fusionanns.md)
-- [SmartANNS](../entities/smartanns.md) · [Starling](../entities/starling.md) · [SPFresh](../entities/spfresh.md) · [VBASE](../entities/vbase.md)
+- [SmartANNS](../entities/smartanns.md) · [Starling](../entities/starling.md) · [SPFresh](../entities/spfresh.md) · [OdinANN](../entities/odinann.md) · [VBASE](../entities/vbase.md)
 - [CXL-ANNS](../entities/cxl-anns.md) · [d-HNSW](../entities/d-hnsw.md) · [ANSMET](../entities/ansmet.md)
 - [Second-tier Memory for Vector Search](second-tier-memory-for-vector-search.md)
 - [Disaggregated Memory Vector Search](disaggregated-memory-vector-search.md)

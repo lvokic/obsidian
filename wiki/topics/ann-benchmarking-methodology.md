@@ -3,13 +3,13 @@ id: ann-benchmarking-methodology
 type: topic
 status: active
 created: 2026-05-08
-updated: 2026-05-08
+updated: 2026-05-29
 tags:
   - ann
   - benchmarking
   - evaluation
   - methodology
-source_count: 11
+source_count: 12
 sources:
   - raw/sources/papers/ann-benchmarks-2018.pdf
   - raw/sources/papers/graph-based-anns-survey-2021.pdf
@@ -22,6 +22,7 @@ sources:
   - raw/sources/papers/ngt-onng-2018.pdf
   - raw/sources/papers/flann-2014.pdf
   - raw/sources/papers/falconn-lsh-angular-2015.pdf
+  - raw/sources/papers/odinann-2026.pdf
 related:
   - ann-benchmarks
   - approximate-nearest-neighbor-search
@@ -33,6 +34,7 @@ related:
   - nn-descent
   - diversified-proximity-graph
   - ngt-onng
+  - odinann
 confidence: high
 ---
 
@@ -46,7 +48,7 @@ ANN evaluation should separate three questions that are often mixed together:
 - **Algorithm/component analysis:** which graph, routing, pruning, seeding, or construction component causes the performance.
 - **System benchmarking:** how performance changes when vectors move across DRAM, GPU HBM, SSD, CXL, or other tiers under static or streaming workloads.
 
-[ANN-Benchmarks](../entities/ann-benchmarks.md) anchors the first question. [Graph-Based ANNS Survey 2021](../source-notes/graph-based-anns-survey-2021.md) anchors the second. [FLANN](../entities/flann.md) and [FALCONN](../entities/falconn.md) anchor important non-graph baseline families, while [NN-Descent](../entities/nn-descent.md), [EFANNA](../entities/efanna.md), [FANNG](../entities/fanng.md), [DPG](../entities/diversified-proximity-graph.md), and [NGT/ONNG](../entities/ngt-onng.md) provide primary-source coverage for graph components. [SVFusion](../entities/svfusion.md), [SPFresh](../entities/spfresh.md), [BANG](../entities/bang.md), [GustANN](../entities/gustann.md), and [FusionANNS](../entities/fusionanns.md) show why the third needs additional metrics beyond in-memory recall-QPS.
+[ANN-Benchmarks](../entities/ann-benchmarks.md) anchors the first question. [Graph-Based ANNS Survey 2021](../source-notes/graph-based-anns-survey-2021.md) anchors the second. [FLANN](../entities/flann.md) and [FALCONN](../entities/falconn.md) anchor important non-graph baseline families, while [NN-Descent](../entities/nn-descent.md), [EFANNA](../entities/efanna.md), [FANNG](../entities/fanng.md), [DPG](../entities/diversified-proximity-graph.md), and [NGT/ONNG](../entities/ngt-onng.md) provide primary-source coverage for graph components. [SVFusion](../entities/svfusion.md), [SPFresh](../entities/spfresh.md), [OdinANN](../entities/odinann.md), [BANG](../entities/bang.md), [GustANN](../entities/gustann.md), and [FusionANNS](../entities/fusionanns.md) show why the third needs additional metrics beyond in-memory recall-QPS.
 
 ## Metric Layers
 
@@ -55,7 +57,7 @@ ANN evaluation should separate three questions that are often mixed together:
 | Query quality | Recall@k, epsilon recall, distance ratio, position-aware error | Use matched recall when comparing throughput or latency. |
 | Query speed | QPS, p50/p95/p99 latency, batch QPS, single-query latency | Batch mode and online latency should be reported separately. |
 | Preprocessing | build time, index memory, construction memory peak | Graph methods may dominate high recall but have expensive builds. |
-| Updates | insertion throughput, deletion throughput, repair/rebuild cost, recall drift | Static ANN-Benchmarks-style results do not measure freshness. |
+| Updates | insertion throughput, deletion throughput, repair/rebuild cost, recall drift, latency fluctuation under update load | Static ANN-Benchmarks-style results do not measure freshness or merge interference. |
 | Graph structure | average degree, graph quality, path length, connectivity, candidate set size | Graph quality alone does not imply better search performance. |
 | Memory tiers | DRAM footprint, GPU HBM usage, SSD I/O, PCIe transfer, cache miss rate, cost/QPS | Required for SSD/GPU/CXL/disaggregated-memory claims. |
 
@@ -70,6 +72,7 @@ ANN evaluation should separate three questions that are often mixed together:
 - For graph papers, map claims onto components: initialization, candidate acquisition, neighbor selection, seed preprocessing, connectivity, seed acquisition, and routing.
 - For KNNG-based methods, separate the cost of building the approximate KNN graph from the quality of the final search graph.
 - For dynamic systems, report update mix, freshness semantics, latency percentiles, and whether graph repair or rebuild work is on the critical path.
+- For SSD dynamic systems, report search-latency fluctuation over time, peak memory during merge/update maintenance, disk space amplification, and write amplification.
 
 ## Benchmark Coverage Needed For Future ANN Work
 
@@ -81,7 +84,7 @@ ANN evaluation should separate three questions that are often mixed together:
 | Angular/cosine LSH claim | FALCONN/hyperplane-LSH-style baselines plus graph baselines at matched recall. |
 | Billion-scale SSD/second-tier system | DiskANN/SPANN plus memory footprint, I/O, and cost/QPS. |
 | GPU vector search beyond HBM | BANG/RUMMY/CAGRA-like GPU baselines plus PCIe/cache behavior. |
-| Streaming or fresh updates | SPFresh/FreshDiskANN-style baselines plus insert/delete throughput and recall drift. |
+| Streaming or fresh updates | SPFresh/FreshDiskANN/OdinANN-style baselines plus insert/delete throughput, recall drift, latency fluctuation, peak memory, and update-maintenance interference. |
 | Vector database or filtered search | VBASE/Milvus-style query semantics and filter-selectivity tests. |
 
 ## Open Questions
@@ -101,3 +104,4 @@ ANN evaluation should separate three questions that are often mixed together:
 - [Diversified Proximity Graph](../entities/diversified-proximity-graph.md)
 - [Approximate Nearest Neighbor Search](approximate-nearest-neighbor-search.md)
 - [Second-tier Memory for Vector Search](second-tier-memory-for-vector-search.md)
+- [OdinANN](../entities/odinann.md)

@@ -65,6 +65,7 @@ This file is the primary catalog for the vault's durable wiki content.
 - [Relative NN-Descent](wiki/entities/relative-nn-descent.md) - Graph-index construction method combining NN-Descent with RNG Strategy.
 - [RNSG](wiki/entities/rnsg.md) - Range-aware graph index for range-filtered ANN built around RRNG/RNSG theory.
 - [DiskANN](wiki/entities/diskann.md) - SSD-resident billion-scale ANN system centered on Vamana graph indexing.
+- [OdinANN](wiki/entities/odinann.md) - FAST 2026 SSD-resident graph ANN system for direct inserts and stable online search/update performance.
 - [CXL-ANNS](wiki/entities/cxl-anns.md) - CXL memory disaggregation and software-hardware co-design for billion-point ANN.
 - [d-HNSW](wiki/entities/d-hnsw.md) - RDMA-disaggregated adaptation of HNSW serving for lower network overhead.
 - [GustANN](wiki/entities/gustann.md) - GPU-centric, CPU-assisted SSD graph ANNS system for high-throughput billion-scale search.
@@ -135,6 +136,7 @@ This file is the primary catalog for the vault's durable wiki content.
 - [Relative NN-Descent](wiki/source-notes/relative-nn-descent-2023.md) - Source note on faster graph-index construction via NN-Descent plus RNG Strategy.
 - [RNSG: A Range-Aware Graph Index for Efficient Range-Filtered Approximate Nearest Neighbor Search](wiki/source-notes/rnsg-2026.md) - Source note on RRNG/RNSG for range-filtered ANN.
 - [DiskANN: Fast Accurate Billion-point Nearest Neighbor Search on a Single Node](wiki/source-notes/diskann-2019.md) - Source note on SSD-resident high-recall ANN with Vamana.
+- [OdinANN: Direct Insert for Consistently Stable Performance in Billion-Scale Graph-Based Vector Search](wiki/source-notes/odinann-2026.md) - Guo and Lu FAST 2026; direct insert, update combining, and approximate concurrency control for SSD graph ANN.
 - [Bridging Software-Hardware for CXL Memory Disaggregation in Billion-Scale Nearest Neighbor Search](wiki/source-notes/cxl-anns-2024.md) - Source note on CXL-aware ANN co-design.
 - [Characterizing the Dilemma of Performance and Index Size in Billion-Scale Vector Search and Breaking It with Second-Tier Memory](wiki/source-notes/performance-index-size-dilemma-2024.md) - Source note on throughput-amplification trade-offs and second-tier-memory redesign.
 - [Efficient Vector Search on Disaggregated Memory with d-HNSW](wiki/source-notes/d-hnsw-2025.md) - Source note on RDMA-disaggregated HNSW serving.

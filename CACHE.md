@@ -17,7 +17,7 @@ Shortest read path for agents working on any ANNS system paper.
 - Quantization/library baseline: [FAISS](wiki/entities/faiss.md), [ScaNN](wiki/entities/scann.md), [Product Quantization](wiki/entities/product-quantization.md), [RaBitQ](wiki/entities/rabitq.md).
 - CPU execution/build/refinement: [SIMD and Vectorization](wiki/topics/simd-and-vectorization-for-ann-systems.md), [Flash Graph Indexing](wiki/entities/flash-graph-indexing.md), [Panorama](wiki/entities/panorama.md).
 - Non-graph baselines: [FLANN](wiki/entities/flann.md), [FALCONN](wiki/entities/falconn.md).
-- SSD/second-tier: [Second-tier Memory](wiki/topics/second-tier-memory-for-vector-search.md), [DiskANN](wiki/entities/diskann.md), [SPANN](wiki/entities/spann.md), [Starling](wiki/entities/starling.md), [SPFresh](wiki/entities/spfresh.md).
+- SSD/second-tier: [Second-tier Memory](wiki/topics/second-tier-memory-for-vector-search.md), [DiskANN](wiki/entities/diskann.md), [SPANN](wiki/entities/spann.md), [Starling](wiki/entities/starling.md), [SPFresh](wiki/entities/spfresh.md), [OdinANN](wiki/entities/odinann.md).
 - GPU/heterogeneous: [BANG](wiki/entities/bang.md), [RUMMY](wiki/entities/rummy.md), [GustANN](wiki/entities/gustann.md), [FusionANNS](wiki/entities/fusionanns.md), [SVFusion](wiki/entities/svfusion.md).
 - CXL/RDMA/NDP: [Disaggregated Memory Vector Search](wiki/topics/disaggregated-memory-vector-search.md), [CXL-ANNS](wiki/entities/cxl-anns.md), [d-HNSW](wiki/entities/d-hnsw.md), [SmartANNS](wiki/entities/smartanns.md).
 - Vector DB semantics: [Milvus](wiki/entities/milvus.md), [VBASE](wiki/entities/vbase.md), [RNSG](wiki/entities/rnsg.md).
@@ -28,6 +28,7 @@ Shortest read path for agents working on any ANNS system paper.
 - Separate algorithm, implementation, and hardware effects.
 - Report build time, memory/index size, update cost, and parameter settings when relevant.
 - For systems claims, report data movement: SSD I/O, PCIe traffic, CXL/RDMA traffic, GPU HBM use, or cache hit rate.
+- For dynamic SSD claims, report update throughput, latency fluctuation, peak memory, disk space amplification, and merge/update interference.
 - Do not invent numbers, baselines, experiments, or citations.
 
 ## Writing/Review Protocol

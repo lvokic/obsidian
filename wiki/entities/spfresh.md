@@ -3,18 +3,20 @@ id: spfresh
 type: entity
 status: active
 created: 2026-05-08
-updated: 2026-05-08
+updated: 2026-05-29
 tags:
   - ann
   - vector-search
   - updates
   - ssd
-source_count: 1
+source_count: 2
 sources:
   - raw/sources/papers/spfresh-2023.pdf
+  - raw/sources/papers/odinann-2026.pdf
 related:
   - spann
   - diskann
+  - odinann
   - svfusion
   - milvus
   - approximate-nearest-neighbor-search
@@ -41,6 +43,8 @@ SPFresh is the main update-freshness reference for billion-scale vector search. 
 
 [SVFusion](svfusion.md) is adjacent on the dynamic-workload axis, but it studies CPU-GPU-disk streaming search rather than SPANN-style disk-resident cluster maintenance.
 
+[OdinANN](odinann.md) is the closest graph-based contrast: it targets the same update-stability problem but inserts directly into an SSD-resident graph rather than rebalancing SPANN-style clusters.
+
 ## Key Evidence
 
 The paper reports 2.41x lower average tail latency than DiskANN under fresh updates, 4K QPS search plus 2K QPS update throughput on one NVMe SSD, and stable P99.9 latency around 4 ms in its update simulation.
@@ -49,6 +53,7 @@ The paper reports 2.41x lower average tail latency than DiskANN under fresh upda
 
 - [SPFresh Source Note](../source-notes/spfresh-2023.md)
 - [SVFusion](svfusion.md)
+- [OdinANN](odinann.md)
 - [SPANN](spann.md)
 - [DiskANN](diskann.md)
 - [Milvus](milvus.md)
