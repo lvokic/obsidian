@@ -406,3 +406,29 @@ Unresolved questions: the older numbered card files under `agent-writing-map/` s
 - Fixed the `02-introduction/` excerpts in particular so Starling, Integrating Vector DBs, Chameleon, and OdinANN include the full introduction tail plus the next-section opening page.
 - Updated the exemplar README and root index with a direct entry to the excerpt folder.
 - Constraint: excerpts are PDFs for private vault reading rather than raw-text markdown dumps, avoiding long verbatim reproduction in wiki text.
+
+## [2026-06-01 20:01] query | Merge ANNS background and motivation agent cards
+
+- Re-read ANNS-related source notes and checked raw PDF headings for papers with true combined Background and Motivation sections.
+- Replaced `wiki/analyses/anns-section-writing-exemplars/agent-writing-map/03-background-cards.md` with one ranked Background & Motivation card covering OdinANN, FusionANNS, Chameleon, RUMMY, Flash Graph Indexing, SmartANNS, and AQR-HNSW.
+- Replaced `wiki/analyses/anns-section-writing-exemplars/agent-writing-map/04-motivation-cards.md` with a compatibility pointer to the canonical card so future agents do not use a separate motivation card.
+- Updated `agent-writing-map/AGENT_MAP.md` so future agents read the original combined sections first and route to the canonical card.
+- Working synthesis: the best combined background/motivation model is OdinANN, followed by FusionANNS and Chameleon. AQR-HNSW matches the section-title filter but should be treated as a low-confidence negative example rather than a style exemplar.
+
+## [2026-06-01 20:36] query | Expand ANNS section excerpt PDFs to Top 5 and audit boundaries
+
+- Expanded `wiki/analyses/anns-section-writing-exemplars/top4-section-excerpts/` from 44 Top 4 PDFs to 55 Top 5 PDFs while keeping the path stable for existing links.
+- Regenerated every excerpt with a stricter minimal-page boundary rule: keep the next heading page only when it shares the target section tail; do not include a fresh page that belongs only to the next section.
+- Added `boundary-audit.md` with a per-PDF audit table for all 55 excerpts.
+- Corrected overlong or ambiguous excerpts including Chameleon motivation, Starling motivation, Starling architecture, Integrating Vector DBs method, and Milvus implementation; visual inspection trimmed Milvus before the Applications section.
+- Recompressed oversized Integrating Vector DB excerpts after regeneration.
+- Updated the exemplar README and root index to point to the Top 5 excerpt set.
+
+## [2026-06-01 20:22] query | Rename ANNS excerpts to Top 5 and merge background motivation
+
+- Renamed `wiki/analyses/anns-section-writing-exemplars/top4-section-excerpts/` to `wiki/analyses/anns-section-writing-exemplars/top5-section-excerpts/`.
+- Removed the old split excerpt folders `03-background-preliminaries/` and `04-motivation-characterization/` because the requested target is one combined Background & Motivation chapter, not standalone preliminary or characterization sections.
+- Added `top5-section-excerpts/03-background-motivation/` with only the Top 5 combined Background & Motivation excerpts from the canonical card: OdinANN, FusionANNS, Chameleon, RUMMY, and Flash Graph Indexing.
+- Corrected the RUMMY excerpt to pages `3-5` after rendering showed page `2` contained only title/abstract/introduction content before the target Section 2 page.
+- Deleted `wiki/analyses/anns-section-writing-exemplars/agent-writing-map/04-motivation-cards.md` and removed its agent-map references.
+- Updated `03-background-cards.md`, `AGENT_MAP.md`, `README.md`, `boundary-audit.md`, and `index.md` so future agents use the combined Top 5 Background & Motivation package.

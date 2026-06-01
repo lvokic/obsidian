@@ -1,95 +1,57 @@
 ---
-id: anns-section-agent-map-background
+id: anns-section-agent-map-background-motivation
 type: analysis
 status: active
 created: 2026-05-27
-updated: 2026-05-29
-tags: [anns, paper-writing, background, preliminaries, agent-map]
-source_count: 6
+updated: 2026-06-01
+tags: [anns, paper-writing, background, motivation, agent-map]
+source_count: 5
 sources:
-  - raw/sources/papers/vbase-2023.pdf
-  - raw/inbox/chameleon-ralm-vector-search-vldb-best-scalable-data-science-2025.pdf
-  - raw/inbox/integrating-vector-databases-across-embedding-models-sigmod-hm-2026.pdf
-  - raw/sources/papers/starling-2024.pdf
   - raw/sources/papers/odinann-2026.pdf
-  - raw/sources/papers/smartanns-2024.pdf
+  - raw/sources/papers/fusionanns-2025.pdf
+  - raw/inbox/chameleon-ralm-vector-search-vldb-best-scalable-data-science-2025.pdf
+  - raw/sources/papers/rummy-2024.pdf
+  - raw/inbox/flash-graph-indexing-2025.pdf
 related:
   - anns-section-agent-writing-map
 confidence: medium
 ---
 
-# Background / Preliminaries Cards
+# Background & Motivation Card
 
-## Current Top 5 Card Index
+This is the only card future agents should use for combined background/motivation writing. It replaces the old split between standalone context-setting guidance and standalone bottleneck-characterization guidance.
 
-This index is authoritative for the current background/preliminaries ranking. The detailed cards below are retained as expanded style notes; if they conflict with this index or [Background Ranking](../background-preliminaries.md), follow the ranking.
+Selection rule: include only ANNS-related papers whose designated section performs both jobs in one place: teach the minimum system/index background, then prove why the paper's problem is real.
 
-| Rank | Paper | Use when | Writing move to copy | Do not copy |
-|---|---|---|---|---|
-| 1 | VBASE | Papers needing a semantic abstraction before system design. | Define the property that the rest of the paper repeatedly exploits. | Do not introduce formalism that the method never uses. |
-| 2 | Chameleon | RALM/vector serving systems with hardware or deployment constraints. | Make workload, serving, and hardware background converge into one design need. | Do not turn background into a broad hardware survey. |
-| 3 | Integrating Vector Databases | Multi-model vector database and embedding interoperability papers. | Use background to define the data-management object that prior systems miss. | Do not use it for a pure kernel or index-layout paper. |
-| 4 | Starling | Disk-resident segment search and constrained deployment units. | Define only the query types, segment model, and objective needed later. | Do not over-narrow if the paper needs a distributed system model. |
-| 5 | OdinANN | Dynamic graph ANNS and direct update mechanisms. | Prepare the reader with just enough graph/update vocabulary to understand the algorithm. | Do not bury the actual update problem in generic HNSW background. |
+## Card: Ranked Top 5 Combined Sections
 
-## Legacy Detailed Cards
+| Rank | Paper | Designated section | Evaluation | Best move to imitate | Caveat |
+|---|---|---|---|---|---|
+| 1 | OdinANN | Section 2, "Background and Motivation" | Best overall combined section for an ANNS systems paper. It starts from on-disk graph layout and operations, uses a concrete buffered-insert failure, then turns the failure into direct-insert opportunity and challenges. | Background is not decorative; every concept introduced is later used to explain update interference, memory pressure, or concurrency. | Most reusable for dynamic graph indexes; less useful if your paper is not about online updates or storage-resident graphs. |
+| 2 | FusionANNS | Section 2, "Background and Motivation" | Strongest multi-technique setup. It teaches hierarchical indexing, PQ, GPU acceleration, and reranking, then shows why naively combining them fails. | Use measured failure of the straightforward composition to justify why a co-designed system is necessary. | Dense section; copy the challenge decomposition, not the amount of mechanism packed into the setup. |
+| 3 | Chameleon | Section 2, "Background and Motivation" | Best for tying workload, serving model, vector-search algorithm, and hardware placement into one need. The RALM setup makes accelerator disaggregation feel like a consequence of workload structure. | Make the application background and the hardware bottleneck converge into a design requirement. | Slightly broad; if copied carelessly, it becomes a survey of RALM, PQ, CPUs, GPUs, and FPGAs instead of a focused section. |
+| 4 | RUMMY | Section 2, "Background and Motivation" | Clean batch/vector-query processing setup. It explains vector query processing, GPU execution, and host-memory extension before motivating reordered pipelining. | Separate the attractive resource from the reason naive use of that resource fails. | More vector-query-processing than index-design; use it when batching, host-GPU movement, or pipeline scheduling is central. |
+| 5 | Flash Graph Indexing | Section 2, "Background and Motivation" | Valuable for CPU/vectorization and graph-construction papers. It narrows HNSW construction to distance-comparison bottlenecks and SIMD underuse. | Convert an algorithmic step into an execution bottleneck the method can directly attack. | The section spends too much space on taxonomy before the core analysis; do not imitate that ratio unless the taxonomy is essential. |
 
-The detailed cards below predate the Top 5 refresh. They are still useful for studying writing moves, but they are not a complete or current ranking.
+## Section Boundaries To Read
 
-## VBASE - Sections 2-3 Setup
+Use only these designated sections when asking another agent to learn the style.
 
-Source pointer: [VBASE source note](../../../source-notes/vbase-2023.md); raw PDF Sections 2 and 3 setup around database/vector-index division and relaxed monotonicity.
+| Paper | Source note | Raw source | Boundary |
+|---|---|---|---|
+| OdinANN | [odinann-2026](../../../source-notes/odinann-2026.md) | [odinann-2026.pdf](../../../../raw/sources/papers/odinann-2026.pdf) | Start at Section 2 and stop at the Section 3 opening. |
+| FusionANNS | [fusionanns-2025](../../../source-notes/fusionanns-2025.md) | [fusionanns-2025.pdf](../../../../raw/sources/papers/fusionanns-2025.pdf) | Start at Section 2 and stop at the Section 3 opening. |
+| Chameleon | [chameleon-ralm-vector-search-2024](../../../source-notes/chameleon-ralm-vector-search-2024.md) | [chameleon PDF](../../../../raw/inbox/chameleon-ralm-vector-search-vldb-best-scalable-data-science-2025.pdf) | Start at Section 2 and stop at the Section 3 opening. |
+| RUMMY | [rummy-2024](../../../source-notes/rummy-2024.md) | [rummy-2024.pdf](../../../../raw/sources/papers/rummy-2024.pdf) | Start at Section 2 and stop at the Section 3 opening. |
+| Flash Graph Indexing | [flash-graph-indexing-2025](../../../source-notes/flash-graph-indexing-2025.md) | [flash PDF](../../../../raw/inbox/flash-graph-indexing-2025.pdf) | Start at Section 2 and stop at the Section 3 opening. |
 
-Use when writing: background for a paper whose contribution depends on query semantics or index/engine interfaces.
+## Writing Pattern To Learn
 
-Section role: define the abstraction that the design will later exploit.
+1. Start with the smallest execution model the reader needs: graph layout, IVF/PQ flow, GPU memory model, accelerator/disaggregated-memory model, or HNSW construction path.
+2. Move quickly from that model to a concrete failure mode: merge interference, I/O amplification, transfer bottleneck, SIMD underuse, or load imbalance.
+3. Show why the obvious solution fails before introducing your own design direction.
+4. End the section with requirements or challenges that make the method feel necessary.
 
-Argument skeleton:
+## Brutally Honest Guidance
 
-1. Explain what current vector indexes expose to the system.
-2. Explain what database query execution needs.
-3. Identify the mismatch between those two surfaces.
-4. Introduce the property that bridges them.
-5. Delay implementation details until the reader accepts the abstraction.
-
-Reusable writing move: VBASE turns background into a setup for the central theorem-like idea. It is not a generic literature survey.
-
-Do not copy: the formalism unless the rest of the paper will use it repeatedly.
-
-## Starling - Section 2 Preliminaries
-
-Source pointer: [Starling source note](../../../source-notes/starling-2024.md); raw PDF Section 2, "PRELIMINARIES".
-
-Use when writing: background for a disk-resident ANNS paper with a specific workload unit.
-
-Section role: define query types, the data-segment setting, and the optimization objective before the design appears.
-
-Argument skeleton:
-
-1. Define the query types the system supports.
-2. Define the data segment as the deployment unit.
-3. State the resource constraints on that unit.
-4. Convert the setup into an optimization objective.
-
-Reusable writing move: the section cuts away irrelevant ANN taxonomy and only defines concepts needed for the later design.
-
-Do not copy: the narrowness if your paper needs a broader system model or distributed setting.
-
-## SmartANNS - Section 2 Background and Motivation
-
-Source pointer: [SmartANNS source note](../../../source-notes/smartanns-2024.md); raw PDF Section 2, "Background and Motivation".
-
-Use when writing: background for hardware-software co-design, near-data processing, SmartSSD, or accelerator-assisted ANNS.
-
-Section role: connect ANNS basics to the relevant hardware substrate.
-
-Argument skeleton:
-
-1. Briefly introduce ANNS and the index family used.
-2. Introduce the hardware substrate and its constraints.
-3. Explain why naive use of the hardware is insufficient.
-4. Prepare the reader for the system overview.
-
-Reusable writing move: SmartANNS tries to make hardware context relevant to ANNS rather than presenting a separate hardware survey.
-
-Do not copy: the hardware background unless your paper proves that hardware placement changes the ANNS execution path.
+Do not teach the agent to write a broad survey. The useful pattern is "minimum background plus unavoidable problem." If a paragraph does not support the bottleneck or the method's design requirements, cut it.

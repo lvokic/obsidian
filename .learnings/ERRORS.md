@@ -48,6 +48,33 @@ Moving `raw/inbox/p1964-wang.pdf` failed because the inbox contents changed and 
 Rechecked `raw/inbox/`, identified the same PVLDB graph-ANNS survey as `survey-on-anns.pdf`, and moved that actual file to `raw/sources/papers/graph-based-anns-survey-2021.pdf`.
 
 ---
+## [ERR-20260601-001] markdown_link_check_script
+
+**Logged**: 2026-06-01T20:22:00+08:00
+**Priority**: low
+**Status**: resolved
+**Area**: docs
+
+### Summary
+First local markdown link-check script failed because it unpacked one regex capture group into two variables.
+
+### Error
+```text
+ValueError: too many values to unpack (expected 2)
+```
+
+### Context
+- Command/operation attempted: local Python link checker for ANNS Top 5 excerpt markdown files.
+- Input or parameters used: regex `\\[[^\\]]+\\]\\(([^)]+)\\)` with a stale loop expecting `(label, target)`.
+
+### Resolution
+Removed the unused unpacking loop and reran the checker successfully: 16 markdown files and 419 links scanned with no missing local targets.
+
+### Metadata
+- Reproducible: yes
+- Related Files: wiki/analyses/anns-section-writing-exemplars/top5-section-excerpts/
+
+---
 
 ## [ERR-20260508-001] git_branch_rename_sandbox
 

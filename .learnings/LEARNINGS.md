@@ -50,6 +50,28 @@ When reviewing thesis/project documents in this vault, separate three evidence c
 - Tags: review-scope, evidence-boundary, thesis
 
 ---
+## [LRN-20260601-001] correction
+
+**Logged**: 2026-06-01T20:22:00+08:00
+**Priority**: medium
+**Status**: pending
+**Area**: docs
+
+### Summary
+For ANNS section excerpt packages, do not include ranked candidates beyond the requested Top N.
+
+### Details
+The user corrected the Background & Motivation excerpt work: the package should collect only the Top 5 examples and the directory name should match `top5-section-excerpts`, not keep an old `top4-section-excerpts` name or include extra rank-6/rank-7 examples.
+
+### Suggested Action
+When generating exemplar folders from a ranked card, enforce the requested cutoff in both generated artifacts and navigation metadata. If the folder name encodes a rank cutoff, rename it rather than preserving a stale compatibility path.
+
+### Metadata
+- Source: user_feedback
+- Related Files: wiki/analyses/anns-section-writing-exemplars/top5-section-excerpts/, wiki/analyses/anns-section-writing-exemplars/agent-writing-map/03-background-cards.md
+- Tags: obsidian, paper-writing, excerpt-boundaries, top-n
+
+---
 ## [LRN-20260508-001] correction
 
 **Logged**: 2026-05-08T11:52:27+08:00

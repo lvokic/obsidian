@@ -3,7 +3,7 @@ id: anns-section-writing-exemplars
 type: analysis
 status: active
 created: 2026-05-26
-updated: 2026-05-30
+updated: 2026-06-01
 tags: [anns, paper-writing, systems, section-exemplars]
 source_count: 69
 sources:
@@ -39,8 +39,7 @@ I penalized sections that overclaim, hide assumptions, blur algorithmic novelty 
 |---|---|---|---|---|---|---|
 | [Abstract](abstract.md) | SPFresh | WARP | OdinANN | Chameleon | Starling | The top abstracts state a precise pain, name a mechanism, and give scoped evidence; Chameleon and Starling are strong but less reusable. |
 | [Introduction](introduction.md) | Starling | Integrating Vector DBs | Chameleon | OdinANN | VBASE | The best introductions create a missing-system capability, not just a bigger benchmark. VBASE is excellent but too interface-specific for broad copying. |
-| [Background / Preliminaries](background-preliminaries.md) | VBASE | Chameleon | Integrating Vector DBs | Starling | OdinANN | Good background teaches exactly the abstraction that later breaks; survey-style completeness is not rewarded. |
-| [Motivation / Characterization](motivation-characterization.md) | GustANN | Chameleon | WARP | OdinANN | Starling | The winners measure the bottleneck before selling the system. Starling is cleaner than many papers but narrower than the higher-ranked models. |
+| [Background & Motivation](agent-writing-map/03-background-cards.md) | OdinANN | FusionANNS | Chameleon | RUMMY | Flash Graph Indexing | Use one combined section: teach only the minimum execution model, then prove the bottleneck. Standalone preliminary-style coverage is not rewarded. |
 | [System Overview / Architecture](system-overview-architecture.md) | Milvus | Chameleon | SPFresh | FusionANNS | Starling | Architecture winners make placement and control flow explicit. FusionANNS is demoted because the premise carries too much load. |
 | [Method / Core Design](core-design-algorithms.md) | Starling | WARP | SPFresh | OdinANN | Integrating Vector DBs | Method quality means design inevitability. Integrating Vector DBs is formally strong but not an ANNS execution template. |
 | [Optimization / Execution Layer](optimization-execution-layer.md) | PQ Fast Scan | WARP | Chameleon | Milvus | Flash | PQ Fast Scan remains the cleanest optimization prose; Flash is valuable but too construction-specific to rank higher. |
@@ -77,8 +76,8 @@ For future agents, start with [Agent Map: ANNS Section Writing Exemplars](agent-
 
 For a faster visual workflow, open [Top 3 Section Writing Navigator](top3-section-writing-navigator.html). It turns the best three papers per section into a navigable HTML dashboard with PDF links, source-note links, section targets, writing moves, and warnings.
 
-For direct original-section reading, open [Top 4 Section Excerpts](top4-section-excerpts/README.md). It contains boundary-cropped PDFs for each section's best four papers. Each excerpt starts on the page where the target section appears and ends on the page where the next chapter or subsection opens, so two-column section tails are not accidentally cut off.
+For direct original-section reading, open [Top 5 Section Excerpts](top5-section-excerpts/README.md). It contains boundary-cropped PDFs for each section's best five papers plus a [boundary audit](top5-section-excerpts/boundary-audit.md). The Background & Motivation package is intentionally combined into [03-background-motivation](top5-section-excerpts/03-background-motivation/README.md), not split into preliminary and motivation folders. Each excerpt starts on the page where the target section appears and stops at the minimal page boundary that preserves the target section tail without carrying whole unrelated sections.
 
-When drafting a new paper, do not copy one whole paper's structure. Instead, assemble a section-by-section template: Starling-style introduction, VBASE/Chameleon-style background hook, GustANN-style motivation, Starling/WARP-style method, PQ Fast Scan/WARP-style optimization, SPFresh-style implementation/evaluation, and Starling/GustANN-style discussion.
+When drafting a new paper, do not copy one whole paper's structure. Instead, assemble a section-by-section template: Starling-style introduction, OdinANN/FusionANNS/Chameleon-style combined background and motivation, Starling/WARP-style method, PQ Fast Scan/WARP-style optimization, SPFresh-style implementation/evaluation, and Starling/GustANN-style discussion.
 
 The main writing lesson is that the best papers make the reviewer feel that every design decision was forced by a previously demonstrated bottleneck. The weaker papers ask the reviewer to trust that the system is important because the system is large or the hardware is fashionable.
