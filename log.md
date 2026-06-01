@@ -393,3 +393,16 @@ Unresolved questions: the older numbered card files under `agent-writing-map/` s
 - Preserved the older detailed cards as legacy style-learning notes instead of deleting them, because they still capture useful writing moves but are no longer authoritative rankings.
 - Updated `AGENT_MAP.md` to tell future agents that ranking files and the new Top 5 card indexes override any stale detailed card.
 - Unresolved: the optimization/execution-layer section still points to the separate SIMD/batch map rather than a numbered card file, which is intentional because that topic needs mechanism-level implementation guidance.
+## [2026-05-30 13:36] query | Build ANNS Top 3 section-writing HTML navigator
+
+- Created `wiki/analyses/anns-section-writing-exemplars/top3-section-writing-navigator.html`, a standalone dark academic dashboard for navigating each section's best three exemplar papers.
+- Added PDF links, source-note links, ranking-file links, exact section targets, paraphrased writing moves, and do-not-copy warnings for 33 section/paper cards.
+- Updated `wiki/analyses/anns-section-writing-exemplars/README.md` and `index.md` so the navigator is discoverable.
+- Copyright/sourcing constraint: the page intentionally avoids reproducing long paper-section text; it points to local PDFs for original text and gives safe writing-method summaries.
+## [2026-06-01 12:31] query | Regenerate Top 4 ANNS section excerpt PDFs with boundary-page rule
+
+- Created and then corrected `wiki/analyses/anns-section-writing-exemplars/top4-section-excerpts/` as a per-section folder of Top 4 paper excerpt PDFs.
+- Regenerated all 44 excerpt PDFs using the boundary-page rule: start on the physical PDF page where the target section appears and end on the physical PDF page where the next chapter or subsection opens.
+- Fixed the `02-introduction/` excerpts in particular so Starling, Integrating Vector DBs, Chameleon, and OdinANN include the full introduction tail plus the next-section opening page.
+- Updated the exemplar README and root index with a direct entry to the excerpt folder.
+- Constraint: excerpts are PDFs for private vault reading rather than raw-text markdown dumps, avoiding long verbatim reproduction in wiki text.

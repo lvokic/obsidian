@@ -1,0 +1,1462 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ANNS Top 3 Section Writing Navigator</title>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Crimson+Pro:wght@500;600;700&display=swap");
+
+    :root {
+      --bg: #020617;
+      --panel: rgba(15, 23, 42, 0.72);
+      --panel-strong: rgba(15, 23, 42, 0.94);
+      --line: rgba(148, 163, 184, 0.22);
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --soft: #cbd5e1;
+      --green: #22c55e;
+      --cyan: #22d3ee;
+      --amber: #f59e0b;
+      --rose: #fb7185;
+      --violet: #a78bfa;
+      --blue: #60a5fa;
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.46);
+      --radius-xl: 32px;
+      --radius-lg: 22px;
+      --font-heading: "Crimson Pro", Georgia, serif;
+      --font-body: "Atkinson Hyperlegible", ui-sans-serif, system-ui, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 15% 12%, rgba(34, 211, 238, 0.18), transparent 32rem),
+        radial-gradient(circle at 83% 8%, rgba(167, 139, 250, 0.15), transparent 30rem),
+        radial-gradient(circle at 78% 62%, rgba(34, 197, 94, 0.12), transparent 30rem),
+        linear-gradient(135deg, #020617 0%, #07111f 42%, #020617 100%);
+      font-family: var(--font-body);
+      line-height: 1.55;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      content: "";
+      background-image:
+        linear-gradient(rgba(148, 163, 184, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
+      background-size: 64px 64px;
+      mask-image: linear-gradient(to bottom, black, transparent 88%);
+    }
+
+    body::after {
+      position: fixed;
+      inset: auto -12rem -16rem auto;
+      width: 40rem;
+      height: 40rem;
+      z-index: -1;
+      content: "";
+      border-radius: 999px;
+      background: conic-gradient(from 200deg, rgba(34, 197, 94, 0.28), rgba(34, 211, 238, 0.18), rgba(167, 139, 250, 0.24), rgba(34, 197, 94, 0.28));
+      filter: blur(60px);
+      opacity: 0.8;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .skip-link {
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      z-index: 100;
+      padding: 0.75rem 1rem;
+      transform: translateY(-160%);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--panel-strong);
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+      outline: 2px solid var(--green);
+      outline-offset: 3px;
+    }
+
+    .topbar {
+      position: fixed;
+      top: 16px;
+      left: 16px;
+      right: 16px;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.72rem 0.9rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(2, 6, 23, 0.72);
+      box-shadow: 0 18px 60px rgba(0, 0, 0, 0.34);
+      backdrop-filter: blur(22px);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      min-width: 0;
+    }
+
+    .brand-mark {
+      position: relative;
+      display: inline-grid;
+      width: 36px;
+      height: 36px;
+      place-items: center;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(34, 197, 94, 0.95), rgba(34, 211, 238, 0.92));
+      box-shadow: 0 0 28px rgba(34, 197, 94, 0.28);
+    }
+
+    .brand-mark::before,
+    .brand-mark::after {
+      position: absolute;
+      content: "";
+      border-radius: 999px;
+      background: #020617;
+    }
+
+    .brand-mark::before {
+      width: 18px;
+      height: 4px;
+    }
+
+    .brand-mark::after {
+      width: 4px;
+      height: 18px;
+    }
+
+    .brand-copy {
+      min-width: 0;
+    }
+
+    .brand-copy strong {
+      display: block;
+      overflow: hidden;
+      color: var(--text);
+      font-size: 0.95rem;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .brand-copy span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.74rem;
+    }
+
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .top-actions a,
+    .top-actions button {
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.78);
+      color: var(--soft);
+      cursor: pointer;
+      font: 700 0.78rem var(--font-body);
+      padding: 0.6rem 0.82rem;
+      text-decoration: none;
+      transition: border-color 180ms ease, color 180ms ease, background 180ms ease;
+    }
+
+    .top-actions a:hover,
+    .top-actions button:hover,
+    .top-actions a:focus-visible,
+    .top-actions button:focus-visible {
+      border-color: rgba(34, 197, 94, 0.55);
+      background: rgba(34, 197, 94, 0.1);
+      color: var(--text);
+      outline: none;
+    }
+
+    .rail {
+      position: fixed;
+      top: 104px;
+      left: 16px;
+      z-index: 12;
+      width: 236px;
+      max-height: calc(100vh - 128px);
+      overflow: auto;
+      padding: 0.8rem;
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      background: rgba(2, 6, 23, 0.62);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(20px);
+    }
+
+    .rail-title {
+      margin: 0.25rem 0.35rem 0.7rem;
+      color: var(--muted);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .rail a {
+      display: block;
+      margin: 0.18rem 0;
+      padding: 0.62rem 0.7rem;
+      border: 1px solid transparent;
+      border-radius: 16px;
+      color: var(--soft);
+      font-size: 0.82rem;
+      text-decoration: none;
+      transition: background 180ms ease, border-color 180ms ease, color 180ms ease;
+    }
+
+    .rail a:hover,
+    .rail a:focus-visible {
+      border-color: rgba(34, 211, 238, 0.38);
+      background: rgba(34, 211, 238, 0.08);
+      color: var(--text);
+      outline: none;
+    }
+
+    .page {
+      width: min(1480px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 112px 0 72px 260px;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 460px;
+      padding: 4rem;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      background:
+        linear-gradient(135deg, rgba(15, 23, 42, 0.88), rgba(2, 6, 23, 0.64)),
+        radial-gradient(circle at top right, rgba(34, 197, 94, 0.18), transparent 25rem);
+      box-shadow: var(--shadow);
+    }
+
+    .hero::after {
+      position: absolute;
+      top: -8rem;
+      right: -5rem;
+      width: 34rem;
+      height: 34rem;
+      content: "";
+      border: 1px solid rgba(34, 211, 238, 0.22);
+      border-radius: 50%;
+      background:
+        radial-gradient(circle, rgba(34, 211, 238, 0.2), transparent 36%),
+        repeating-conic-gradient(from 0deg, rgba(148, 163, 184, 0.18) 0deg 1deg, transparent 1deg 16deg);
+      opacity: 0.72;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 920px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1.2rem;
+      padding: 0.42rem 0.72rem;
+      border: 1px solid rgba(34, 197, 94, 0.36);
+      border-radius: 999px;
+      background: rgba(34, 197, 94, 0.08);
+      color: #bbf7d0;
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--green);
+      box-shadow: 0 0 0 7px rgba(34, 197, 94, 0.13);
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: var(--font-heading);
+      line-height: 0.96;
+    }
+
+    h1 {
+      max-width: 880px;
+      margin: 0;
+      font-size: clamp(3.2rem, 8vw, 7.6rem);
+      letter-spacing: -0.055em;
+    }
+
+    .gradient-text {
+      background: linear-gradient(100deg, #f8fafc, #a7f3d0 38%, #67e8f9 67%, #c4b5fd);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 28px rgba(34, 211, 238, 0.12);
+    }
+
+    .hero p {
+      max-width: 760px;
+      margin: 1.25rem 0 0;
+      color: var(--soft);
+      font-size: 1.07rem;
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0.8rem;
+      margin-top: 2.1rem;
+    }
+
+    .metric {
+      padding: 1rem;
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      border-radius: 20px;
+      background: rgba(2, 6, 23, 0.55);
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 1.45rem;
+    }
+
+    .metric span {
+      color: var(--muted);
+      font-size: 0.78rem;
+    }
+
+    .toolbar {
+      position: sticky;
+      top: 90px;
+      z-index: 10;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 0.9rem;
+      margin: 1rem 0 1.35rem;
+      padding: 0.9rem;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: rgba(2, 6, 23, 0.7);
+      backdrop-filter: blur(18px);
+    }
+
+    .search {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      padding: 0 1rem;
+      border: 1px solid rgba(148, 163, 184, 0.24);
+      border-radius: 18px;
+      background: rgba(15, 23, 42, 0.78);
+    }
+
+    .search svg {
+      flex: 0 0 auto;
+      color: var(--muted);
+    }
+
+    .search input {
+      width: 100%;
+      min-height: 48px;
+      border: 0;
+      background: transparent;
+      color: var(--text);
+      font: 700 0.95rem var(--font-body);
+      outline: none;
+    }
+
+    .view-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      border: 1px solid rgba(34, 211, 238, 0.3);
+      border-radius: 999px;
+      background: rgba(34, 211, 238, 0.08);
+      color: #cffafe;
+      font-weight: 700;
+      padding: 0 1rem;
+    }
+
+    .matrix,
+    .howto,
+    .section-block {
+      margin-top: 1.25rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      background: rgba(15, 23, 42, 0.62);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+    }
+
+    .matrix,
+    .howto {
+      padding: 1.3rem;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1.5rem 1.5rem 0;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 4.4rem);
+      letter-spacing: -0.045em;
+    }
+
+    .section-head p {
+      max-width: 680px;
+      margin: 0.5rem 0 0;
+      color: var(--muted);
+    }
+
+    .section-tag {
+      flex: 0 0 auto;
+      border: 1px solid rgba(34, 197, 94, 0.32);
+      border-radius: 999px;
+      background: rgba(34, 197, 94, 0.08);
+      color: #bbf7d0;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.45rem 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+      padding: 1.5rem;
+    }
+
+    .paper-card {
+      position: relative;
+      min-height: 100%;
+      overflow: hidden;
+      border: 1px solid rgba(148, 163, 184, 0.22);
+      border-radius: 28px;
+      background:
+        linear-gradient(145deg, rgba(15, 23, 42, 0.96), rgba(2, 6, 23, 0.78)),
+        radial-gradient(circle at top right, rgba(34, 211, 238, 0.12), transparent 18rem);
+      box-shadow: 0 18px 46px rgba(0, 0, 0, 0.26);
+      transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+    }
+
+    .paper-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(34, 211, 238, 0.42);
+      box-shadow: 0 26px 64px rgba(0, 0, 0, 0.4);
+    }
+
+    .paper-card::before {
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 5px;
+      content: "";
+      background: var(--accent, var(--green));
+    }
+
+    .paper-card-inner {
+      padding: 1.1rem;
+    }
+
+    .rank-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .rank-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      border: 1px solid color-mix(in srgb, var(--accent, var(--green)) 60%, transparent);
+      border-radius: 15px;
+      background: color-mix(in srgb, var(--accent, var(--green)) 14%, transparent);
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .paper-card h3 {
+      margin: 0;
+      font-size: 1.75rem;
+      letter-spacing: -0.025em;
+    }
+
+    .target {
+      display: inline-flex;
+      margin: 0.75rem 0 0.4rem;
+      padding: 0.34rem 0.55rem;
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      border-radius: 999px;
+      background: rgba(148, 163, 184, 0.08);
+      color: var(--soft);
+      font-size: 0.74rem;
+      font-weight: 700;
+    }
+
+    .thesis {
+      color: var(--soft);
+      font-size: 0.92rem;
+    }
+
+    .move-list {
+      display: grid;
+      gap: 0.55rem;
+      margin: 1rem 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .move-list li {
+      position: relative;
+      padding-left: 1rem;
+      color: var(--soft);
+      font-size: 0.89rem;
+    }
+
+    .move-list li::before {
+      position: absolute;
+      top: 0.62em;
+      left: 0;
+      width: 6px;
+      height: 6px;
+      content: "";
+      border-radius: 999px;
+      background: var(--accent, var(--green));
+      box-shadow: 0 0 14px color-mix(in srgb, var(--accent, var(--green)) 45%, transparent);
+    }
+
+    .avoid {
+      margin-top: 1rem;
+      padding: 0.85rem;
+      border: 1px solid rgba(251, 113, 133, 0.18);
+      border-radius: 18px;
+      background: rgba(251, 113, 133, 0.07);
+      color: #fecdd3;
+      font-size: 0.84rem;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .actions a,
+    .actions button {
+      border: 1px solid rgba(148, 163, 184, 0.22);
+      border-radius: 999px;
+      background: rgba(2, 6, 23, 0.55);
+      color: var(--soft);
+      cursor: pointer;
+      font: 700 0.76rem var(--font-body);
+      padding: 0.5rem 0.62rem;
+      text-decoration: none;
+      transition: background 180ms ease, border-color 180ms ease, color 180ms ease;
+    }
+
+    .actions a:hover,
+    .actions button:hover,
+    .actions a:focus-visible,
+    .actions button:focus-visible {
+      border-color: color-mix(in srgb, var(--accent, var(--green)) 48%, transparent);
+      background: color-mix(in srgb, var(--accent, var(--green)) 10%, transparent);
+      color: var(--text);
+      outline: none;
+    }
+
+    .matrix h2,
+    .howto h2 {
+      margin: 0 0 1rem;
+      font-size: 2.2rem;
+      letter-spacing: -0.035em;
+    }
+
+    .matrix-table {
+      display: grid;
+      gap: 0.65rem;
+    }
+
+    .matrix-row {
+      display: grid;
+      grid-template-columns: 220px repeat(3, minmax(0, 1fr));
+      gap: 0.65rem;
+      align-items: stretch;
+    }
+
+    .matrix-cell {
+      padding: 0.75rem 0.85rem;
+      border: 1px solid rgba(148, 163, 184, 0.16);
+      border-radius: 16px;
+      background: rgba(2, 6, 23, 0.35);
+      color: var(--soft);
+      font-size: 0.84rem;
+      font-weight: 700;
+    }
+
+    .matrix-cell:first-child {
+      color: var(--text);
+      background: rgba(34, 211, 238, 0.07);
+    }
+
+    .howto-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0.8rem;
+    }
+
+    .howto-card {
+      padding: 1rem;
+      border: 1px solid rgba(148, 163, 184, 0.17);
+      border-radius: 20px;
+      background: rgba(2, 6, 23, 0.38);
+    }
+
+    .howto-card strong {
+      display: block;
+      margin-bottom: 0.35rem;
+      color: var(--text);
+    }
+
+    .howto-card span {
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .notice {
+      margin-top: 1rem;
+      padding: 1rem;
+      border: 1px solid rgba(245, 158, 11, 0.24);
+      border-radius: 20px;
+      background: rgba(245, 158, 11, 0.07);
+      color: #fde68a;
+      font-size: 0.9rem;
+    }
+
+    .footer {
+      margin-top: 1.5rem;
+      padding: 1.2rem;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    @media (max-width: 1180px) {
+      .rail {
+        display: none;
+      }
+
+      .page {
+        padding-left: 0;
+      }
+
+      .card-grid,
+      .howto-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .matrix-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .topbar {
+        align-items: flex-start;
+        border-radius: 24px;
+        flex-direction: column;
+      }
+
+      .top-actions {
+        width: 100%;
+        overflow-x: auto;
+      }
+
+      .page {
+        width: min(100vw - 20px, 1480px);
+        padding-top: 164px;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 2rem 1.2rem;
+      }
+
+      .hero-grid,
+      .toolbar,
+      .card-grid,
+      .howto-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-head {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="topbar" aria-label="Primary navigation">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <div class="brand-copy">
+        <strong>ANNS Top 3 Writing Navigator</strong>
+        <span>Section-level paper exemplars for future agents</span>
+      </div>
+    </div>
+    <nav class="top-actions" aria-label="Page shortcuts">
+      <a href="#matrix">Top 3 Matrix</a>
+      <a href="#howto">How To Use</a>
+      <a href="README.md">Ranking README</a>
+      <button id="expandAll" type="button">Focus All</button>
+    </nav>
+  </header>
+
+  <aside class="rail" aria-label="Section rail">
+    <p class="rail-title">Sections</p>
+    <div id="railLinks"></div>
+  </aside>
+
+  <main id="main" class="page">
+    <section class="hero" aria-labelledby="page-title">
+      <div class="hero-content">
+        <span class="eyebrow"><span class="pulse-dot" aria-hidden="true"></span> Copyright-safe study mode</span>
+        <h1 id="page-title"><span class="gradient-text">Read the best sections. Steal the structure, not the prose.</span></h1>
+        <p>
+          A fast navigator for the best three ANNS-related papers per paper section. It points to the exact original section target, then compresses the writing method into reusable moves for seminar and paper drafting.
+        </p>
+        <div class="hero-grid" aria-label="Navigator stats">
+          <div class="metric"><strong>11</strong><span>paper sections covered</span></div>
+          <div class="metric"><strong>33</strong><span>ranked writing cards</span></div>
+          <div class="metric"><strong>Top 3</strong><span>only, brutally filtered</span></div>
+          <div class="metric"><strong>0</strong><span>long copied paper sections</span></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="toolbar" role="search">
+      <label class="search" for="searchInput">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="m21 21-4.35-4.35M10.8 18a7.2 7.2 0 1 1 0-14.4 7.2 7.2 0 0 1 0 14.4Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+        </svg>
+        <input id="searchInput" type="search" placeholder="Filter by section, paper, technique, bottleneck, or warning..." />
+      </label>
+      <div class="view-pill" id="resultCount">33 cards</div>
+    </div>
+
+    <section id="matrix" class="matrix" aria-labelledby="matrix-title">
+      <h2 id="matrix-title">Top 3 Matrix</h2>
+      <div id="matrixRows" class="matrix-table"></div>
+    </section>
+
+    <section id="howto" class="howto" aria-labelledby="howto-title">
+      <h2 id="howto-title">How To Use This Navigator</h2>
+      <div class="howto-grid">
+        <div class="howto-card"><strong>1. Open the PDF section first</strong><span>Read the original target section listed on each card before looking at the distilled moves.</span></div>
+        <div class="howto-card"><strong>2. Extract technique, not content</strong><span>Track opening, narrowing, contrast, evidence placement, contribution staging, and scope control.</span></div>
+        <div class="howto-card"><strong>3. Use the card as a skeleton</strong><span>Adapt the structure to your own system. Do not copy the paper's prose or claim shape blindly.</span></div>
+        <div class="howto-card"><strong>4. Check the warning</strong><span>The red warning is the fastest way to avoid overclaiming or borrowing the wrong template.</span></div>
+      </div>
+      <div class="notice">
+        This page intentionally avoids reproducing long copyrighted paper sections. It gives exact section targets, local PDF/source-note links, and paraphrased writing-method cards.
+      </div>
+    </section>
+
+    <div id="sections"></div>
+
+    <footer class="footer">
+      Built from the current ANNS section-writing exemplar rankings. Visual direction: dark academic dashboard, bento cards, sticky navigation, and shader-like background layers.
+    </footer>
+  </main>
+
+  <script>
+    const paperMeta = {
+      "SPFresh": {
+        pdf: "../../../raw/sources/papers/spfresh-2023.pdf",
+        note: "../../source-notes/spfresh-2023.md"
+      },
+      "WARP": {
+        pdf: "../../../raw/inbox/warp-multi-vector-retrieval-sigir-best-paper-2025.pdf",
+        note: "../../source-notes/warp-multi-vector-retrieval-2025.md"
+      },
+      "OdinANN": {
+        pdf: "../../../raw/sources/papers/odinann-2026.pdf",
+        note: "../../source-notes/odinann-2026.md"
+      },
+      "Chameleon": {
+        pdf: "../../../raw/inbox/chameleon-ralm-vector-search-vldb-best-scalable-data-science-2025.pdf",
+        note: "../../source-notes/chameleon-ralm-vector-search-2024.md"
+      },
+      "Starling": {
+        pdf: "../../../raw/sources/papers/starling-2024.pdf",
+        note: "../../source-notes/starling-2024.md"
+      },
+      "Integrating Vector DBs": {
+        pdf: "../../../raw/inbox/integrating-vector-databases-across-embedding-models-sigmod-hm-2026.pdf",
+        note: "../../source-notes/integrating-vector-databases-embedding-models-2026.md"
+      },
+      "VBASE": {
+        pdf: "../../../raw/sources/papers/vbase-2023.pdf",
+        note: "../../source-notes/vbase-2023.md"
+      },
+      "GustANN": {
+        pdf: "../../../raw/sources/papers/gustann-2025.pdf",
+        note: "../../source-notes/gustann-2025.md"
+      },
+      "Milvus": {
+        pdf: "../../../raw/sources/papers/milvus-2021.pdf",
+        note: "../../source-notes/milvus-2021.md"
+      },
+      "PQ Fast Scan": {
+        pdf: "../../../raw/sources/papers/pq-fast-scan-2015.pdf",
+        note: "../../source-notes/pq-fast-scan-2015.md"
+      }
+    };
+
+    const sections = [
+      {
+        id: "abstract",
+        title: "Abstract",
+        summary: "Best models for compressing pain point, mechanism, scope, and headline evidence into one reviewer-readable paragraph.",
+        ranking: "abstract.md",
+        cards: [
+          {
+            paper: "SPFresh",
+            target: "Abstract",
+            thesis: "Best when the paper has an operational freshness/update claim.",
+            moves: [
+              "Open with online vector search as a serving primitive, then immediately expose continuous update pressure.",
+              "Make prior work fail concretely: separate update indexes and global rebuilds are the mechanism-level weakness.",
+              "Name the core method only after the pain is established, then close with billion-scale evidence."
+            ],
+            avoid: "Do not borrow the freshness framing for static-search work."
+          },
+          {
+            paper: "WARP",
+            target: "Abstract",
+            thesis: "Best when the core contribution is an execution engine for multi-vector retrieval.",
+            moves: [
+              "Compress workload, bottleneck, and mechanism names into a compact arc.",
+              "Present multiple techniques as one coherent engine rather than a grab bag.",
+              "Use hard latency and memory claims to make the abstract feel systems-grade."
+            ],
+            avoid: "Do not use as a single-vector ANN abstract unless the scoring bottleneck is genuinely analogous."
+          },
+          {
+            paper: "OdinANN",
+            target: "Abstract",
+            thesis: "Best for dynamic graph ANNS with direct updates.",
+            moves: [
+              "Frame direct insert against buffered insert instead of using generic dynamic-index language.",
+              "Make stability under update load the central value proposition.",
+              "Close with search quality, latency stability, and update evidence together."
+            ],
+            avoid: "Do not use for static indexes or delete-heavy claims not supported by the system."
+          }
+        ]
+      },
+      {
+        id: "introduction",
+        title: "Introduction",
+        summary: "Best models for turning a broad ANN topic into a specific missing capability before naming the system.",
+        ranking: "introduction.md",
+        cards: [
+          {
+            paper: "Starling",
+            target: "Section 1 Introduction",
+            thesis: "Best overall problem cascade for disk-resident segment-level search.",
+            moves: [
+              "Start from vector database growth, then narrow to segment-level disk search.",
+              "Make DiskANN-like and SPANN-like options fail for different reasons.",
+              "Delay the system pitch until the disk locality problem feels unavoidable."
+            ],
+            avoid: "Do not copy the segment framing if your system operates at a different deployment unit."
+          },
+          {
+            paper: "Integrating Vector DBs",
+            target: "Section 1 Introduction",
+            thesis: "Best conceptual database introduction for embedding-model interoperability.",
+            moves: [
+              "Turn vector stores from fast search into a data-sharing and model-evolution problem.",
+              "Use concrete application pressure before introducing the abstraction.",
+              "Make the missing capability feel like a database problem, not an index tweak."
+            ],
+            avoid: "Do not use for a faster ANN paper without a real data-management abstraction."
+          },
+          {
+            paper: "Chameleon",
+            target: "Section 1 Introduction",
+            thesis: "Best service-architecture introduction for RALM/vector retrieval.",
+            moves: [
+              "Connect RALM serving, vector search, accelerator heterogeneity, and disaggregation in one chain.",
+              "Make retrieval bottlenecks shift as LLM inference gets optimized.",
+              "Use headline results to validate an architecture, not just a kernel."
+            ],
+            avoid: "Do not use if the target paper lacks service-level architecture or RALM pressure."
+          }
+        ]
+      },
+      {
+        id: "background",
+        title: "Background / Preliminaries",
+        summary: "Best models for teaching only the abstraction needed by the method.",
+        ranking: "background-preliminaries.md",
+        cards: [
+          {
+            paper: "VBASE",
+            target: "Sections 2-3 setup",
+            thesis: "Best when the contribution depends on query semantics or an index/engine interface.",
+            moves: [
+              "Explain what current vector indexes expose and what database execution needs.",
+              "Name the mismatch before introducing the bridging property.",
+              "Make relaxed monotonicity a repeated tool, not a one-off definition."
+            ],
+            avoid: "Do not introduce formalism unless later sections repeatedly use it."
+          },
+          {
+            paper: "Chameleon",
+            target: "Section 2 Background",
+            thesis: "Best for RALM/vector serving papers with hardware constraints.",
+            moves: [
+              "Teach RALM retrieval, vector search, IVF-PQ scanning, and CPU/GPU limits only as needed.",
+              "Convert background into pressure for disaggregated vector search.",
+              "Avoid broad ANN taxonomy in favor of workload-specific primitives."
+            ],
+            avoid: "Do not copy for graph ANN papers unless the IVF-PQ/RALM setting is real."
+          },
+          {
+            paper: "Integrating Vector DBs",
+            target: "Sections 3-4 background",
+            thesis: "Best for math/data-management setup around embedding spaces.",
+            moves: [
+              "Introduce local-vs-global isometry as the core hypothesis.",
+              "Define quality metrics before the method so later claims are interpretable.",
+              "Make the background prepare a transformation problem, not a survey."
+            ],
+            avoid: "Do not use for pure systems execution unless geometry is central."
+          }
+        ]
+      },
+      {
+        id: "motivation",
+        title: "Motivation / Characterization",
+        summary: "Best models for measuring the bottleneck before selling the system.",
+        ranking: "motivation-characterization.md",
+        cards: [
+          {
+            paper: "GustANN",
+            target: "Motivation / characterization section",
+            thesis: "Best hardware-to-system motivation for GPU/SSD ANNS.",
+            moves: [
+              "Show CPU bottlenecks and GPU opportunity as separate facts.",
+              "Then expose transfer selectivity and memory capacity as the real obstacles.",
+              "Convert characterization into concrete design challenges."
+            ],
+            avoid: "Do not say GPU is faster without measuring transfer and memory behavior."
+          },
+          {
+            paper: "Chameleon",
+            target: "Section 2 motivation/background",
+            thesis: "Best service-level hardware motivation.",
+            moves: [
+              "Separate LLM inference time from vector retrieval time.",
+              "Quantify CPU/GPU PQ-scan limits before proposing disaggregation.",
+              "Use changing RALM bottlenecks to justify a new serving split."
+            ],
+            avoid: "Do not generalize beyond RALM/IVF-PQ unless the measurements support it."
+          },
+          {
+            paper: "WARP",
+            target: "Section 3 characterization",
+            thesis: "Best pipeline-latency characterization for multi-vector retrieval.",
+            moves: [
+              "Profile the existing retrieval pipeline and isolate token retrieval, decompression, and scoring.",
+              "Make later execution mechanisms feel forced by measured latency.",
+              "Use the workload's scoring structure to justify system design."
+            ],
+            avoid: "Do not use this for ordinary single-vector ANN motivation."
+          }
+        ]
+      },
+      {
+        id: "architecture",
+        title: "System Overview / Architecture",
+        summary: "Best models for explaining components, placement, and control flow without scope inflation.",
+        ranking: "system-overview-architecture.md",
+        cards: [
+          {
+            paper: "Milvus",
+            target: "Section 2 System Design",
+            thesis: "Best full-system vector database overview.",
+            moves: [
+              "Start from user-facing capabilities and requirements.",
+              "Separate query engine, CPU/GPU execution, storage, dynamic data, and APIs.",
+              "Use architecture breadth to prove integration, not to hide missing novelty."
+            ],
+            avoid: "Do not copy this breadth for a focused index or kernel paper."
+          },
+          {
+            paper: "Chameleon",
+            target: "Section 3 architecture",
+            thesis: "Best heterogeneous/disaggregated architecture overview.",
+            moves: [
+              "Separate language-model serving from vector-search index and memory components.",
+              "Walk the retrieval/inference dataflow rather than only naming boxes.",
+              "Make CPU coordination and accelerator placement visible."
+            ],
+            avoid: "Do not use if the paper cannot quantify or reason about placement."
+          },
+          {
+            paper: "SPFresh",
+            target: "Section 4.1 Overall Architecture",
+            thesis: "Best update-oriented architecture.",
+            moves: [
+              "Split foreground serving from background local rebuild.",
+              "Tie updater, rebuilder, and block controller to freshness and in-place update requirements.",
+              "Explain how heavy rebuild work stays off the critical path."
+            ],
+            avoid: "Do not copy the foreground/background split without real asynchronous maintenance."
+          }
+        ]
+      },
+      {
+        id: "method",
+        title: "Method / Core Design",
+        summary: "Best models for design inevitability: every mechanism answers a previously shown bottleneck.",
+        ranking: "core-design-algorithms.md",
+        cards: [
+          {
+            paper: "Starling",
+            target: "Sections 3-5 design",
+            thesis: "Best design alignment for layout-plus-search disk ANNS.",
+            moves: [
+              "Factor the problem into route length and block locality.",
+              "Map each factor to a mechanism: navigation graph, block shuffling, and block search.",
+              "Show ANN and range search as uses of the same framework."
+            ],
+            avoid: "Do not add mechanisms unless each one has a named bottleneck."
+          },
+          {
+            paper: "WARP",
+            target: "Section 4 method",
+            thesis: "Best execution-method section for compressed multi-vector retrieval.",
+            moves: [
+              "Introduce WARPSELECT, implicit decompression, and two-stage reduction as answers to bottlenecks.",
+              "Explain execution tricks at the same granularity as the measured pipeline.",
+              "Keep the method anchored to retrieval-engine behavior."
+            ],
+            avoid: "Do not use if the method is not primarily an execution-layer redesign."
+          },
+          {
+            paper: "SPFresh",
+            target: "Sections 3-4 LIRE protocol and design",
+            thesis: "Best complex update protocol explanation.",
+            moves: [
+              "Define insert, delete, merge, split, reassign, and local rebuild as protocol cases.",
+              "Tie each operation to freshness and stability rather than implementation taste.",
+              "Map protocol operations back to serving architecture."
+            ],
+            avoid: "Do not copy the many-case structure unless the invariants are easy to state."
+          }
+        ]
+      },
+      {
+        id: "optimization",
+        title: "Optimization / Execution Layer",
+        summary: "Best models for low-level execution prose: bottleneck first, layout or kernel second.",
+        ranking: "optimization-execution-layer.md",
+        cards: [
+          {
+            paper: "PQ Fast Scan",
+            target: "Sections 1-3 optimization story",
+            thesis: "Best pure optimization writing for scan-style PQ/ADC.",
+            moves: [
+              "Show that cache locality alone is not enough.",
+              "Identify table lookup as the bottleneck before redesigning layout.",
+              "Explain SIMD in-register lookup as a direct consequence of the bottleneck."
+            ],
+            avoid: "Do not use outside scan-style PQ/ADC without adapting the memory-access story."
+          },
+          {
+            paper: "WARP",
+            target: "Section 4 execution method",
+            thesis: "Best retrieval-engine execution story.",
+            moves: [
+              "Tie missing-similarity imputation, implicit decompression, and score reduction to measured latency.",
+              "Stage optimizations as pipeline surgery, not isolated tricks.",
+              "Separate system speedup from retrieval effectiveness."
+            ],
+            avoid: "Do not call it a SIMD template; SIMD/GPU is future work in that paper."
+          },
+          {
+            paper: "Chameleon",
+            target: "Section 4 vector-search accelerator design",
+            thesis: "Best accelerator execution story.",
+            moves: [
+              "Use CPU/GPU PQ-scan limits to motivate near-memory PQ decoding.",
+              "Pipeline distance evaluation and candidate scheduling instead of only adding hardware.",
+              "Make approximate hierarchical priority queues part of the execution argument."
+            ],
+            avoid: "Do not copy FPGA/disaggregation assumptions for ordinary CPU/GPU deployments."
+          }
+        ]
+      },
+      {
+        id: "implementation",
+        title: "Implementation",
+        summary: "Best models for proving that a design is actually buildable under correctness and performance constraints.",
+        ranking: "implementation.md",
+        cards: [
+          {
+            paper: "SPFresh",
+            target: "Section 4 implementation",
+            thesis: "Best implementation section for storage, concurrency, recovery, and updates.",
+            moves: [
+              "Explain SPDK/raw-block access, append/put behavior, snapshots, and recovery through correctness and performance.",
+              "Keep low-level details only when they affect foreground service behavior.",
+              "Tie implementation back to update freshness and resource control."
+            ],
+            avoid: "Do not list APIs or storage tricks without explaining why they are necessary."
+          },
+          {
+            paper: "Chameleon",
+            target: "Section 6.1 implementation",
+            thesis: "Best hardware/software boundary description.",
+            moves: [
+              "Name LOC, Fairseq extensions, Faiss, FPGA TCP/IP, CPU coordination, and message design as system boundaries.",
+              "Explain how components communicate, not just where they run.",
+              "Make implementation evidence support the architecture claim."
+            ],
+            avoid: "Do not borrow FPGA/HLS detail unless the hardware boundary is central."
+          },
+          {
+            paper: "OdinANN",
+            target: "Section 3 implementation/design details",
+            thesis: "Best direct-insert graph implementation story.",
+            moves: [
+              "Use fixed-size records, overprovisioned pages, update combining, concurrency control, snapshots, and journaling to support one claim.",
+              "State the SSD-space/write tradeoff rather than hiding it.",
+              "Explain implementation as the reason direct update stays stable."
+            ],
+            avoid: "Do not hide correctness and persistence details behind performance graphs."
+          }
+        ]
+      },
+      {
+        id: "evaluation",
+        title: "Evaluation",
+        summary: "Best models for matching experiments to claims, including bad regimes and operational costs.",
+        ranking: "evaluation.md",
+        cards: [
+          {
+            paper: "SPFresh",
+            target: "Section 5 evaluation",
+            thesis: "Best evaluation discipline for dynamic search.",
+            moves: [
+              "Evaluate freshness, accuracy, tail latency, update throughput, memory, and resource behavior.",
+              "Test foreground/background interaction instead of isolated nearest-neighbor speed.",
+              "Make every metric map to the update-heavy claim."
+            ],
+            avoid: "Do not copy update experiments for static-search papers."
+          },
+          {
+            paper: "OdinANN",
+            target: "Section 4 evaluation",
+            thesis: "Best graph-update evaluation.",
+            moves: [
+              "Expose latency fluctuation, percentile latency, insert throughput, memory peak, and disk/write tradeoff.",
+              "Track recall and index-quality drift under updates.",
+              "Show the bad dynamic regime rather than only the best steady state."
+            ],
+            avoid: "Do not evaluate dynamic claims with only static recall/latency."
+          },
+          {
+            paper: "WARP",
+            target: "Section 5 evaluation",
+            thesis: "Best execution-engine evaluation for multi-vector retrieval.",
+            moves: [
+              "Report retrieval quality, latency, scalability, thread scaling, and memory footprint.",
+              "Choose baselines that share the multi-vector workload assumptions.",
+              "Show the engine's impact under the scoring path it was built for."
+            ],
+            avoid: "Do not treat this as a standard single-vector ANN benchmark template."
+          }
+        ]
+      },
+      {
+        id: "related",
+        title: "Related Work",
+        summary: "Best models for technical non-overlap: classify by constraint, interface, or resource placement.",
+        ranking: "related-work.md",
+        cards: [
+          {
+            paper: "VBASE",
+            target: "Related work section",
+            thesis: "Best positioning for an interface/database paper.",
+            moves: [
+              "Separate similarity query processing, vector indices, and vector database integration.",
+              "Position by interface and semantics rather than only speed.",
+              "Make non-overlap explicit through query execution constraints."
+            ],
+            avoid: "Do not use for pure SSD/GPU index papers without database semantics."
+          },
+          {
+            paper: "Chameleon",
+            target: "Section 7 related work",
+            thesis: "Best cross-area positioning among accelerator papers.",
+            moves: [
+              "Separate ANN algorithms, vector-search hardware, memory/storage, and RALM systems.",
+              "Use hardware placement as a taxonomy dimension.",
+              "Keep the contrast technical and short."
+            ],
+            avoid: "Do not flatten the critique into generic speed or scalability claims."
+          },
+          {
+            paper: "OdinANN",
+            target: "Section 5 related work",
+            thesis: "Best dynamic graph/non-overlap map.",
+            moves: [
+              "Separate billion-scale indexes, hybrid storage, near-data processing, compression, and update-capable indexes.",
+              "Distinguish direct insert from buffered update and reserved-space designs.",
+              "Keep the related work scoped to the update claim."
+            ],
+            avoid: "Do not blur update models; reviewers will notice."
+          }
+        ]
+      },
+      {
+        id: "discussion",
+        title: "Discussion / Conclusion",
+        summary: "Best models for answering reviewer objections, stating limits, and closing without overclaiming.",
+        ranking: "discussion-conclusion.md",
+        cards: [
+          {
+            paper: "Starling",
+            target: "Sections 7-8 discussion and conclusion",
+            thesis: "Best mature discussion for disk-resident systems.",
+            moves: [
+              "Answer objections about memory-based methods, SPANN comparison, SSD assumptions, updates, and range search.",
+              "Use discussion to clarify scope rather than adding new contribution claims.",
+              "Keep the conclusion short after the objections are handled."
+            ],
+            avoid: "Do not turn discussion into a second related-work section."
+          },
+          {
+            paper: "GustANN",
+            target: "Discussion and conclusion",
+            thesis: "Best honest limitation statement for hardware-assisted ANNS.",
+            moves: [
+              "State scalability limits, GPU memory pressure, and latency-throughput tradeoffs explicitly.",
+              "Clarify which techniques generalize beyond the exact system.",
+              "Connect limitations to target workloads."
+            ],
+            avoid: "Do not bury the latency tradeoff if it should shape the paper earlier."
+          },
+          {
+            paper: "Chameleon",
+            target: "Section 8 discussion/conclusion",
+            thesis: "Best roadmap-oriented outlook for serving architecture.",
+            moves: [
+              "Discuss how ChamLM and ChamVS could evolve without pretending those features are already solved.",
+              "Name batching, paged attention, graph accelerators, updates, and relational features as future extensions.",
+              "Keep the outlook tied to the service architecture."
+            ],
+            avoid: "Do not overgeneralize beyond the measured RALM/vector-serving setting."
+          }
+        ]
+      }
+    ];
+
+    const accents = ["#22c55e", "#22d3ee", "#a78bfa"];
+
+    function escapeHtml(value) {
+      return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+    }
+
+    function cardText(section, card) {
+      return [
+        section.title,
+        card.paper,
+        card.target,
+        card.thesis,
+        card.moves.join(" "),
+        card.avoid
+      ].join(" ").toLowerCase();
+    }
+
+    function promptFor(section, card) {
+      return `Study ${card.paper} ${card.target} for my ${section.title} section. Extract the opening move, narrowing, contrast, evidence placement, contribution staging, and scope-control lessons. Do not copy prose; adapt the structure to my own system.`;
+    }
+
+    function copyPrompt(sectionId, cardIndex) {
+      const section = sections.find((item) => item.id === sectionId);
+      const card = section.cards[cardIndex];
+      const text = promptFor(section, card);
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text);
+        return;
+      }
+      const area = document.createElement("textarea");
+      area.value = text;
+      document.body.appendChild(area);
+      area.select();
+      document.execCommand("copy");
+      area.remove();
+    }
+
+    function renderRail() {
+      document.getElementById("railLinks").innerHTML = sections.map((section) => {
+        return `<a href="#${section.id}">${escapeHtml(section.title)}</a>`;
+      }).join("");
+    }
+
+    function renderMatrix() {
+      document.getElementById("matrixRows").innerHTML = sections.map((section) => {
+        const cells = section.cards.map((card, index) => `<div class="matrix-cell">#${index + 1} ${escapeHtml(card.paper)}</div>`).join("");
+        return `<div class="matrix-row"><a class="matrix-cell" href="#${section.id}">${escapeHtml(section.title)}</a>${cells}</div>`;
+      }).join("");
+    }
+
+    function renderSections(filter = "") {
+      const query = filter.trim().toLowerCase();
+      let visibleCards = 0;
+      const html = sections.map((section) => {
+        const cards = section.cards
+          .map((card, index) => ({ card, index }))
+          .filter(({ card }) => !query || cardText(section, card).includes(query));
+
+        if (query && cards.length === 0) {
+          return "";
+        }
+
+        visibleCards += cards.length;
+        const cardHtml = cards.map(({ card, index }) => {
+          const meta = paperMeta[card.paper];
+          const accent = accents[index] || accents[0];
+          const moves = card.moves.map((move) => `<li>${escapeHtml(move)}</li>`).join("");
+          return `
+            <article class="paper-card" style="--accent: ${accent}" data-paper="${escapeHtml(card.paper)}">
+              <div class="paper-card-inner">
+                <div class="rank-row">
+                  <span class="rank-badge">#${index + 1}</span>
+                  <span class="section-tag">${escapeHtml(section.title)}</span>
+                </div>
+                <h3>${escapeHtml(card.paper)}</h3>
+                <span class="target">${escapeHtml(card.target)}</span>
+                <p class="thesis">${escapeHtml(card.thesis)}</p>
+                <ul class="move-list">${moves}</ul>
+                <div class="avoid"><strong>Do not copy:</strong> ${escapeHtml(card.avoid)}</div>
+                <div class="actions">
+                  <a href="${meta.pdf}" target="_blank" rel="noreferrer">Open PDF</a>
+                  <a href="${meta.note}" target="_blank" rel="noreferrer">Source note</a>
+                  <a href="${section.ranking}" target="_blank" rel="noreferrer">Ranking</a>
+                  <button type="button" onclick="copyPrompt('${section.id}', ${index})">Copy study prompt</button>
+                </div>
+              </div>
+            </article>
+          `;
+        }).join("");
+
+        return `
+          <section id="${section.id}" class="section-block">
+            <div class="section-head">
+              <div>
+                <h2>${escapeHtml(section.title)}</h2>
+                <p>${escapeHtml(section.summary)}</p>
+              </div>
+              <a class="section-tag" href="${section.ranking}">Ranking file</a>
+            </div>
+            <div class="card-grid">${cardHtml}</div>
+          </section>
+        `;
+      }).join("");
+
+      document.getElementById("sections").innerHTML = html;
+      document.getElementById("resultCount").textContent = `${visibleCards} cards`;
+    }
+
+    renderRail();
+    renderMatrix();
+    renderSections();
+
+    document.getElementById("searchInput").addEventListener("input", (event) => {
+      renderSections(event.target.value);
+    });
+
+    document.getElementById("expandAll").addEventListener("click", () => {
+      document.getElementById("searchInput").value = "";
+      renderSections();
+      document.getElementById("matrix").scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  </script>
+</body>
+</html>

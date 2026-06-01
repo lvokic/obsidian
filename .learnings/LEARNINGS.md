@@ -5,6 +5,28 @@ Corrections, insights, and knowledge gaps captured during development.
 **Categories**: correction | insight | knowledge_gap | best_practice
 
 ---
+## [LRN-20260601-001] correction
+
+**Logged**: 2026-06-01T12:32:40+08:00
+**Priority**: high
+**Status**: pending
+**Area**: docs
+
+### Summary
+When cropping research-paper section PDFs, use boundary pages rather than estimated body pages.
+
+### Details
+I initially generated ANNS section excerpt PDFs using manually estimated page ranges. The user corrected that this cut off incomplete introductions in `wiki/analyses/anns-section-writing-exemplars/top4-section-excerpts/02-introduction`. For two-column papers, a section tail often shares the same physical page as the next chapter heading, so the correct excerpt range is from the target section's heading page through the next chapter/subsection heading page.
+
+### Suggested Action
+For future PDF excerpt folders, define and document the cropping rule before generation: `start_page = physical page containing target section heading`; `end_page = physical page containing next chapter/subsection heading`. Verify at least one sample per folder by searching extracted text for both the target heading and the next heading.
+
+### Metadata
+- Source: user_feedback
+- Related Files: wiki/analyses/anns-section-writing-exemplars/top4-section-excerpts/
+- Tags: pdf, excerpts, research-wiki, section-boundaries
+
+---
 
 ## [LRN-20260408-001] correction
 

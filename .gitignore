@@ -3,3 +3,4 @@ tmp/
 .learnings/
 .obsidian/workspace.json
 .claude/settings.local.json
+.codex/

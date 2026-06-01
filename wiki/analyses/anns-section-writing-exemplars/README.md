@@ -3,7 +3,7 @@ id: anns-section-writing-exemplars
 type: analysis
 status: active
 created: 2026-05-26
-updated: 2026-05-29
+updated: 2026-05-30
 tags: [anns, paper-writing, systems, section-exemplars]
 source_count: 69
 sources:
@@ -74,6 +74,10 @@ ANN-Benchmarks and Graph-Based ANNS Survey are excellent for evaluation methodol
 ## How To Use This Folder
 
 For future agents, start with [Agent Map: ANNS Section Writing Exemplars](agent-writing-map/AGENT_MAP.md). It turns the rankings here into section cards with source pointers, argument skeletons, reusable writing moves, and traps to avoid.
+
+For a faster visual workflow, open [Top 3 Section Writing Navigator](top3-section-writing-navigator.html). It turns the best three papers per section into a navigable HTML dashboard with PDF links, source-note links, section targets, writing moves, and warnings.
+
+For direct original-section reading, open [Top 4 Section Excerpts](top4-section-excerpts/README.md). It contains boundary-cropped PDFs for each section's best four papers. Each excerpt starts on the page where the target section appears and ends on the page where the next chapter or subsection opens, so two-column section tails are not accidentally cut off.
 
 When drafting a new paper, do not copy one whole paper's structure. Instead, assemble a section-by-section template: Starling-style introduction, VBASE/Chameleon-style background hook, GustANN-style motivation, Starling/WARP-style method, PQ Fast Scan/WARP-style optimization, SPFresh-style implementation/evaluation, and Starling/GustANN-style discussion.
 
