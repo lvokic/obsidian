@@ -3,7 +3,7 @@ id: symphonyqg
 type: entity
 status: active
 created: 2026-05-10
-updated: 2026-05-10
+updated: 2026-06-16
 tags:
   - method
   - ann
@@ -25,18 +25,19 @@ confidence: medium
 
 ## Profile
 
-SymphonyQG is a graph ANN method that integrates RaBitQ-style quantization and FastScan-style SIMD distance estimation into graph traversal and graph construction.
+SymphonyQG is a graph ANN method that integrates RaBitQ-style quantization and FastScan-style SIMD distance estimation into graph traversal and graph construction. The current vault source is the 2024 arXiv version of the paper later accepted by SIGMOD 2025.
 
 ## Core Mechanism
 
 - Store neighbor quantization codes next to graph vertices for sequential access.
 - Use FastScan to estimate neighbor distances in batches.
-- Avoid explicit final reranking to reduce random raw-vector accesses.
+- Avoid explicit final reranking by updating exact best candidates during traversal.
 - Refine graph degree so each vertex aligns with FastScan batch size.
+- Reuse the same search path to accelerate index construction.
 
 ## Why It Is Important
 
-SymphonyQG is a concrete example of graph/quantization co-design. It shows that simply adding quantized distance estimates to HNSW-like traversal is not enough; layout and graph degree must match the execution kernel.
+SymphonyQG is a concrete example of graph/quantization co-design. It shows that simply adding quantized distance estimates to HNSW-like traversal is not enough; layout, reranking behavior, graph degree, and construction must match the execution kernel.
 
 ## Related Pages
 

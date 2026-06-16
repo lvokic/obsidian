@@ -3,7 +3,7 @@ id: anns-section-writing-exemplars
 type: analysis
 status: active
 created: 2026-05-26
-updated: 2026-06-01
+updated: 2026-06-16
 tags: [anns, paper-writing, systems, section-exemplars]
 source_count: 69
 sources:
@@ -61,6 +61,8 @@ CXL-ANNS, d-HNSW, and ANSMET are useful for second-tier memory context, but they
 SVFusion is interesting but not a top exemplar yet. It has too many interacting claims and should be treated cautiously until the publication status and evaluation maturity are clearer.
 
 Flash and Panorama are strong execution-layer papers, but they are narrower than the system papers ranked here. Use them for SIMD/refinement ideas, not for overall ANNS systems paper structure.
+
+SymphonyQG is technically important and stronger than many ranked papers as mechanism evidence for graph search plus FastScan. It still should not enter the section-writing Top 5 after the 2026-06-16 re-read: the method section is dense, the introduction leans heavily on NGT-QG before widening, and the optimization narrative mixes too many mechanisms to serve as a clean template. Use it for vectorization substance, not for section rhythm.
 
 Multi-Probe LSH is historically important and has a clean classical problem statement, but the 2007 prose style is not a modern SIGMOD/VLDB systems writing template.
 

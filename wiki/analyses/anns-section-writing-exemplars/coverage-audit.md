@@ -3,7 +3,7 @@ id: anns-section-writing-coverage-audit
 type: analysis
 status: active
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-06-16
 tags: [anns, paper-writing, coverage-audit, section-exemplars]
 source_count: 69
 sources:
@@ -43,7 +43,7 @@ This audit records the full candidate pool used for the May 29, 2026 refresh of 
 | [PQ Fast Scan](../../source-notes/pq-fast-scan-2015.md) | Direct candidate | Top 5 for optimization/execution layer; not a full system-section template. |
 | [Flash Graph Indexing](../../source-notes/flash-graph-indexing-2025.md) | Direct candidate | Top 5 for optimization/execution layer; supporting for graph construction method. |
 | [Quicker ADC](../../source-notes/quicker-adc-2019.md) | Supporting | Strong optimization source, but prose is less clean as a section template than PQ Fast Scan. |
-| [SymphonyQG](../../source-notes/symphonyqg-2024.md) | Supporting | Strong graph+SIMD source, but too many interacting mechanisms for a Top 5 writing template. |
+| [SymphonyQG](../../source-notes/symphonyqg-2024.md) | Supporting | Rechecked after the arXiv:2411.12229 ingest refresh. Still not Top 5: technically valuable graph+SIMD source, but its sections combine RaBitQ normalization, FastScan LUT handling, implicit reranking, graph construction, graph-degree refinement, and memory-footprint caveats into one dense method story. Use it as mechanism evidence, not as a clean writing template. |
 | [DiskANN](../../source-notes/diskann-2019.md) | Supporting | Foundational and must cite, but not the best modern section-writing template. |
 | [SPANN](../../source-notes/spann-2021.md) | Supporting | Important memory-disk IVF source; Starling/SPFresh/OdinANN now write sharper system sections. |
 | [RUMMY](../../source-notes/rummy-2024.md) | Supporting | Strong batching/pipeline source; still not Top 5 after adding WARP and Chameleon execution-path exemplars. |

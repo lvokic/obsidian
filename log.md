@@ -432,3 +432,18 @@ Unresolved questions: the older numbered card files under `agent-writing-map/` s
 - Corrected the RUMMY excerpt to pages `3-5` after rendering showed page `2` contained only title/abstract/introduction content before the target Section 2 page.
 - Deleted `wiki/analyses/anns-section-writing-exemplars/agent-writing-map/04-motivation-cards.md` and removed its agent-map references.
 - Updated `03-background-cards.md`, `AGENT_MAP.md`, `README.md`, `boundary-audit.md`, and `index.md` so future agents use the combined Top 5 Background & Motivation package.
+
+## [2026-06-16 05:28] query | SymphonyQG existing-ingest refresh
+
+- Checked the user-provided paper URL `https://arxiv.org/abs/2411.12229` and confirmed it matches the already ingested vault source `raw/sources/papers/symphonyqg-2024.pdf`.
+- Refreshed `wiki/source-notes/symphonyqg-2024.md` from a short summary into a fuller source note with bibliographic note, problem framing, design, evaluation facts, and limits.
+- Updated `wiki/entities/symphonyqg.md` so the profile and mechanism summary reflect the current accepted-paper status and the implicit-reranking plus construction-time FastScan details.
+- No new raw file or duplicate source note was created because the canonical source already existed in the vault.
+- Remaining question: if a final ACM DOI-bearing version becomes available later, refresh the bibliographic note and confidence level once the camera-ready metadata is stable.
+
+## [2026-06-16 05:34] query | SymphonyQG Top 5 section-exemplar decision
+
+- Re-read SymphonyQG's abstract, introduction, methodology, evaluation, related work, and conclusion sections against the current ANNS section-writing Top 5 criteria.
+- Updated `wiki/analyses/anns-section-writing-exemplars/coverage-audit.md`, `optimization-execution-layer.md`, and `README.md` to record the decision that SymphonyQG remains a supporting mechanism source rather than a Top 5 section-writing exemplar.
+- Judgment: SymphonyQG is important for graph search plus FastScan/RaBitQ/vectorization substance, but the prose is too dense and multi-mechanism to replace the current optimization/execution-layer Top 5.
+- No Top 5 rankings, cards, or excerpt PDFs were regenerated.

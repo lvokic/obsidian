@@ -3,7 +3,7 @@ id: anns-section-exemplars-optimization-execution-layer
 type: analysis
 status: active
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-06-16
 tags: [anns, paper-writing, optimization, simd, vectorization, implementation]
 source_count: 8
 sources:
@@ -37,7 +37,7 @@ confidence: medium
 
 [Quicker ADC](../../source-notes/quicker-adc-2019.md) is technically deeper than PQ Fast Scan on AVX-512 and irregular product quantizers, but PQ Fast Scan is cleaner as a prose template.
 
-[SymphonyQG](../../source-notes/symphonyqg-2024.md) is the best graph-search-plus-FastScan source, but its optimization story depends on several interacting components: RaBitQ, neighbor-code duplication, implicit reranking, graph degree alignment, and construction-time FastScan.
+[SymphonyQG](../../source-notes/symphonyqg-2024.md) is the best graph-search-plus-FastScan source and was rechecked after the arXiv:2411.12229 ingest refresh. It still does not replace Flash or Milvus in the Top 5 because the writing is overloaded: the optimization story depends on RaBitQ normalization, neighbor-code duplication, implicit reranking, multiple estimated distances, graph-degree alignment, construction-time FastScan, and a large memory-footprint caveat. It is excellent mechanism evidence for a vectorization chapter, but not a cleaner section exemplar than the current fifth-place Flash entry.
 
 [GustANN](../../source-notes/gustann-2025.md) is stronger for hardware/system characterization than for a compact optimization-section template.
 
